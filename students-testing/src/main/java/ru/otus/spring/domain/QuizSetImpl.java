@@ -3,7 +3,7 @@ package ru.otus.spring.domain;
 import java.util.Iterator;
 import java.util.List;
 
-public class QuizSetImpl<Question> implements QuizSet<Question> {
+public class QuizSetImpl implements QuizSet<Question> {
 
     private List<Question> questions;
 
@@ -22,12 +22,15 @@ public class QuizSetImpl<Question> implements QuizSet<Question> {
     }
 
     @Override
-    public void printScore() {
-        System.out.println("print score");
-        // Не понимаю, почему в данном месте не вижу методов интерфейса Question
-        // Из=за этого не могу подсчитать результат тестирования в классе QuizSetImpl
+    public String getScore() {
+        int rightAnswersAmount = 0;
+
         for( Question q: questions ) {
-            // не вижу q.isRightAnswer
+            if( q.isRightAnswer()) {
+                rightAnswersAmount++;
+            }
         }
+        double score = (double)rightAnswersAmount / questions.size() * 100;
+        return String.format("%.2f", score) + "%";
     }
 }

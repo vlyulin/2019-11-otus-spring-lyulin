@@ -10,7 +10,8 @@ public interface QuizSet<Question> extends Iterable<Question> {
         List<Question> getQuestions();
 
         /**
-         * Печать результатов прохождения теста
+         * Получение результатов прохождения теста
+         * @return результат
          */
-        void printScore(); // печать прохождения теста
+        String getScore(); // печать прохождения теста
 }

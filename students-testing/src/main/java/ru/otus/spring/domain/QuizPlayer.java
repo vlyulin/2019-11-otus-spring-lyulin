@@ -1,52 +1,23 @@
 package ru.otus.spring.domain;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-import ru.otus.spring.config.QuizSettings;
+import ru.otus.spring.service.InteractionService;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * Универсальный проигрыватель наборов тестов (QuizSet)
  */
-
-@Component
-@Scope(value = "prototype")
 public class QuizPlayer {
 
-    @Autowired
-    private MessageSource messageSource;
-    @Autowired
-    private QuizSettings quizSettings;
+    private final InteractionService console;
+    private final Person  examinee;
+    private final QuizSet<Question> quizSet;
 
-    private Person  examinee;
-    private QuizSet quizSet;
-
-    public QuizPlayer ( Person person, QuizSet quizSet ) {
-        this.examinee = person;
+    public QuizPlayer (InteractionService interactionService, Person examinee, QuizSet<Question> quizSet ) {
+        this.console = interactionService;
+        this.examinee = examinee;
         this.quizSet = quizSet;
-    }
-
-    /**
-     * Приветствие перед опросом
-     */
-    public void greeting() {
-        System.out.println(
-                messageSource.getMessage(
-                        "WELCOME",
-                        new String[] {examinee.getName()},
-                        quizSettings.getQuizLocale()
-                )
-        );
     }
 
     /**
@@ -54,16 +25,11 @@ public class QuizPlayer {
      */
     public void play() {
         int idx = 1;
-        java.io.BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+        greeting();
 
         if( quizSet.getQuestions().isEmpty() || quizSet.getQuestions().size() == 0 ) {
-            System.out.println(
-                messageSource.getMessage(
-                        "NO_QUESTIONS",
-                        new String[] {examinee.getName()},
-                        quizSettings.getQuizLocale()
-                )
-            );
+            console.printTag("NO_QUESTIONS",examinee.getName());
             return;
         }
 
@@ -71,43 +37,24 @@ public class QuizPlayer {
         Iterator<Question> it = quizSet.iterator();
         while(it.hasNext() ) {
             Question question = it.next();
-
-            System.out.println( idx++ + ". " + question.getQuestion() );
+            console.print(idx++ + ". " + question.getQuestion());
             try {
-                String answer = in.readLine();
-                question.processAnswer(answer);
+                question.processAnswer(console.readLine());
+            }
+            catch(NumberFormatException nfe) {
+                console.printTag("NUMBER_EXPECTED", nfe.toString());
             }
             catch(IOException ioe) {
-                System.err.println(
-                        messageSource.getMessage(
-                                "SOMETHING_WENT_WRONG",
-                                new String[] {ioe.toString()},
-                                quizSettings.getQuizLocale()
-                        )
-                );
+                console.printTag("SOMETHING_WENT_WRONG", ioe.toString());
                 return;
             }
         }
 
         // Вывод результата
-        // quizSet.printScore();
-        // TODO: Переделать после того, как в quizSet разберусь почему не виден метод Question.isRightAnswer
-        it = quizSet.iterator();
-        Integer rightAnswerCounter = 0;
-        while(it.hasNext() ) {
-            Question q = it.next();
-            if(q.isRightAnswer()) {
-                rightAnswerCounter++;
-            }
-        }
+        console.printTag("YOUR_SCORE", quizSet.getScore());
+    }
 
-        Double score = rightAnswerCounter.doubleValue() / quizSet.getQuestions().size() * 100;
-        System.err.println(
-                messageSource.getMessage(
-                        "YOUR_SCORE",
-                        new String[] {String.format("%.2f", score) + "%"},
-                        quizSettings.getQuizLocale()
-                )
-        );
+    public void greeting() {
+        console.printTag("WELCOME", examinee.getName());
     }
 }

@@ -7,9 +7,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import ru.otus.spring.dao.QuizSetDao;
+import ru.otus.spring.dao.QuizSetDaoImpl;
 import ru.otus.spring.domain.QuizSet;
 import ru.otus.spring.domain.QuizSetImpl;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,7 +28,7 @@ class QuizConfigTest {
     private String ru_file;
 
     @Test
-    void loadCSV() {
+    void loadCSV() throws IOException {
         String[][] reference_data = {
                 {"3","FREE_ANSWER,Вам нравится Spring? (Y/N)","Y"},
                 {"1","LIST_WITH_ONE_CHOICE","Сколько будет 1 + 1?","2","1","2","3","4","5"},
@@ -39,7 +42,7 @@ class QuizConfigTest {
         // ...
         // Проверить данные
         // List<String[]> strings = QuizConfig.loadCSV(ru_file);
-        List<String[]> strings = QuizConfig.loadCSV("quiz_ru_RU.csv");
+        List<String[]> strings = QuizSetDaoImpl.loadCSV("quiz_ru_RU.csv");
 
         assertAll("Russian data CSV loading",
                 () -> assertArrayEquals(reference_data[0], reference_data_list.get(0)),

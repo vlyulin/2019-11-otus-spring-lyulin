@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FreeQuestionImplTest {
 
-    FreeQuestionImpl freeQuestionImpl = new FreeQuestionImpl(1,"Question?", "Answer");
+    Question freeQuestionImpl = new Question(1,"Question?", "Answer");
 
     @org.junit.jupiter.api.Test
     void getQuestion() {
