@@ -1,10 +1,9 @@
 package ru.otus.spring.service;
 
-import ru.otus.spring.domain.Question;
 import ru.otus.spring.domain.QuizSet;
-
-import java.io.IOException;
+import ru.otus.spring.service.exceptions.QuestionFactoryException;
+import ru.otus.spring.service.exceptions.QuizSetLoadException;
 
 public interface QuizSetService {
-    QuizSet<Question> getByName(String name) throws IOException;
+    QuizSet getQuizSet() throws QuizSetLoadException, QuestionFactoryException;
 }

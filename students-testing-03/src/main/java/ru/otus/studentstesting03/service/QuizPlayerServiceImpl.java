@@ -1,10 +1,10 @@
-package ru.otus.spring.service;
+package ru.otus.studentstesting03.service;
 
 import org.springframework.stereotype.Service;
-import ru.otus.spring.domain.Person;
-import ru.otus.spring.domain.Question;
-import ru.otus.spring.domain.QuizPlayer;
-import ru.otus.spring.domain.QuizSet;
+import ru.otus.studentstesting03.domain.Person;
+import ru.otus.studentstesting03.domain.Question;
+import ru.otus.studentstesting03.domain.QuizPlayer;
+import ru.otus.studentstesting03.domain.QuizSet;
 
 @Service
 public class QuizPlayerServiceImpl implements QuizPlayerService {

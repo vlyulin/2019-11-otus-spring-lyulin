@@ -1,13 +1,19 @@
-package ru.otus.spring.domain;
+package ru.otus.studentstesting03.domain;
 
+import java.util.Iterator;
 import java.util.List;
 
-public class QuizSetImpl implements QuizSet {
+public class QuizSetImpl implements QuizSet<Question> {
 
     private List<Question> questions;
 
     public QuizSetImpl(List<Question> questions) {
         this.questions = questions;
+    }
+
+    @Override
+    public Iterator<Question> iterator() {
+        return this.questions.iterator();
     }
 
     @Override

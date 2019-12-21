@@ -2,10 +2,9 @@ package ru.otus.spring.service;
 
 import org.springframework.stereotype.Service;
 import ru.otus.spring.dao.QuizSetDao;
-import ru.otus.spring.domain.Question;
 import ru.otus.spring.domain.QuizSet;
-
-import java.io.IOException;
+import ru.otus.spring.service.exceptions.QuestionFactoryException;
+import ru.otus.spring.service.exceptions.QuizSetLoadException;
 
 @Service
 public class QuizSetServiceImpl implements QuizSetService {
@@ -16,7 +15,7 @@ public class QuizSetServiceImpl implements QuizSetService {
     }
 
     @Override
-    public QuizSet<Question> getByName(String name) throws IOException {
-        return quizSetDao.getByName(name);
+    public QuizSet getQuizSet() throws QuizSetLoadException, QuestionFactoryException {
+        return quizSetDao.loadQuizSet();
     }
 }

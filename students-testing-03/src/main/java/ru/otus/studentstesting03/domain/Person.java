@@ -1,18 +1,15 @@
-package ru.otus.spring.domain;
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+package ru.otus.studentstesting03.domain;
 
 /**
  * Опрашиваемый студент
  */
-@Component
-@Scope(value = "prototype")
 public class Person {
 
     private String name;
     private String lastName;
+
+    public Person() {
+    }
 
     public Person(String name, String lastName) {
         this.name = name;
@@ -25,5 +22,13 @@ public class Person {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

@@ -3,15 +3,15 @@ package ru.otus.spring.domain;
 /**
  * Опрашиваемый студент
  */
-public class Person {
+public class Student {
 
     private String name;
     private String lastName;
 
-    public Person() {
+    public Student() {
     }
 
-    public Person(String name, String lastName) {
+    public Student(String name, String lastName) {
         this.name = name;
         this.lastName = lastName;
     }

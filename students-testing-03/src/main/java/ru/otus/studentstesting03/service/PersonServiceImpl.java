@@ -1,11 +1,9 @@
-package ru.otus.spring.service;
+package ru.otus.studentstesting03.service;
 
 import org.springframework.stereotype.Service;
-import ru.otus.spring.domain.Person;
+import ru.otus.studentstesting03.domain.Person;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 @Service
 public class PersonServiceImpl implements PersonService {

@@ -1,6 +1,6 @@
-package ru.otus.spring.domain;
+package ru.otus.studentstesting03.domain;
 
-import ru.otus.spring.service.InteractionService;
+import ru.otus.studentstesting03.service.InteractionService;
 
 import java.io.IOException;
 import java.util.Iterator;

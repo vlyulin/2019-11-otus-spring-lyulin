@@ -1,7 +1,7 @@
-package ru.otus.spring.dao;
+package ru.otus.studentstesting03.dao;
 
-import ru.otus.spring.domain.OneChoiceQuestion;
-import ru.otus.spring.domain.Question;
+import ru.otus.studentstesting03.domain.OneChoiceQuestion;
+import ru.otus.studentstesting03.domain.Question;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package ru.otus.spring.dao;
+package ru.otus.studentstesting03.dao;
 
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
@@ -6,9 +6,9 @@ import com.fasterxml.jackson.dataformat.csv.CsvParser;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Repository;
-import ru.otus.spring.domain.Question;
-import ru.otus.spring.domain.QuizSet;
-import ru.otus.spring.domain.QuizSetImpl;
+import ru.otus.studentstesting03.domain.Question;
+import ru.otus.studentstesting03.domain.QuizSet;
+import ru.otus.studentstesting03.domain.QuizSetImpl;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package ru.otus.spring.service;
+package ru.otus.studentstesting03.service;
 
 import org.springframework.context.MessageSource;
 

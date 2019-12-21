@@ -1,40 +1,32 @@
 package ru.otus.spring.domain;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Реализация вопроса с выбором ответа из множества вариантов
  */
 public class OneChoiceQuestion extends Question {
 
-    private int             id; // номер вопроса
-    private String          question;
-    private int             rightAnswer;
     private List<String>    answers;
-    private boolean         rightAnswerFlag = false;
 
     public OneChoiceQuestion(int id,
-                             String question,
-                             List<String> answers,
-                             int rightAnswer) {
+                              String question,
+                              List<String> answers,
+                              int rightAnswer) {
         super(id, question, Integer.toString(rightAnswer));
-        this.id              = id;
-        this.question        = question;
-        this.answers         = answers;
-        this.rightAnswer     = rightAnswer;
+        this.answers = answers;
     }
 
     @Override
     public String getQuestion() {
 
-        StringBuilder sb = new StringBuilder(question);
+        StringBuilder sb = new StringBuilder(super.getQuestion());
         sb.append(System.getProperty("line.separator"));
         // формирование строки с вариантами ответов
-        for( int idx = 0; idx < answers.size(); idx++ ) {
-            sb.append(idx+1);
-            sb.append(") ");
-            sb.append(answers.get(idx));
-            if (idx < answers.size()-1 ) {
+        for(int idx = 0; idx < answers.size(); idx++ ) {
+            sb.append(idx+1).append(") ").append(answers.get(idx));
+            if(idx < answers.size()-1) {
                 sb.append(System.getProperty("line.separator"));
             }
         }
@@ -42,13 +34,16 @@ public class OneChoiceQuestion extends Question {
     }
 
     @Override
-    public void processAnswer(String answer) {
-        int userAnswer = Integer.parseInt(answer);
-        rightAnswerFlag = (rightAnswer == userAnswer);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof OneChoiceQuestion)) return false;
+        if (!super.equals(o)) return false;
+        OneChoiceQuestion that = (OneChoiceQuestion) o;
+        return answers.equals(that.answers);
     }
 
     @Override
-    public Boolean isRightAnswer() {
-        return rightAnswerFlag;
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), answers);
     }
 }
