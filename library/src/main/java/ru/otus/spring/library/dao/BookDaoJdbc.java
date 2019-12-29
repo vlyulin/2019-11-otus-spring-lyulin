@@ -4,12 +4,14 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.stereotype.Repository;
+import ru.otus.spring.library.domain.Author;
 import ru.otus.spring.library.domain.Book;
+import ru.otus.spring.library.domain.LookupValue;
+import ru.otus.spring.library.domain.PublishingHouse;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,15 +20,29 @@ import java.util.Map;
 @Repository
 public class BookDaoJdbc implements BookDao {
 
-    private final NamedParameterJdbcOperations namedParameterJdbcOperations;
+    private static final String GENRES = "GENRES";
 
-    public BookDaoJdbc(NamedParameterJdbcOperations namedParameterJdbcOperations) {
+    private final NamedParameterJdbcOperations namedParameterJdbcOperations;
+    // private final LookupValueDaoJdbc lookupValueDao;
+    private final AuthorDao authorDao;
+    private final PublishingHouseDao publishingHouseDao;
+
+    public BookDaoJdbc(
+                NamedParameterJdbcOperations namedParameterJdbcOperations,
+                // LookupValueDaoJdbc lookupValueDao,
+                AuthorDao authorDao,
+                PublishingHouseDao publishingHouseDao
+    ) {
         this.namedParameterJdbcOperations = namedParameterJdbcOperations;
+        // this.lookupValueDao = lookupValueDao;
+        this.authorDao = authorDao;
+        this.publishingHouseDao = publishingHouseDao;
     }
 
     @Override
     public int count() {
-        return namedParameterJdbcOperations.queryForObject ("select count(1) from books", new HashMap<String,Object>(), Integer.class);
+        return namedParameterJdbcOperations.getJdbcOperations()
+                .queryForObject ("select count(1) from books", Integer.class);
     }
 
     @Override
@@ -35,9 +51,9 @@ public class BookDaoJdbc implements BookDao {
         Map<String, Object> params = Map.of(
                 "book_id", book.getId(),
                 "name", book.getName(),
-                "genre", book.getGenre(),
-                "author_id", book.getAuthorId(),
-                "publishing_house_id", book.getPublishingHouseId(),
+                "genre", book.getGenre().getLookupCode(),
+                "author_id", book.getAuthor().getId(),
+                "publishing_house_id", book.getPublishingHouse().getId(),
                 "publishing_year", book.getPublishingYear(),
                 "pages", book.getPages()
         );
@@ -115,18 +131,22 @@ public class BookDaoJdbc implements BookDao {
         );
     }
 
-    private static class BookMapper implements RowMapper<Book> {
+    private class BookMapper implements RowMapper<Book> {
         @Override
         public Book mapRow(ResultSet resultSet, int i) throws SQLException {
+
             long book_id = resultSet.getLong("book_id");
             String name = resultSet.getString("name");
-            String genre = resultSet.getString("genre");
+            String genreLookupValue = resultSet.getString("genre");
             long author_id = resultSet.getLong("author_id");
             long publishing_house_id = resultSet.getLong("publishing_house_id");
             int publishing_year = resultSet.getInt("publishing_year");
             int pages = resultSet.getInt("pages");
 
-            Book book = new Book(book_id, name, genre, author_id, publishing_house_id, publishing_year, pages);
+            LookupValue genre = null; // lookupValueDao.getByLookupCode(GENRES,genreLookupValue);
+            Author author = authorDao.getById(author_id);
+            PublishingHouse publishingHouse = publishingHouseDao.getById(publishing_house_id);
+            Book book = new Book(book_id, name, genre, author, publishingHouse, publishing_year, pages);
             return book;
         }
     }

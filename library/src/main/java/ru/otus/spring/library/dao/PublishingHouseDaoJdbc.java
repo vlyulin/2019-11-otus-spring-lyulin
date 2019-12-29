@@ -21,7 +21,8 @@ public class PublishingHouseDaoJdbc implements PublishingHouseDao {
 
     @Override
     public int count() {
-        return namedParameterJdbcOperations.queryForObject ("select count(1) from publishing_houses", new HashMap<>(), Integer.class);
+        return namedParameterJdbcOperations.getJdbcOperations()
+                .queryForObject ("select count(1) from publishing_houses", Integer.class);
     }
 
     @Override

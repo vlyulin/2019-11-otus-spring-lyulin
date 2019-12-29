@@ -5,6 +5,7 @@ import ru.otus.spring.library.dao.AuthorDao;
 import ru.otus.spring.library.dao.BookDao;
 import ru.otus.spring.library.dao.LookupValueDao;
 import ru.otus.spring.library.dao.PublishingHouseDao;
+import ru.otus.spring.library.domain.Author;
 import ru.otus.spring.library.domain.Book;
 import ru.otus.spring.library.domain.LookupValue;
 
@@ -36,9 +37,9 @@ public class Library {
         for(Book book: booksList) {
             System.out.println(
                     book.getName()
-                            + " " + genres.get(book.getGenre()).getMeaning()
-                            + " " + authorDao.getById(book.getAuthorId()).getName()
-                            + " " + publishingHouseDao.getById(book.getPublishingHouseId()).getName()
+                            + " " + book.getGenre().getMeaning()
+                            + " " + book.getAuthor().getName()
+                            + " " + book.getPublishingHouse().getName()
                             + " " + book.getPages()
             );
         }
@@ -52,5 +53,9 @@ public class Library {
     public void listBooksByQuery(String bookName, String genreCode, String authorName, String publishingHouseName, int publishingYear, int pages) {
         List<Book> booksList = bookDao.getBooks(bookName, genreCode, authorName, publishingHouseName, publishingYear, pages);
         printBooks(booksList);
+    }
+
+    public void insertAuthor( Author author) {
+        authorDao.insert(author);
     }
 }
