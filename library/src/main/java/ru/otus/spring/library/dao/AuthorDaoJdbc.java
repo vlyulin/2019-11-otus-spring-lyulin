@@ -74,9 +74,9 @@ public class AuthorDaoJdbc implements AuthorDao {
             String name = resultSet.getString("name");
             String country = resultSet.getString("country");
             char sex = resultSet.getString("sex").charAt(0);
-            Date date_of_birth = resultSet.getDate("date_of_birth");
+            Date dateOfBirth = resultSet.getDate("date_of_birth");
 
-            return new Author(id, name, country, sex, date_of_birth);
+            return new Author(id, name, country, sex, dateOfBirth);
         }
     }
 }

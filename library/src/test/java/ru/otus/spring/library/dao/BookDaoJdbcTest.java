@@ -70,10 +70,22 @@ class BookDaoJdbcTest {
         authorDaoJdbc.deleteById(-1);
     }
 
+    @DisplayName("Проверка получения Book по идентификатору")
     @Test
     void getById() {
-        Book book = bookDaoJdbc.getById(1);
-        assertNotNull(book);
+        LookupValue reference_genre = lookupValueDaoJdbc.getByLookupCode(GENRE_LOOKUP_TYPE, GENRE);
+
+        Author reference_author = new Author(-2,"Автор для тестирования", "EN", 'M', Date.valueOf("1980-01-10"));
+        authorDaoJdbc.insert(reference_author);
+
+        PublishingHouse reference_ph = new PublishingHouse(-2,"PH для тестирования", 1980);
+        publishingHouseDaoJdbc.insert(reference_ph);
+
+        Book reference_book = new Book(-2,BOOK_NAME, reference_genre, reference_author, reference_ph, 2010, 300);
+        bookDaoJdbc.insert(reference_book);
+        Book book = bookDaoJdbc.getById(-2);
+        System.out.println("book name = " + book.getAuthor());
+        assertThat(reference_author.equals(book));
     }
 
     @Test
@@ -103,5 +115,15 @@ class BookDaoJdbcTest {
 
         authorDaoJdbc.deleteById(-1);
         exception = assertThrows(EmptyResultDataAccessException.class,() -> authorDaoJdbc.getById(-1));
+    }
+
+    @DisplayName("Запрос Book по аттрибутам")
+    @Test
+    void getBooks() {
+        List<Book> bookList = bookDaoJdbc.getBooks(null,null,"%Хрон%",null,null,0,0);
+        assertThat(bookList).hasSizeGreaterThan(0);
+
+        bookList = bookDaoJdbc.getBooks("%н%",null,null,null,null,0,0);
+        assertThat(bookList).hasSize(2);
     }
 }

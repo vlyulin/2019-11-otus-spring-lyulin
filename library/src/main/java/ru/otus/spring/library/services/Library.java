@@ -50,8 +50,8 @@ public class Library {
         printBooks(bookList);
     }
 
-    public void listBooksByQuery(String bookName, String genreCode, String authorName, String publishingHouseName, int publishingYear, int pages) {
-        List<Book> booksList = bookDao.getBooks(bookName, genreCode, authorName, publishingHouseName, publishingYear, pages);
+    public void listBooksByQuery(String bookName, String genreCode, String genreMeaning, String authorName, String publishingHouseName, int publishingYear, int pages) {
+        List<Book> booksList = bookDao.getBooks(bookName, genreCode, genreMeaning, authorName, publishingHouseName, publishingYear, pages);
         printBooks(booksList);
     }
 

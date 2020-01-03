@@ -12,7 +12,7 @@ public class Author {
     private Date date_of_birth;
     private String name;
 
-    public Author(long id, String name, String country, char sex, Date date_of_birth) {
+    public Author(long id, String name, String country, char sex, Date dateOfBirth) {
         this.id = id;
         this.name = name;
         this.country = country;
@@ -20,7 +20,7 @@ public class Author {
         // Избавляемся от времени
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            this.date_of_birth = formatter.parse(formatter.format(date_of_birth));
+            this.date_of_birth = formatter.parse(formatter.format(dateOfBirth));
         } catch (ParseException e) {
             e.printStackTrace();
         }

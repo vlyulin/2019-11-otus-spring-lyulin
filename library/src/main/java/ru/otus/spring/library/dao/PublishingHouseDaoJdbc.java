@@ -70,11 +70,11 @@ public class PublishingHouseDaoJdbc implements PublishingHouseDao {
     private static class PublishingHouseMapper implements RowMapper<PublishingHouse> {
         @Override
         public PublishingHouse mapRow(ResultSet resultSet, int i) throws SQLException {
-            long publishing_house_id = resultSet.getLong("publishing_house_id");
+            long publishingHouseId = resultSet.getLong("publishing_house_id");
             String name = resultSet.getString("name");
-            int settlement_year = resultSet.getInt("settlement_year");
+            int settlementYear = resultSet.getInt("settlement_year");
 
-            return new PublishingHouse(publishing_house_id, name, settlement_year);
+            return new PublishingHouse(publishingHouseId, name, settlementYear);
         }
     }
 }
