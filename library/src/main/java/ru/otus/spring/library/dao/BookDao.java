@@ -18,6 +18,7 @@ public interface BookDao {
     List<Book> getBooks(
       String bookName,
       String genreCode,
+      String genreMeaning,
       String authorName,
       String publishingHouseName,
       int publishingYear,
