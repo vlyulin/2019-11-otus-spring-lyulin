@@ -5,4 +5,4 @@ localization:
 spring:
     shell:
         interactive:
-            enabled: true
+            enabled: false
