@@ -4,8 +4,8 @@
 ## Содержание:
 * [Студент](#Студент)
 * [Папка students-testing](#Папка-students-testing)
-* [Папка library]
-* [Папка library-orm]
+* [Папка library](#Папка-library)
+* [Папка library-orm](#Папка-library-orm)
 
 # Студент
 ФИО слушателя: Люлин Вадим Евгеньевич
