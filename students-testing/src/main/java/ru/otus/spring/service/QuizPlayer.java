@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 import ru.otus.spring.domain.Question;
 import ru.otus.spring.domain.QuizSet;
 import ru.otus.spring.domain.Student;
-import ru.otus.spring.service.ConsoleMessageService;
 import ru.otus.spring.service.exceptions.QuestionFactoryException;
 import ru.otus.spring.service.exceptions.QuizSetLoadException;
 import ru.otus.spring.service.exceptions.StudentInfoReadException;
@@ -25,12 +24,12 @@ public class QuizPlayer {
     private static final String MSG_KEY_WELCOME = "WELCOME";
     private static final String MSG_KEY_NUMBER_EXPECTED = "NUMBER_EXPECTED";
 
-    private final ConsoleMessageService ms;
+    private final MessageService ms;
     private final StudentService studentService;
     private final QuizSetService quizSetService;
 
     public QuizPlayer(
-            ConsoleMessageService ms,
+            MessageService ms,
             StudentService studentService,
             QuizSetService quizSetService
     ) {

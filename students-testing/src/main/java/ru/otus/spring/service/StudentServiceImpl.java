@@ -9,9 +9,9 @@ public class StudentServiceImpl implements StudentService {
 
     private static final String MSG_KEY_ASK_STUDENT_NAME = "ASK_STUDENT_NAME";
     private static final String MSG_KEY_ASK_STUDENT_LASTNAME = "ASK_STUDENT_LASTNAME";
-    private final ConsoleMessageService ms;
+    private final MessageService ms;
 
-    public StudentServiceImpl(ConsoleMessageService ms) {
+    public StudentServiceImpl(MessageService ms) {
         this.ms = ms;
     }
 

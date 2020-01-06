@@ -23,15 +23,15 @@ class QuizSetCsvDaoTest {
     @Test
     void loadQuizSet() {
 
-        List<Question> reference_questions = new ArrayList();
-        reference_questions.add(new Question(3, "TEST Вам нравится Spring? (Y/N)", "Y"));
-        reference_questions.add(
+        List<Question> referenceQuestions = new ArrayList();
+        referenceQuestions.add(new Question(3, "TEST Вам нравится Spring? (Y/N)", "Y"));
+        referenceQuestions.add(
                 new OneChoiceQuestion(1,
                         "TEST Сколько будет 1 + 1?",
                         Arrays.asList("1", "2", "3", "4", "5"),
                         2)
         );
-        reference_questions.add(
+        referenceQuestions.add(
                 new OneChoiceQuestion(2,
                         "TEST Сколько будет 2 + 2?",
                         Arrays.asList("1", "2", "3", "4", "5"),
@@ -48,7 +48,7 @@ class QuizSetCsvDaoTest {
         try {
             QuizSet quizSet = quizSetCsvDao.loadQuizSet();
             List<Question> questions = quizSet.getQuestions();
-            assertArrayEquals(reference_questions.toArray(), questions.toArray(), "Различный список вопросов");
+            assertArrayEquals(referenceQuestions.toArray(), questions.toArray(), "Различный список вопросов");
         } catch (QuizSetLoadException e) {
             e.printStackTrace();
         }
