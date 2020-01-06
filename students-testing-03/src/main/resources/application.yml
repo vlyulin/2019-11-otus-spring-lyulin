@@ -1,0 +1,7 @@
+localization:
+    language: en
+    country: US
+datafiles:
+  quiz_en: quiz_en_US.csv
+  quiz_en_US: quiz_en_US.csv
+  quiz_ru_RU: quiz_ru_RU.csv
