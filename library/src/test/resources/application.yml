@@ -1,8 +1,18 @@
 localization:
-    language: en
-    country: US
+    language: ru
+    country: RU
 
 spring:
     shell:
         interactive:
-            enabled: true
+            enabled: false
+
+    h2:
+        console:
+            enabled: false
+            path: /admin/h2
+
+        datasource:
+            url: jdbc:h2:mem:testdb
+            initialization-mode: always
+            data: test-data.sql

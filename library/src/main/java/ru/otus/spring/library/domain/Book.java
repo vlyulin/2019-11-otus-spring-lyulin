@@ -6,9 +6,6 @@ public class Book {
 
     private long id;
     private String name;
-    // private String genre;
-    // private long authorId;
-    // private long publishingHouseId;
     private int publishingYear;
     private int pages;
 
@@ -60,8 +57,8 @@ public class Book {
         if (!(o instanceof Book)) return false;
         Book book = (Book) o;
         return id == book.id &&
-                author.equals(book) && // authorId == book.authorId &&
-                publishingHouse.equals(book.publishingHouse) && // publishingHouseId == book.publishingHouseId &&
+                author.equals(book) &&
+                publishingHouse.equals(book.publishingHouse) &&
                 publishingYear == book.publishingYear &&
                 pages == book.pages &&
                 name.equals(book.name) &&

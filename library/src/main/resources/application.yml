@@ -5,4 +5,14 @@ localization:
 spring:
     shell:
         interactive:
+            enabled: true
+
+    h2:
+        console:
             enabled: false
+            path: /admin/h2
+
+        datasource:
+            url: jdbc:h2:mem:testdb
+            initialization-mode: always
+            data: data.sql

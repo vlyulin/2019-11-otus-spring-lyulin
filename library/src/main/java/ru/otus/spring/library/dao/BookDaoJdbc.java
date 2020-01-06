@@ -1,7 +1,5 @@
 package ru.otus.spring.library.dao;
 
-import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
@@ -14,7 +12,9 @@ import ru.otus.spring.library.domain.PublishingHouse;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 
 @SuppressWarnings({"SqlNoDataSourceInspection", "ConstantConditions", "SqlDialectInspection"})
@@ -72,14 +72,6 @@ public class BookDaoJdbc implements BookDao {
         params.addValue("book_id", id);
         params.addValue("language",settings.getLanguage());
 
-//        return namedParameterJdbcOperations.queryForObject(
-//                "select b.book_id, b.name, b.genre, b.author_id, b.publishing_house_id, b.publishing_year, b.pages\n" +
-//                        "from books b\n" +
-//                        "where book_id = :book_id",
-//                params,
-//                new BookDaoJdbc.BookMapper()
-//        );
-
         return namedParameterJdbcOperations.queryForObject(
                 "select b.book_id, b.name book_name, b.genre, b.author_id, b.publishing_house_id, b.publishing_year, b.pages,\n" +
                         "v.lookup_type, v.language, v.lookup_code, v.meaning, v.description,\n" +
@@ -122,7 +114,7 @@ public class BookDaoJdbc implements BookDao {
                 "and b.author_id = a.author_id\n" +
                 "and b.publishing_house_id = h.publishing_house_id\n"
             , params
-            , new BooksResultSetExtractor()
+            , new BookMapper()
         );
     }
 
@@ -136,7 +128,6 @@ public class BookDaoJdbc implements BookDao {
                 int publishingYear,
                 int pages)
     {
-        // Скорее всего должен быть более простой путь передать null, если String = ''
         String _bookName = (bookName == null || bookName.isBlank() || bookName.isEmpty())?null:bookName;
         String _genreCode = (genreCode == null || genreCode.isBlank() || genreCode.isEmpty())?null:genreCode;
         String _genreMeaning = (genreMeaning == null || genreMeaning.isBlank() || genreMeaning.isEmpty())?null:genreMeaning;
@@ -179,7 +170,7 @@ public class BookDaoJdbc implements BookDao {
                         "and (:publishing_year is null or b.publishing_year = :publishing_year)\n" +
                         "and (:pages is null or b.pages = :pages)"
                 ,parameters
-                ,new BooksResultSetExtractor()
+                , new BookMapper()
         );
     }
 
@@ -191,10 +182,6 @@ public class BookDaoJdbc implements BookDao {
         );
     }
 
-    // Идея с переиспользованием кода BooksResultSetExtractor не получилась.
-    // Проскакивает на resultSet.next() в BooksResultSetExtractor и не видит текущую строку.
-    // Попытка вызова resultSet.previous(); не помогла.
-    // В результате дублирование кода в BookMapper и BooksResultSetExtractor
     private class BookMapper implements RowMapper<Book> {
         @Override
         public Book mapRow(ResultSet rs, int i) throws SQLException {
@@ -234,59 +221,7 @@ public class BookDaoJdbc implements BookDao {
                             rs.getInt("publishing_year"),
                             rs.getInt("pages")
                     );
-
-//            BooksResultSetExtractor booksResultSetExtractor = new BooksResultSetExtractor();
-//            resultSet.previous();
-//            List<Book> bookList = booksResultSetExtractor.extractData(resultSet);
-//            if (bookList == null || bookList.size() == 0) return null;
-//            return booksResultSetExtractor.extractData(resultSet).get(0);
         }
     }
 
-    private class BooksResultSetExtractor implements ResultSetExtractor<List<Book>> {
-        @Override
-        public List<Book> extractData(ResultSet rs) throws SQLException, DataAccessException {
-            List<Book> books = new ArrayList<>();
-            while(rs.next()) {
-                LookupValue lookupValue =
-                        new LookupValue(
-                                rs.getString("lookup_type"),
-                                rs.getString("language"),
-                                rs.getString("lookup_code"),
-                                rs.getString("meaning"),
-                                rs.getString("description"),
-                                rs.getString("enabled_flag").charAt(0),
-                                rs.getDate("start_date_active"),
-                                rs.getDate("end_date_active")
-                        );
-
-                Author author = new Author (
-                    rs.getLong("author_id"),
-                    rs.getString("author_name"),
-                    rs.getString("country"),
-                    rs.getString("sex").charAt(0),
-                    rs.getDate("date_of_birth")
-                );
-
-                PublishingHouse publishingHouse = new PublishingHouse(
-                    rs.getLong("publishing_house_id"),
-                    rs.getString("name"),
-                    rs.getInt("settlement_year")
-                );
-
-                books.add(
-                        new Book(
-                                rs.getLong("book_id"),
-                                rs.getString("book_name"),
-                                lookupValue,
-                                author,
-                                publishingHouse,
-                                rs.getInt("publishing_year"),
-                                rs.getInt("pages")
-                        )
-                );
-            }
-            return books;
-        }
-    }
 }
