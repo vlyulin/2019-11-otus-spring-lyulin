@@ -2,18 +2,20 @@ package ru.otus.spring.libraryorm.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
-
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
+//@EqualsAndHashCode
 @Entity
 @Table(name = "lookup_values")
-public class LookupValue {
+public class LookupValue implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "lookup_value_id", updatable = false, nullable = false)
@@ -36,5 +38,4 @@ public class LookupValue {
     private String meaning;
     @Column(name = "description")
     private String description;
-
 }

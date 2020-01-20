@@ -1,18 +1,16 @@
 package ru.otus.spring.libraryorm.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "comments")
-public class Comment {
+public class Comment implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comment_id", updatable = false, nullable = false)
@@ -31,4 +29,21 @@ public class Comment {
     private User lastUpdatedBy;
     @Column(name = "last_update_date")
     LocalDate lastUpdateDate;
+
+    @ManyToOne(targetEntity = Book.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="book_id", insertable=false, updatable=false)
+    private Book book;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Comment)) return false;
+        Comment comment = (Comment) o;
+        return commentId == comment.commentId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(commentId);
+    }
 }

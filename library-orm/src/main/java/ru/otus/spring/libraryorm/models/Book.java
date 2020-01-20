@@ -3,9 +3,16 @@ package ru.otus.spring.libraryorm.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
@@ -25,33 +32,52 @@ public class Book {
     private int publishingYear;
     @Column(name = "pages")
     private int pages;
-// TODO: Как привязать жанр?
-//    @OneToOne(targetEntity = LookupValue.class)
-//    @JoinColumn(name = "genre", referencedColumnName = "lookup_code", unique = true, insertable = false, updatable = false)
-//    @WhereJoinTable(clause = "lookup_type = '" + GENRES + "' " +
-//            "and language = '" + settings.getLanguage() + "')
-//    В LOOKUP_VALUES составной PK, а в таблице BOOKS хотелось иметь только колонку GENRE (LOOKUP_CODE),
-//    что было бы достаточно
-//    Но связать эти таблицы без FK не удалось
-//    org.springframework.beans.factory.BeanCreationException:
-//    Error creating bean with name 'entityManagerFactory' defined in class path resource
-//    [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]:
-//    Invocation of init method failed; nested exception is org.hibernate.AnnotationException:
-//    referencedColumnNames(lookup_code) of ru.otus.spring.libraryorm.models.Book.genre referencing ru.otus.spring.
-//    libraryorm.models.LookupValue not mapped to a single property
 
-//    @OneToOne(targetEntity = LookupValue.class)
-//    @JoinColumn(name = "genre_id")
-//    private LookupValue genre;
+    /* Так как в @Entity язык интерфейса неизвестен, то идея иметь описание жанра для разных языков
+     * и уже репозиторий будет определять на каком языке выдавать описание жанра,
+     * но застрял на
+     * Could not set field value [LookupValue(id=1, lookupType=GENRES, lookupCode=HARD_SCIENCE_FICTION,
+     * language=RU, enabledFlag=Y, startDateActive=+169108099-07-05, endDateActive=+169104628-12-09,
+     * meaning=Твердая научная фантастика, description=Твердая научная фантастика)]
+     * value by reflection : [class ru.otus.spring.libraryorm.models.Book.genres]
+     * setter of ru.otus.spring.libraryorm.models.Book.genres;
+     */
+    @ManyToOne(targetEntity = LookupValue.class)
+    @JoinColumnsOrFormulas({
+            @JoinColumnOrFormula(formula=@JoinFormula(
+                    value="(SELECT lv.lookup_value_id FROM lookup_values lv " +
+                            "WHERE lv.lookup_type = 'GENRES' " +
+                            "and lv.lookup_code = genre " +
+                            "and lv.enabled_flag = 'Y' " +
+                            "and lv.language = 'RU')", referencedColumnName="lookup_value_id")),
+            @JoinColumnOrFormula(column = @JoinColumn(name = "genre", referencedColumnName="lookup_code"))
+    })
+    @MapKey(name = "language")
+    private Map<String,LookupValue> genres = new HashMap<>();
 
-    @OneToOne(targetEntity = Author.class)
+    @ManyToOne(targetEntity = Author.class)
     @JoinColumn(name = "author_id")
     private Author author;
-    @OneToOne(targetEntity = PublishingHouse.class)
+    @ManyToOne(targetEntity = PublishingHouse.class)
     @JoinColumn(name = "publishing_house_id")
     private PublishingHouse publishingHouse;
 
-    @OneToMany(targetEntity = Comment.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "book_id")
-    private List<Comment> comments;
+    // FetchType.LAZY дает ошибку
+    // failed to lazily initialize a collection of role: ru.otus.spring.libraryorm.models.Book.comments,
+    // could not initialize proxy - no Session
+    // Не удалось победить
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(targetEntity = Comment.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="book_id")
+    private List<Comment> comments = new ArrayList<>();
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
+        comment.setBook(this);
+    }
+
+    public void removeComment(Comment comment) {
+        comments.remove(comment);
+        comment.setBook(null);
+    }
 }

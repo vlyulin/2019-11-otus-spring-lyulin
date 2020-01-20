@@ -1,0 +1,4 @@
+id,question_type,question,rightAnswer,answer1,answer2,answer3,answer4,answer5
+3,FREE_ANSWER,Do you like Spring? (Y/N),Y
+1,LIST_WITH_ONE_CHOICE,What is one and one?,2,1,2,3,4,5
+2,LIST_WITH_ONE_CHOICE,What is two and two?,4,1,2,3,4,5

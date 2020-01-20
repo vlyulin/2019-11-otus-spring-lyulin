@@ -9,15 +9,21 @@ import java.util.Locale;
 public class Settings {
     private String language;
     private Locale locale;
+    private String login;
 
     public Settings(@Value("${localization.language:ru}") String language,
-                        @Value("${localization.country:RU}") String country) {
+                    @Value("${localization.country:RU}") String country,
+                    @Value("${appsession.user:User01}") String login ) {
         this.language = language.toUpperCase();
 	    this.locale = new Locale(language, country);
+	    this.login = login;
     }
 
     public String getLanguage(){ return language; }
     public Locale getLocale() {
         return locale;
+    }
+    public String getLogin() {
+        return login;
     }
 }

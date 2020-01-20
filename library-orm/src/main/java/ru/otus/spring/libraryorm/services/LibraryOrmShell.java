@@ -1,20 +1,45 @@
 package ru.otus.spring.libraryorm.services;
 
+import org.springframework.shell.Availability;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
+import org.springframework.shell.standard.ShellMethodAvailability;
 import org.springframework.shell.standard.ShellOption;
 
 @ShellComponent
 public class LibraryOrmShell {
-    private final Library library;
 
-    public LibraryOrmShell(Library library) {
+    private final Library library;
+    private final AppSession appSession;
+
+    public LibraryOrmShell(Library library, AppSession appSession) {
         this.library = library;
+        this.appSession = appSession;
+    }
+
+    @ShellMethod(key = {"connect", "conn"}, value = "Connect")
+    public void connect() {
+        appSession.openSession();
+    }
+
+    @ShellMethodAvailability(
+            {"show-books", "books",
+                    "query-books","q",
+                    "get-book","gb",
+                    "print-book-comments","pbc",
+                    "add-book-comment","new-comment","nc",
+                    "update-book-comment","update-comment","uc",
+                    "delete-comment", "dc"
+            })
+    public Availability availabilityCheck() {
+        return appSession.isConnected()
+                ? Availability.available()
+                : Availability.unavailable("You are not connected.");
     }
 
     @ShellMethod(key = {"show-books", "books"}, value = "Show all books")
     public void showAllBooks() {
-        library.findAll();
+        library.getAllBooks();
     }
 
     @ShellMethod(key = {"query-books","q"}, value = "Query books by attrs (use % for patterns, for example -author-name '%Артур%'):", prefix="-")

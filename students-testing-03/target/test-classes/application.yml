@@ -1,0 +1,8 @@
+language: en
+country: US
+base: quiz
+
+spring:
+ messages:
+  basename: bundle
+  encoding: UTF-8

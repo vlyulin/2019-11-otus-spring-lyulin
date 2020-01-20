@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
-import ru.otus.spring.libraryorm.config.AppSession;
+import ru.otus.spring.libraryorm.services.AppSession;
 import ru.otus.spring.libraryorm.config.Settings;
 import ru.otus.spring.libraryorm.models.Book;
 import ru.otus.spring.libraryorm.models.Comment;
@@ -19,8 +19,8 @@ import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("Тестирование репозитория Books")
 @DataJpaTest
-@Import({BooksRepositoryJpaImpl.class, AppSession.class, Settings.class})
-class BooksRepositoryJpaImplTest {
+@Import({BooksRepositoryJpa.class, UserRepositoryJpa.class, AppSession.class, Settings.class})
+class BooksRepositoryJpaTest {
 
     private static final int BOOKS_COUNT = 3;
     private static final int SINGLE_BOOK_COUNT = 1;
@@ -37,7 +37,7 @@ class BooksRepositoryJpaImplTest {
     private TestEntityManager em;
 
     @Autowired
-    BooksRepositoryJpaImpl booksRepositoryJpa;
+    BooksRepositoryJpa booksRepositoryJpa;
 
     @DisplayName("Получение списка всех книг")
     @Test
@@ -82,9 +82,12 @@ class BooksRepositoryJpaImplTest {
     @DisplayName("Проверка добавления комментария к книге")
     @Test
     void addBookComment() throws BookNotFoundException {
+
         Comment comment = booksRepositoryJpa.addBookComment(TOXIC_BOOK_ID, NEW_COMMENT);
-        Comment reference_comment = em.find(Comment.class, comment.getCommentId());
-        assertThat(reference_comment).isEqualToComparingFieldByField(comment);
+        Comment referenceComment = em.find(Comment.class, comment.getCommentId());
+
+        assertThat(referenceComment.getBookId()).isEqualTo(TOXIC_BOOK_ID);
+        assertThat(referenceComment.getComment()).isEqualTo(NEW_COMMENT);
     }
 
     @DisplayName("Проверка изменения комментария к книге")

@@ -1,10 +1,9 @@
 package ru.otus.spring.libraryorm.services;
 
 import org.springframework.stereotype.Service;
-import ru.otus.spring.libraryorm.config.AppSession;
 import ru.otus.spring.libraryorm.models.Book;
 import ru.otus.spring.libraryorm.models.Comment;
-import ru.otus.spring.libraryorm.repositories.BooksRepositoryJpa;
+import ru.otus.spring.libraryorm.repositories.BooksRepository;
 import ru.otus.spring.libraryorm.repositories.exceptions.BookNotFoundException;
 
 import java.time.format.DateTimeFormatter;
@@ -24,29 +23,29 @@ public class Library {
     public static final String MSG_USER_NOT_FOUND = "USER_NOT_FOUND";
     public static final String MSG_COMMENT_NOT_FOUND = "COMMENT_NOT_FOUND";
 
-    private final BooksRepositoryJpa booksRepositoryJpa;
+    private final BooksRepository booksRepository;
     private final MessageService ms;
     private final AppSession session;
 
-    public Library(BooksRepositoryJpa booksRepositoryJpa, MessageService ms, AppSession session) {
-        this.booksRepositoryJpa = booksRepositoryJpa;
+    public Library(BooksRepository booksRepository, MessageService ms, AppSession session) {
+        this.booksRepository = booksRepository;
         this.ms = ms;
         this.session = session;
     }
 
-    public void findAll() {
-        printBooks( booksRepositoryJpa.getAllBooks() );
+    public void getAllBooks() {
+        printBooks( booksRepository.getAllBooks() );
     }
 
     public void getBooks(String bookName, String genreCode, String genreMeaning, String authorName, String publishingHouseName, int publishingYear, int pages) {
-        List<Book> books = booksRepositoryJpa.getBooks(bookName, genreCode, genreMeaning, authorName, publishingHouseName, publishingYear, pages);
+        List<Book> books = booksRepository.getBooks(bookName, genreCode, genreMeaning, authorName, publishingHouseName, publishingYear, pages);
         printBooks(books);
     }
 
     public void findBookById(long bookId) {
         Optional<Book> book = null;
         try {
-            book = booksRepositoryJpa.findBookById(bookId);
+            book = booksRepository.findBookById(bookId);
         } catch (BookNotFoundException e) {
             ms.printMessageByKey(MSG_BOOK_NOT_FOUND,e.getMessage());
             return;
@@ -73,7 +72,7 @@ public class Library {
     public void showBookComments(long bookId) {
         Optional<Book> book = null;
         try {
-            book = booksRepositoryJpa.findBookById(bookId);
+            book = booksRepository.findBookById(bookId);
         } catch (BookNotFoundException e) {
             ms.printMessageByKey(MSG_BOOK_NOT_FOUND,e.getMessage());
             return;
@@ -102,8 +101,8 @@ public class Library {
     public void addBookComment(long bookId, String cmt) {
         Optional<Book> book = null;
         try {
-            book = booksRepositoryJpa.findBookById(bookId);
-            booksRepositoryJpa.addBookComment(bookId, cmt);
+            book = booksRepository.findBookById(bookId);
+            booksRepository.addBookComment(bookId, cmt);
         } catch (BookNotFoundException e) {
             ms.printMessageByKey(MSG_BOOK_NOT_FOUND, bookId);
             return;
@@ -111,14 +110,14 @@ public class Library {
     }
 
     public void updateBookComment(long commentId, String comment) {
-        int cnt = booksRepositoryJpa.updateBookComment(commentId, comment);
+        int cnt = booksRepository.updateBookComment(commentId, comment);
         if( cnt == 0) {
             ms.printMessageByKey(MSG_COMMENT_NOT_FOUND, commentId);
         }
     }
 
     public void deleteBookComment(long commentId) {
-        int cnt = booksRepositoryJpa.deleteBookComment(commentId);
+        int cnt = booksRepository.deleteBookComment(commentId);
         if( cnt == 0) {
             ms.printMessageByKey(MSG_COMMENT_NOT_FOUND, commentId);
         }
