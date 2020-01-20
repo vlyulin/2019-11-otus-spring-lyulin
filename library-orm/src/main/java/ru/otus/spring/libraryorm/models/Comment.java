@@ -28,7 +28,7 @@ public class Comment implements java.io.Serializable {
     @JoinColumn(name = "last_updated_by")
     private User lastUpdatedBy;
     @Column(name = "last_update_date")
-    LocalDate lastUpdateDate;
+    private LocalDate lastUpdateDate;
 
     @ManyToOne(targetEntity = Book.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="book_id", insertable=false, updatable=false)

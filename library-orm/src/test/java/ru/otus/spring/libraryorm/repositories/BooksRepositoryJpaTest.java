@@ -60,7 +60,7 @@ class BooksRepositoryJpaTest {
     @DisplayName("Получение книги по идентификатору")
     @Test
     void findBookById() throws BookNotFoundException {
-       assertThat(booksRepositoryJpa.findBookById(TOXIC_BOOK_ID).get())
+       assertThat(booksRepositoryJpa.findBookById(TOXIC_BOOK_ID)).isNotEmpty().get()
                .isNotNull().hasFieldOrPropertyWithValue("name", TOXIC_BOOK_NAME);
     }
 
