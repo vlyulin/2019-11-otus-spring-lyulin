@@ -30,10 +30,6 @@ public class Comment implements java.io.Serializable {
     @Column(name = "last_update_date")
     private LocalDate lastUpdateDate;
 
-    @ManyToOne(targetEntity = Book.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name="book_id", insertable=false, updatable=false)
-    private Book book;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

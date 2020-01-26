@@ -9,10 +9,6 @@ import javax.persistence.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Data
 @NoArgsConstructor
@@ -21,6 +17,7 @@ import java.util.Map;
 @Table(name = "books")
 public class Book {
     private static final String GENRES = "GENRES";
+    private static final String LANGUAGE = "RU";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,27 +30,19 @@ public class Book {
     @Column(name = "pages")
     private int pages;
 
-    /* Так как в @Entity язык интерфейса неизвестен, то идея иметь описание жанра для разных языков
-     * и уже репозиторий будет определять на каком языке выдавать описание жанра,
-     * но застрял на
-     * Could not set field value [LookupValue(id=1, lookupType=GENRES, lookupCode=HARD_SCIENCE_FICTION,
-     * language=RU, enabledFlag=Y, startDateActive=+169108099-07-05, endDateActive=+169104628-12-09,
-     * meaning=Твердая научная фантастика, description=Твердая научная фантастика)]
-     * value by reflection : [class ru.otus.spring.libraryorm.models.Book.genres]
-     * setter of ru.otus.spring.libraryorm.models.Book.genres;
-     */
-    @ManyToOne(targetEntity = LookupValue.class)
+    @ManyToOne(targetEntity = LookupValue.class, fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     @JoinColumnsOrFormulas({
-            @JoinColumnOrFormula(formula=@JoinFormula(
-                    value="(SELECT lv.lookup_value_id FROM lookup_values lv " +
-                            "WHERE lv.lookup_type = 'GENRES' " +
-                            "and lv.lookup_code = genre " +
-                            "and lv.enabled_flag = 'Y' " +
-                            "and lv.language = 'RU')", referencedColumnName="lookup_value_id")),
-            @JoinColumnOrFormula(column = @JoinColumn(name = "genre", referencedColumnName="lookup_code"))
+            @JoinColumnOrFormula(formula=@JoinFormula(value="'"+GENRES+"'", referencedColumnName = "lookup_type")),
+            @JoinColumnOrFormula(formula = @JoinFormula(value="'"+LANGUAGE+"'", referencedColumnName="language")),
+            @JoinColumnOrFormula(column = @JoinColumn(name="genre", referencedColumnName = "lookup_code"))
     })
-    @MapKey(name = "language")
-    private Map<String,LookupValue> genres = new HashMap<>();
+    private LookupValue genre;
+    // Так и не смог добиться сохранения жанров как Map
+    // @MapKey(name = "language")
+    // private Map<String,LookupValue> genres; // = new HashMap<>();
+    // B даже как List
+    // private List<LookupValue> genres = new ArrayList<>();
+    // Вынес для себя, что если у таблицы нет primary key или foreign key, то это становится нетривиальной задачей в JPA
 
     @ManyToOne(targetEntity = Author.class)
     @JoinColumn(name = "author_id")
@@ -61,23 +50,4 @@ public class Book {
     @ManyToOne(targetEntity = PublishingHouse.class)
     @JoinColumn(name = "publishing_house_id")
     private PublishingHouse publishingHouse;
-
-    // FetchType.LAZY дает ошибку
-    // failed to lazily initialize a collection of role: ru.otus.spring.libraryorm.models.Book.comments,
-    // could not initialize proxy - no Session
-    // Не удалось победить
-    @Fetch(FetchMode.SUBSELECT)
-    @OneToMany(targetEntity = Comment.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name="book_id")
-    private List<Comment> comments = new ArrayList<>();
-
-    public void addComment(Comment comment) {
-        comments.add(comment);
-        comment.setBook(this);
-    }
-
-    public void removeComment(Comment comment) {
-        comments.remove(comment);
-        comment.setBook(null);
-    }
 }

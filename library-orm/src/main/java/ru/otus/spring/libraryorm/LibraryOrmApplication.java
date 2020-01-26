@@ -11,5 +11,4 @@ public class LibraryOrmApplication {
 		SpringApplication.run(LibraryOrmApplication.class, args);
 		Console.main(args);
 	}
-
 }

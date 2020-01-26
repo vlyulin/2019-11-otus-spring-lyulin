@@ -2,7 +2,6 @@ package ru.otus.spring.libraryorm.services;
 
 import org.springframework.stereotype.Service;
 import ru.otus.spring.libraryorm.config.Settings;
-import ru.otus.spring.libraryorm.models.LookupValue;
 import ru.otus.spring.libraryorm.models.User;
 import ru.otus.spring.libraryorm.repositories.UserRepository;
 

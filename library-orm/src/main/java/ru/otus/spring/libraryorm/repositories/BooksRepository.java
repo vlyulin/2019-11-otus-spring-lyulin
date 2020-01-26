@@ -1,7 +1,6 @@
 package ru.otus.spring.libraryorm.repositories;
 
 import ru.otus.spring.libraryorm.models.Book;
-import ru.otus.spring.libraryorm.models.Comment;
 import ru.otus.spring.libraryorm.repositories.exceptions.BookNotFoundException;
 
 import java.util.List;
@@ -19,10 +18,10 @@ public interface BooksRepository {
             int pages
     );
     Optional<Book> findBookById(long book_id) throws BookNotFoundException;
-    List<Comment> getAllBookComments(long book_id);
-
-    // Возвращает созданный объект Comment
-    Comment addBookComment(long bookId, String cmt) throws BookNotFoundException;
-    int updateBookComment(long commentId, String cmt);
-    int deleteBookComment(long commentId);
+//    List<Comment> getAllBookComments(long book_id);
+//
+//    // Возвращает созданный объект Comment
+//    Comment addBookComment(long bookId, String cmt) throws BookNotFoundException;
+//    int updateBookComment(long commentId, String cmt);
+//    int deleteBookComment(long commentId);
 }
