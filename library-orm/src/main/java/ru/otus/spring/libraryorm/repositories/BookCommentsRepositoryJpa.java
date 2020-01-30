@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.spring.libraryorm.models.Comment;
+import ru.otus.spring.libraryorm.models.User;
 import ru.otus.spring.libraryorm.repositories.exceptions.BookNotFoundException;
 import ru.otus.spring.libraryorm.services.AppSession;
 
@@ -15,14 +16,12 @@ import java.util.List;
 
 @Transactional
 @Repository
-public class BookCommntsRepositoryJpa implements BookCommntsRepository {
+public class BookCommentsRepositoryJpa implements BookCommentsRepository {
 
     @PersistenceContext
     private EntityManager em;
     @Autowired
     private AppSession session;
-    @Autowired
-    private BooksRepository booksRepository;
 
     @Override
     public List<Comment> getAllBookComments(long bookId) {
@@ -34,7 +33,6 @@ public class BookCommntsRepositoryJpa implements BookCommntsRepository {
 
     @Override
     public Comment addBookComment(long bookId, String cmt) throws BookNotFoundException {
-
         Comment comment = new Comment();
         comment.setBookId(bookId);
         comment.setComment(cmt);
@@ -51,6 +49,7 @@ public class BookCommntsRepositoryJpa implements BookCommntsRepository {
                         "where c.commentId = :commentId");
         query.setParameter("newComment", cmt);
         query.setParameter("commentId", commentId);
+        User user = session.getUser(); // TODO: Delete
         query.setParameter("lastUpdatedBy", session.getUser());
         return query.executeUpdate();
     }
@@ -60,5 +59,10 @@ public class BookCommntsRepositoryJpa implements BookCommntsRepository {
         Query query = em.createQuery("delete Comment c where c.commentId = :commentId");
         query.setParameter("commentId", commentId);
         return query.executeUpdate();
+    }
+
+    // For injection
+    public void setSession(AppSession session) {
+        this.session = session;
     }
 }

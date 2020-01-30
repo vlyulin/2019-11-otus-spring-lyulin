@@ -5,7 +5,7 @@ import ru.otus.spring.libraryorm.repositories.exceptions.BookNotFoundException;
 
 import java.util.List;
 
-public interface BookCommntsRepository {
+public interface BookCommentsRepository {
 
     List<Comment> getAllBookComments(long book_id);
 

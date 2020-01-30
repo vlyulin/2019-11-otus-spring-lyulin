@@ -1,5 +1,6 @@
 package ru.otus.spring.libraryorm.services;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ru.otus.spring.libraryorm.config.Settings;
 import ru.otus.spring.libraryorm.models.User;
@@ -9,7 +10,7 @@ import ru.otus.spring.libraryorm.repositories.UserRepository;
 * Сессия приложения. Содержит авторизовавшегося пользователя.
 * Пока указывается в свойствах.
 * */
-@Service
+@Component
 public class AppSession {
 
     private Settings settings;
