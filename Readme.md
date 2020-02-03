@@ -5,6 +5,7 @@
 * [Студент](#Студент)
 * [Папка students-testing](#Папка-students-testing)
 * [Папка students-testing-03](#Папка-students-testing-03)
+* [Папка students-testing-shell](#Папка-students-testing-shell)
 * [Папка library](#Папка-library)
 * [Папка library-orm](#Папка-library-orm)
 
@@ -19,6 +20,12 @@
 
 ## Папка students-testing-03
 Домашнее задание по теме "Перенести приложение для тестирования студентов на Spring Boot"
+Домашнее задание по теме "Чёрная магия" Spring Boot
+Перенести приложение для тестирования студентов на Spring Boot
+
+## Папка students-testing-shell
+Домашнее задание
+Перевести приложение для проведения опросов на Spring Shell
 
 ## Папка library
 Домашнее задание по теме "DAO на Spring JDBC"
