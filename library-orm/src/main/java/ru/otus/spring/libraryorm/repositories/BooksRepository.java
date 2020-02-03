@@ -18,10 +18,4 @@ public interface BooksRepository {
             int pages
     );
     Optional<Book> findBookById(long book_id) throws BookNotFoundException;
-//    List<Comment> getAllBookComments(long book_id);
-//
-//    // Возвращает созданный объект Comment
-//    Comment addBookComment(long bookId, String cmt) throws BookNotFoundException;
-//    int updateBookComment(long commentId, String cmt);
-//    int deleteBookComment(long commentId);
 }

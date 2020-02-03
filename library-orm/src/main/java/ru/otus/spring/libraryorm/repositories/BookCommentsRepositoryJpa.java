@@ -60,9 +60,4 @@ public class BookCommentsRepositoryJpa implements BookCommentsRepository {
         query.setParameter("commentId", commentId);
         return query.executeUpdate();
     }
-
-    // For injection
-    public void setSession(AppSession session) {
-        this.session = session;
-    }
 }

@@ -34,9 +34,6 @@ public class BooksRepositoryJpa implements BooksRepository {
     @Override
     public List<Book> getBooks(String bookName, String genreCode, String genreMeaning, String authorName, String publishingHouseName, int publishingYear, int pages) {
         String bookNameTmp = (bookName == null || bookName.isBlank() || bookName.isEmpty())?null:bookName;
-        // TODO: Добавить в поиск genre
-//        String genreCodeTmp = (genreCode == null || genreCode.isBlank() || genreCode.isEmpty())?null:genreCode;
-//        String genreMeaningTmp = (genreMeaning == null || genreMeaning.isBlank() || genreMeaning.isEmpty())?null:genreMeaning;
         String authorNameTmp = (authorName == null || authorName.isBlank() || authorName.isEmpty())?null:authorName;
         String publishingHouseNameTmp = (publishingHouseName == null || publishingHouseName.isBlank() || publishingHouseName.isEmpty())?null:publishingHouseName;
         Integer publishingYearTmp = (publishingYear == 0)?null:Integer.valueOf(publishingYear);

@@ -104,8 +104,6 @@ public class Library {
     public void addBookComment(long bookId, String cmt) {
         Optional<Book> book = null;
         try {
-//            book = booksRepository.findBookById(bookId);
-//            booksRepository.addBookComment(bookId, cmt);
             bookCommentsRepository.addBookComment(bookId, cmt);
         } catch (BookNotFoundException e) {
             ms.printMessageByKey(MSG_BOOK_NOT_FOUND, bookId);

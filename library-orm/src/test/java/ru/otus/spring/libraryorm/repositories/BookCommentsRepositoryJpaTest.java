@@ -1,15 +1,12 @@
 package ru.otus.spring.libraryorm.repositories;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import ru.otus.spring.libraryorm.config.Settings;
 import ru.otus.spring.libraryorm.models.Comment;
@@ -39,17 +36,11 @@ class BookCommentsRepositoryJpaTest {
     @Autowired
     private TestEntityManager em;
 
-    @Mock
+    @MockBean
     private AppSession session;
 
     @Autowired
-    @InjectMocks
     private BookCommentsRepositoryJpa bookCommentsRepositoryJpa;
-
-    @BeforeEach
-    void init_mocks() {
-        MockitoAnnotations.initMocks(this);
-    }
 
     @DisplayName("Проверка получения комментариев для книги")
     @Test
