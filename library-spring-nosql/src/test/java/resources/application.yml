@@ -1,0 +1,41 @@
+localization:
+    language: ru
+    country: RU
+
+appsession:
+    user: User01
+
+logging:
+    level:
+        org:
+            springframework:
+                data: debug
+                boot:
+                    autoconfigure:
+                        mongo:
+                            embedded:
+            mongodb:
+
+spring:
+    data:
+        mongodb:
+            host: 127.0.0.1
+            port: 27017
+            database: library
+
+    shell:
+        interactive:
+            enabled: true
+
+    messages:
+        basename: bundle
+        encoding: UTF-8
+
+org:
+    springframework:
+        data:
+            mongodb:
+                core:
+                    convert:
+                        DefaultDbRefResolver: trace
+
