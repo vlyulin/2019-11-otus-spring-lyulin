@@ -1,10 +1,10 @@
-package ru.otus.spring.libraryspringdata.components;
+package ru.otus.spring.libraryspringnosql.components;
 
 import org.jline.utils.AttributedString;
 import org.jline.utils.AttributedStyle;
 import org.springframework.shell.jline.PromptProvider;
 import org.springframework.stereotype.Component;
-import ru.otus.spring.libraryspringdata.services.AppSession;
+import ru.otus.spring.libraryspringnosql.services.AppSession;
 
 @Component
 public class CustomPromptProvider implements PromptProvider {

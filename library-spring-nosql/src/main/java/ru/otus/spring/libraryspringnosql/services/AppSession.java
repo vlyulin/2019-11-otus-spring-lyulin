@@ -1,9 +1,9 @@
-package ru.otus.spring.libraryspringdata.services;
+package ru.otus.spring.libraryspringnosql.services;
 
 import org.springframework.stereotype.Component;
-import ru.otus.spring.libraryspringdata.config.Settings;
-import ru.otus.spring.libraryspringdata.models.User;
-import ru.otus.spring.libraryspringdata.repositories.UserRepository;
+import ru.otus.spring.libraryspringnosql.config.Settings;
+import ru.otus.spring.libraryspringnosql.models.User;
+import ru.otus.spring.libraryspringnosql.repositories.UserRepository;
 
 /*
 * Сессия приложения. Содержит авторизовавшегося пользователя.

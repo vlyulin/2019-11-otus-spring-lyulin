@@ -1,4 +1,4 @@
-package ru.otus.spring.libraryspringdata.services;
+package ru.otus.spring.libraryspringnosql.services;
 
 import org.springframework.stereotype.Service;
 

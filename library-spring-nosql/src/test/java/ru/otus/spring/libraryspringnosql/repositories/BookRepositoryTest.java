@@ -1,7 +1,5 @@
 package ru.otus.spring.libraryspringnosql.repositories;
 
-import com.github.cloudyrock.mongock.ChangeSet;
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,10 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.repository.query.Param;
-import org.springframework.test.context.event.annotation.BeforeTestClass;
-import org.springframework.test.context.event.annotation.BeforeTestExecution;
-import org.springframework.test.context.event.annotation.BeforeTestMethod;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import ru.otus.spring.libraryspringnosql.models.*;
 import ru.otus.spring.libraryspringnosql.services.AppSession;
@@ -22,13 +16,11 @@ import static org.assertj.core.api.Assertions.*;
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 // https://www.baeldung.com/spring-boot-embedded-mongodb
 @DataMongoTest
 @ExtendWith(SpringExtension.class)
 @DisplayName("Тестирование репозитория Books")
-class BookCommentsRepositoryTest {
+class BookRepositoryTest {
 
     private static final int BOOKS_COUNT = 3;
     private static final int SINGLE_BOOK_COUNT = 1;

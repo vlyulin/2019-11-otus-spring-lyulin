@@ -1,8 +1,8 @@
-package ru.otus.spring.libraryspringdata.services;
+package ru.otus.spring.libraryspringnosql.services;
 
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
-import ru.otus.spring.libraryspringdata.config.Settings;
+import ru.otus.spring.libraryspringnosql.config.Settings;
 
 @Service
 public class ConsoleMessageService implements MessageService {

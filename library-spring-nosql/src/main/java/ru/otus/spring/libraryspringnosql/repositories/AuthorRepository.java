@@ -1,4 +1,4 @@
-package ru.otus.spring.libraryspringnosql.repostory;
+package ru.otus.spring.libraryspringnosql.repositories;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import ru.otus.spring.libraryspringnosql.models.Author;

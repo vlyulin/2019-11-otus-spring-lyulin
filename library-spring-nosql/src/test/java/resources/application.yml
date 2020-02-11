@@ -20,12 +20,12 @@ spring:
     data:
         mongodb:
             host: 127.0.0.1
-            port: 27017
+            port: 0
             database: library
 
     shell:
         interactive:
-            enabled: true
+            enabled: false
 
     messages:
         basename: bundle

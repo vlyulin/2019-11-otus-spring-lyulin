@@ -13,15 +13,16 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class Library {
+public class LibraryImpl implements Library {
 
-    public static final String GENRE = "GENRES";
+    private static final String GENRE = "GENRES";
+    private static final String MSG_BOOK_NOT_FOUND = "BOOK_NOT_FOUND";
+    private static final String MSG_COMMENT_NOT_FOUND = "COMMENT_NOT_FOUND";
+
     private static final String MSG_BOOK_LIST_MSG = "BOOK_LIST_MSG";
     private static final String MSG_BOOK_DESC = "BOOK_OUT_FMT";
     private static final String MSG_BOOK_COMMENTS_MSG = "BOOK_COMMENTS_MSG";
     private static final String MSG_BOOK_COMMENT = "BOOK_COMMENT_FMT";
-    public static final String MSG_BOOK_NOT_FOUND = "BOOK_NOT_FOUND";
-    public static final String MSG_COMMENT_NOT_FOUND = "COMMENT_NOT_FOUND";
 
     private final AppSession session;
     private final MessageService ms;
@@ -29,7 +30,7 @@ public class Library {
     private final BooksRepository booksRepository;
     private final BookCommentsRepository bookCommentsRepository;
 
-    public Library(AppSession session, MessageService ms, UserRepository userRepository, BooksRepository booksRepository, BookCommentsRepository bookCommentsRepository) {
+    public LibraryImpl(AppSession session, MessageService ms, UserRepository userRepository, BooksRepository booksRepository, BookCommentsRepository bookCommentsRepository) {
         this.session = session;
         this.ms = ms;
         this.userRepository = userRepository;
@@ -37,10 +38,12 @@ public class Library {
         this.bookCommentsRepository = bookCommentsRepository;
     }
 
+    @Override
     public void getAllBooks() {
         printBooks(booksRepository.findAll());
     }
 
+    @Override
     public void getBooks(
             String bookName,
             String genreMeaning,
@@ -57,15 +60,18 @@ public class Library {
         printBooks(books);
     }
 
+    @Override
     public void findBookById(long bookId) {
         Optional<Book> book = booksRepository.findById(bookId);
         book.ifPresent(b -> printBooks(List.of(b)));
     }
 
+    @Override
     public void deleteBookById(long bookId) {
         booksRepository.deleteById(bookId);
     }
 
+    @Override
     public void printBooks(List<Book> booksList) {
         ms.printMessageByKey(MSG_BOOK_LIST_MSG);
         for(Book book: booksList) {
@@ -81,10 +87,12 @@ public class Library {
         }
     }
 
+    @Override
     public void showAllComments() {
         printBookComments(bookCommentsRepository.findAll());
     }
 
+    @Override
     public void showBookComments(long bookId) {
         // TODO: проблема с поиском комментариев
 //        printBookComments(bookCommentsRepository.findByBookId(bookId));
@@ -92,6 +100,7 @@ public class Library {
         printBookComments(bookCommentsRepository.findCommentsByBookId(bookId));
     }
 
+    @Override
     public void printBookComments(List<Comment> bookComments) {
         ms.printMessageByKey(MSG_BOOK_COMMENTS_MSG);
         for(Comment comment: bookComments) {
@@ -110,14 +119,17 @@ public class Library {
         }
     }
 
+    @Override
     public void addBookComment(long bookId, String cmt) {
         bookCommentsRepository.addBookComment(bookId, cmt);
     }
 
+    @Override
     public void updateBookComment(long commentId, String comment) {
         bookCommentsRepository.updateBookComment(commentId, comment);
     }
 
+    @Override
     public void deleteBookComment(long commentId) {
         bookCommentsRepository.deleteById(commentId);
     }

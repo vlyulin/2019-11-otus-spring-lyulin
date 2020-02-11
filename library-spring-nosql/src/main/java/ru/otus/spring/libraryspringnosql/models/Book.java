@@ -31,4 +31,11 @@ public class Book {
     private Author author;
     @Field(name="publishing_house")
     private PublishingHouse publishingHouse;
+
+    public LookupValue getGenre(String language) {
+        return genres.stream()
+                .filter(lookupValue -> language.equals(lookupValue.getLanguage()))
+                .findAny()
+                .orElse(null);
+    }
 }
