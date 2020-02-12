@@ -1,0 +1,4 @@
+ru\otus\spring\library\dao\AuthorDaoJdbcTest.class
+ru\otus\spring\library\dao\BookDaoJdbcTest.class
+ru\otus\spring\library\dao\PublishingHouseDaoJdbcTest.class
+ru\otus\spring\library\dao\LookupValueDaoJdbcTest.class
