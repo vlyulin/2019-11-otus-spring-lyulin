@@ -78,7 +78,6 @@ class BookCommentsRepositoryJpaTest {
         user.setName(USER_01);
         user.setPassword(PASSWORD);
 
-
         Mockito.when(session.getUser()).thenReturn(user);
 
         bookCommentsRepository.updateBookComment(TOXIC_BOOK_FIRST_COMMENT_ID, NEW_COMMENT);
@@ -89,5 +88,4 @@ class BookCommentsRepositoryJpaTest {
         assertThat(comment.getLastUpdatedBy()).isNotNull();
         assertThat(comment.getLastUpdateDate()).isNotNull();
     }
-
 }

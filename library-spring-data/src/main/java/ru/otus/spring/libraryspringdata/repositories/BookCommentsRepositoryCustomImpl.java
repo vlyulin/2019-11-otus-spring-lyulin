@@ -30,7 +30,7 @@ public class BookCommentsRepositoryCustomImpl implements BookCommentsRepositoryC
         bookCommentsRepository.save(comment);
         return comment;
     }
-  
+
     @Override
     public void updateBookComment(long commentId, String cmt) {
         Optional<Comment> optComment = bookCommentsRepository.findById(commentId);
