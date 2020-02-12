@@ -6,3 +6,8 @@ spring:
  messages:
   basename: bundle
   encoding: UTF-8
+
+ shell:
+  interactive:
+   enabled: true
+
