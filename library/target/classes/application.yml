@@ -1,0 +1,8 @@
+localization:
+    language: ru
+    country: RU
+
+spring:
+    shell:
+        interactive:
+            enabled: false
