@@ -8,6 +8,8 @@
 * [Папка students-testing-shell](#Папка-students-testing-shell)
 * [Папка library](#Папка-library)
 * [Папка library-orm](#Папка-library-orm)
+* [Папка library-spring-data](#Папка-library-spring-data)
+* [Папка library-nosql](#Папка-library-nosql)
 
 # Студент
 ФИО слушателя: Люлин Вадим Евгеньевич
@@ -34,6 +36,10 @@
 Домашнее задание по теме "Переписать приложение для хранения книг на ORM"
 Приложение хранящее информацию о книгах в библиотеке
 
+## Папка library-spring-data
+Домашнее задание "Библиотека на Spring Data JPA"
+
 ## Папка library-nosql
 Домашнее задание по теме "Использовать MongoDB и spring-data для хранения информации о книгах"
 Приложение хранящее информацию о книгах в библиотеке
+

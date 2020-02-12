@@ -1,5 +1,6 @@
 package ru.otus.spring.libraryspringdata.repositories;
 
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -9,7 +10,16 @@ import java.util.List;
 
 public interface BooksRepository extends JpaRepository<Book, Long> {
 
+    // https://www.javacodemonk.com/what-is-n-1-problem-in-hibernate-how-will-you-identify-and-solve-it-894097b9
+    // Вариант избежать N+1 problem
+    @EntityGraph(attributePaths = {"author", "publishingHouse", "genre"})
+    List<Book> findAll();
+
+    // Другой вариант использовать LEFT JOIN FETCH
     @Query("SELECT b FROM Book b \n" +
+            "LEFT JOIN FETCH b.author \n" +
+            "LEFT JOIN FETCH b.publishingHouse \n" +
+            "LEFT JOIN FETCH b.genre \n" +
             "WHERE (:bookName IS NULL OR UPPER(b.name) LIKE UPPER(:bookName)) \n" +
             "AND (:genreMeaning IS NULL OR UPPER(b.genre.meaning) LIKE UPPER(:genreMeaning)) \n" +
             "AND (:authorName IS NULL OR UPPER(b.author.name) LIKE UPPER(:authorName)) \n" +

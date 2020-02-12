@@ -44,10 +44,10 @@ public class Book {
     // private List<LookupValue> genres = new ArrayList<>();
     // Вынес для себя, что если у таблицы нет primary key или foreign key, то это становится нетривиальной задачей в JPA
 
-    @ManyToOne(targetEntity = Author.class)
+    @ManyToOne(targetEntity = Author.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "author_id")
     private Author author;
-    @ManyToOne(targetEntity = PublishingHouse.class)
+    @ManyToOne(targetEntity = PublishingHouse.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "publishing_house_id")
     private PublishingHouse publishingHouse;
 }

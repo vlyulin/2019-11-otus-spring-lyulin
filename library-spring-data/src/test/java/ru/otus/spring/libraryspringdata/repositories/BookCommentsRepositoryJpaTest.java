@@ -1,15 +1,12 @@
 package ru.otus.spring.libraryspringdata.repositories;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.otus.spring.libraryspringdata.models.Comment;
 import ru.otus.spring.libraryspringdata.models.User;
 import ru.otus.spring.libraryspringdata.repositories.exceptions.BookNotFoundException;
@@ -36,25 +33,19 @@ class BookCommentsRepositoryJpaTest {
     @Autowired
     private TestEntityManager em;
 
-//    @Mock
-//    private AppSession session;
+    @MockBean
+    private AppSession session;
 
     @Autowired
-//    @InjectMocks
     private BookCommentsRepository bookCommentsRepository;
-
-    @BeforeEach
-    void init_mocks() {
-        MockitoAnnotations.initMocks(this);
-    }
 
     @DisplayName("Проверка получения комментариев для книги")
     @Test
     void getAllBookComments() {
-//        List<Comment> comments = bookCommentsRepository.getAllBookComments(TOXIC_BOOK_ID);
-//        Comment comment1 = em.find(Comment.class,TOXIC_BOOK_FIRST_COMMENT_ID);
-//        Comment comment2 = em.find(Comment.class, TOXIC_BOOK_SECOND_COMMENT_ID);
-//        assertThat(comments).hasSize(TOXIC_BOOK_COMMENTS_CNT).containsExactlyInAnyOrder(comment1, comment2);
+        List<Comment> comments = bookCommentsRepository.findByBookId(TOXIC_BOOK_ID);
+        Comment comment1 = em.find(Comment.class,TOXIC_BOOK_FIRST_COMMENT_ID);
+        Comment comment2 = em.find(Comment.class, TOXIC_BOOK_SECOND_COMMENT_ID);
+        assertThat(comments).hasSize(TOXIC_BOOK_COMMENTS_CNT).containsExactlyInAnyOrder(comment1, comment2);
     }
 
     @DisplayName("Проверка добавления комментария к книге")
@@ -67,7 +58,7 @@ class BookCommentsRepositoryJpaTest {
         user.setName(USER_01);
         user.setPassword(PASSWORD);
 
-//        when(session.getUser()).thenReturn(user);
+        when(session.getUser()).thenReturn(user);
 
         Comment comment = bookCommentsRepository.addBookComment(TOXIC_BOOK_ID, NEW_COMMENT);
         assertThat(comment).isNotNull();
@@ -87,22 +78,16 @@ class BookCommentsRepositoryJpaTest {
         user.setName(USER_01);
         user.setPassword(PASSWORD);
 
-//        Mockito.when(session.getUser()).thenReturn(user);
 
-//        int cnt = bookCommentsRepository.updateBookComment(TOXIC_BOOK_FIRST_COMMENT_ID, NEW_COMMENT);
-//        assertThat(cnt).isEqualTo(EXPECTED_NUMBER_UPDATED_COMMENTS);
-//        Comment comment = em.find(Comment.class,TOXIC_BOOK_FIRST_COMMENT_ID);
-//
-//        assertThat(comment).isNotNull().hasFieldOrPropertyWithValue("comment",NEW_COMMENT);
-//        // Проверка наличия информации о пользователе и времени внесшем изменения
-//        assertThat(comment.getLastUpdatedBy()).isNotNull();
-//        assertThat(comment.getLastUpdateDate()).isNotNull();
+        Mockito.when(session.getUser()).thenReturn(user);
+
+        bookCommentsRepository.updateBookComment(TOXIC_BOOK_FIRST_COMMENT_ID, NEW_COMMENT);
+        Comment comment = em.find(Comment.class,TOXIC_BOOK_FIRST_COMMENT_ID);
+
+        assertThat(comment).isNotNull().hasFieldOrPropertyWithValue("comment",NEW_COMMENT);
+        // Проверка наличия информации о пользователе и времени внесшем изменения
+        assertThat(comment.getLastUpdatedBy()).isNotNull();
+        assertThat(comment.getLastUpdateDate()).isNotNull();
     }
 
-//    @DisplayName("Проверка удаления комментария")
-//    @Test
-//    void deleteBookComment() {
-//        bookCommentsRepository.deleteById(TOXIC_BOOK_FIRST_COMMENT_ID);
-//        assertThat(bookCommentsRepository.existsById(TOXIC_BOOK_FIRST_COMMENT_ID)).isFalse();
-//    }
 }

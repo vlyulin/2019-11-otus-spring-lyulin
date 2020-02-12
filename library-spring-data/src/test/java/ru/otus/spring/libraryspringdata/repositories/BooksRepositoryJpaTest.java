@@ -1,22 +1,16 @@
 package ru.otus.spring.libraryspringdata.repositories;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.context.annotation.Import;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.spring.libraryspringdata.services.AppSession;
-import ru.otus.spring.libraryspringdata.config.Settings;
 import ru.otus.spring.libraryspringdata.models.Book;
-import ru.otus.spring.libraryspringdata.repositories.exceptions.BookNotFoundException;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -36,6 +30,9 @@ class BooksRepositoryJpaTest {
 
     @Autowired
     BooksRepository booksRepository;
+
+    @MockBean
+    private AppSession session;
 
     @DisplayName("Получение списка всех книг")
     @Test

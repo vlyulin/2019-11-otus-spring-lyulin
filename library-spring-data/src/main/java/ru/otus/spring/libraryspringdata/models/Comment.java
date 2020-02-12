@@ -15,12 +15,12 @@ public class Comment implements java.io.Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comment_id", updatable = false, nullable = false)
     private long commentId;
-    @Column(name = "book_id")
+    @Column(name = "book_id", updatable = false, nullable = false)
     private long bookId;
-    @Column(name = "comment")
+    @Column(name = "comment", nullable = false)
     private String comment;
     @OneToOne(targetEntity = User.class)
-    @JoinColumn(name = "created_by")
+    @JoinColumn(name = "created_by", nullable = false)
     private User createdBy;
     @Column(name = "creation_date")
     LocalDate creationDate;
