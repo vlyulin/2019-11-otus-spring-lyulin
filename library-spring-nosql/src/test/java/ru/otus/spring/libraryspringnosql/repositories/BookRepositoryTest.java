@@ -16,6 +16,7 @@ import static org.assertj.core.api.Assertions.*;
 import java.time.LocalDate;
 import java.util.List;
 
+// Для себя сохранил источник знаний:
 // https://www.baeldung.com/spring-boot-embedded-mongodb
 @DataMongoTest
 @ExtendWith(SpringExtension.class)
@@ -31,8 +32,11 @@ class BookRepositoryTest {
     @Autowired
     MongoTemplate mongoTemplate;
 
+//    TODO: Пока не прописал тут все репозитории не заработал тест.
+//    Есть подозрение, что делаю неправильно.
+//    Надо как-то прописать конфигурацию?
     @Autowired
-    AuthorRepository authorRepository;
+    UserRepository userRepository;
 
     @Autowired
     BooksRepository booksRepository;
@@ -147,10 +151,6 @@ class BookRepositoryTest {
             book = new Book(3L, "Звёздные короли", 1947, 150, lookupValueList, author, publishingHouse1);
 
             mongoTemplate.insert(book, "books");
-    }
-
-    @Test
-    void findByBookId() {
     }
 
     @DisplayName("Получение списка всех книг")

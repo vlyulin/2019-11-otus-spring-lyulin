@@ -96,7 +96,7 @@ public class LibraryImpl implements Library {
     public void showBookComments(long bookId) {
         // TODO: проблема с поиском комментариев
 //        printBookComments(bookCommentsRepository.findByBookId(bookId));
-        // Другой вариант, и тоже не ищет. Что-то делаю не так
+        // Другой вариант, и тоже не ищет. Видимо, что-то делаю не так
         printBookComments(bookCommentsRepository.findCommentsByBookId(bookId));
     }
 

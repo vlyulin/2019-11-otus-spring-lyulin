@@ -24,9 +24,9 @@ public class MongockConfig {
                 .build();
     }
 
-    // Регистрация listener для каскадного удаления
-    @Bean
-    public CascadeDeleteMongoEventListener cascadeDeleteMongoEventListener() {
-        return new CascadeDeleteMongoEventListener();
-    }
+    // Регистрация listener для каскадного удаления, которое непонятно как делать
+//    @Bean
+//    public CascadeDeleteMongoEventListener cascadeDeleteMongoEventListener() {
+//        return new CascadeDeleteMongoEventListener();
+//    }
 }

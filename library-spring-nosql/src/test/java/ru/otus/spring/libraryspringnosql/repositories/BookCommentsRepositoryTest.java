@@ -2,20 +2,14 @@ package ru.otus.spring.libraryspringnosql.repositories;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Import;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.test.context.event.annotation.BeforeTestClass;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringRunner;
-import ru.otus.spring.libraryspringnosql.config.Settings;
 import ru.otus.spring.libraryspringnosql.models.*;
 import ru.otus.spring.libraryspringnosql.services.AppSession;
-//import ru.otus.spring.libraryspringnosql.services.SequenceGeneratorService;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -25,8 +19,6 @@ import static org.mockito.Mockito.when;
 
 @DataMongoTest
 @ExtendWith(SpringExtension.class)
-//@RunWith(SpringRunner.class)
-//@Import({BookCommentsRepository.class, SequenceGeneratorService.class, AppSession.class, Settings.class, Author.class})
 @DisplayName("Тестирование репозитория BookComments")
 class BookCommentsRepositoryTest {
 
@@ -35,7 +27,6 @@ class BookCommentsRepositoryTest {
     private static final long TOXIC_BOOK_FIRST_COMMENT_ID = 1;
     public static final long TOXIC_BOOK_SECOND_COMMENT_ID = 2;
     public static final String NEW_COMMENT = "NEW COMMENT";
-    public static final int EXPECTED_NUMBER_UPDATED_COMMENTS = 1;
     public static final String USER_01 = "User01";
     public static final String PASSWORD = "12345678";
 
@@ -145,7 +136,7 @@ class BookCommentsRepositoryTest {
         Comment comment = bookCommentsRepository.updateBookComment(TOXIC_BOOK_FIRST_COMMENT_ID, NEW_COMMENT);
 
         assertThat(comment).isNotNull().hasFieldOrPropertyWithValue("comment",NEW_COMMENT);
-        // Проверка наличия информации о пользователе и времени внесшем изменения
+        // Проверка наличия информации о пользователе внесшем изменения и времени изменения
         assertThat(comment.getLastUpdatedBy()).isNotNull();
         assertThat(comment.getLastUpdateDate()).isNotNull();
     }

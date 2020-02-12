@@ -6,6 +6,6 @@ import ru.otus.spring.libraryspringnosql.models.Comment;
 import java.util.List;
 
 public interface BookCommentsRepository extends MongoRepository<Comment, Long>, BookCommentsRepositoryCustom {
-    // TODO: не ищет
+    // TODO: не ищет, хоть ты тресни
     List<Comment> findByBookId(long bookId);
 }

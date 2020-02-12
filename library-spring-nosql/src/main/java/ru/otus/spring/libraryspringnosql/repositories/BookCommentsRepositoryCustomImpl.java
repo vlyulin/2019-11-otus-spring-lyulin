@@ -29,9 +29,6 @@ public class BookCommentsRepositoryCustomImpl implements BookCommentsRepositoryC
     @Autowired
     private AppSession session;
 
-//    @Autowired
-//    SequenceGeneratorService sequenceGenerator;
-
     @Override
     public Comment addBookComment(long bookId, String cmt) {
 
@@ -39,8 +36,6 @@ public class BookCommentsRepositoryCustomImpl implements BookCommentsRepositoryC
         if( optBook.isEmpty() ) return null;
 
         Comment comment = new Comment();
-        // TODO: посмореть почему не срабатывает listener
-        // comment.setId(sequenceGenerator.generateSequence(Comment.SEQUENCE_NAME));
         comment.setBook(optBook.get());
         comment.setComment(cmt);
         comment.setCreatedBy(session.getUser());
@@ -70,8 +65,7 @@ public class BookCommentsRepositoryCustomImpl implements BookCommentsRepositoryC
 
     @Override
     public List<Comment> findCommentsByBookId(long bookId) {
-//        Query query = Query.query(Criteria.where("book.$id").is(bookId));
-//        return mongoOperations.find(query, Comment.class);
+        // Еще одна попытка заставить искать по идентификатору книги
         return  mongoOperations.find(
                 Query.query(Criteria.where("book._id").is(bookId)),
                 Comment.class,

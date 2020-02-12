@@ -20,9 +20,9 @@ public class LookupValue {
     @Field(name = "enabled_flag")
     private char enabledFlag;
     @Field(name = "start_date_active")
-    private LocalDate startDateActive; // = LocalDate.MIN;
+    private LocalDate startDateActive;
     @Field(name = "end_date_active")
-    private LocalDate endDateActive; // = LocalDate.MAX;
+    private LocalDate endDateActive;
     @Field(name = "meaning")
     private String meaning;
     @Field(name = "description")

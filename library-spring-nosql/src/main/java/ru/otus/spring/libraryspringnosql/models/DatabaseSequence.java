@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+// Для себя сохранил источник знаний:
 // https://www.baeldung.com/spring-boot-mongodb-auto-generated-field
 @Data
 @NoArgsConstructor

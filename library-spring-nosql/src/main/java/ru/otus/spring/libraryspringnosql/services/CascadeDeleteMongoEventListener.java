@@ -13,7 +13,8 @@ import ru.otus.spring.libraryspringnosql.models.Comment;
 //@Service
 public class CascadeDeleteMongoEventListener extends AbstractMongoEventListener<Object> {
 
-//    TODO: Совсем непонятно, а как узнать удаляем мы или просто сохраняем?
+//    TODO: Совсем непонятно, как узнать удаляем мы или просто сохраняем?
+//    В event типа операции не нашел
 //    @Autowired
 //    private MongoOperations mongoOperations;
 //
