@@ -1,1 +1,10 @@
-<p>comment-detail works!</p>
+
+<form class="gf-formbox" name="editComment" (ngSubmit)="onSubmit(f)" #f="ngForm" >
+  <div class="form-group">
+    <h2 i18n="@@EditCmtComment">Comment:</h2>
+    <textarea class="form-control" rows="5" id="gf-comment" name="comment" [(ngModel)]="editCommentText"></textarea>
+    <small id="commentInfo" class="form-text text-muted" i18n="@@EditCmtHint">Don't hesistate to write trurh</small>
+  </div>
+  <button type="submit" class="btn btn-primary mr-2" [disabled]="f.pristine" i18n="@@EditCmtBtnSave">Save</button>
+  <button type="cancel" class="btn btn-primary" i18n="@@EditCmtBtnCancel">Cancel</button>
+</form>

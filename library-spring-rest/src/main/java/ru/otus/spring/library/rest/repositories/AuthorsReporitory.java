@@ -1,4 +1,7 @@
 package ru.otus.spring.library.rest.repositories;
 
-public interface AuthorsReporitory {
+import org.springframework.data.jpa.repository.JpaRepository;
+import ru.otus.spring.library.rest.models.Author;
+
+public interface AuthorsReporitory extends JpaRepository<Author, Long> {
 }

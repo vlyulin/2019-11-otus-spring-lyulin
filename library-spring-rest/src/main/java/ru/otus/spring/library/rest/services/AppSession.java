@@ -27,6 +27,18 @@ public class AppSession {
         connected = true;
     }
 
+    public void openSession(String login) {
+        if (login.isBlank() || login.isEmpty() ) return;
+        this.user = userRepository.findByLoginIgnoreCase(login);
+        System.out.println("openSession: user " + user.getId());
+        this.connected = true;
+    }
+
+    public void closeSession() {
+        this.connected = false;
+        this.user = null;
+    }
+
     public User getUser(){ return user; }
     public boolean isConnected(){ return connected; }
     Settings getSettings(){ return this.settings; }

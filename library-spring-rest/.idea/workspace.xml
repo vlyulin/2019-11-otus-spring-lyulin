@@ -2,7 +2,245 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b669c8b3-9526-41eb-b63c-3d44f76c2b09" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_h2database_h2_1_4_200.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_fastinfoset_FastInfoset_1_2_16.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_4_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_1_2_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_annotation_jakarta_annotation_api_1_3_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_persistence_jakarta_persistence_api_2_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_transaction_jakarta_transaction_api_1_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_2_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_10_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_10_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_12_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_12_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_13_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_dom4j_dom4j_2_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_2_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_1_0_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_4_10_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_24_0_GA.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_1_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_4_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_8_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_3_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_3_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_30.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_30.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_2_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_2_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_2_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_2_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_2_2_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_2_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_2_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_2_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_2_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_2_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_2_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_2_2_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_2_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_5_2_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_2_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_2_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_2_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_2_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_2_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_2_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_5_2_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_2_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_2_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_6_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HELP.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/angular.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/angular.json.save" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/browserslist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/e2e/protractor.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/e2e/src/app.e2e-spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/e2e/src/app.po.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/e2e/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/karma.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/app-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/app.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/app.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/app.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/app.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/app.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/book-detail/book-detail.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/book-detail/book-detail.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/book-detail/book-detail.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/book-detail/book-detail.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/book-list/book-list-search-info.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/book-list/book-list.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/book-list/book-list.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/book-list/book-list.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/book-list/book-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/comment-list/comment-detail-resolver.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/comment-list/comment-detail/comment-detail.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/comment-list/comment-detail/comment-detail.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/comment-list/comment-detail/comment-detail.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/comment-list/comment-detail/comment-detail.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/comment-list/comment-list-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/comment-list/comment-list.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/comment-list/comment-list.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/comment-list/comment-list.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/comment-list/comment-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/comment-list/comment-list.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/models/author.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/models/author.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/models/book.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/models/book.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/models/comment.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/models/comment.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/models/lookup-value-id.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/models/lookup-value-id.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/models/lookup-value.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/models/lookup-value.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/models/publishing-house.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/models/publishing-house.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/models/user.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/models/user.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/page-not-found/page-not-found.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/page-not-found/page-not-found.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/page-not-found/page-not-found.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/page-not-found/page-not-found.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/services/authguard.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/services/authguard.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/services/author.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/services/author.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/services/book-service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/services/book-service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/services/comment.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/services/comment.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/services/lookupvalue.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/services/lookupvalue.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/services/publishing-house.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/services/publishing-house.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/services/user.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/services/user.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/user-list/user-list.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/user-list/user-list.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/user-list/user-list.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/user-list/user-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/assets/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/environments/environment.prod.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/environments/environment.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/locale/messages.ru.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/locale/messages.ru.xlf.save" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/locale/messages.xlf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/polyfills.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/proxy.conf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/tsconfig.app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/tsconfig.spec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/tslint.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library-spring-rest.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library-spring-rest.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-shell.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/LibrarySpringRestApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/config/Settings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/AdvancedBookSeachRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/AppSessionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/AuthorsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/BookCommentsController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/BooksController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/LookupsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/PublishingHousesController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/UsersController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/models/Author.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/models/Book.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/models/Comment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/models/LookupValue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/models/LookupValueId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/models/PublishingHouse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/models/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/repositories/AuthorsReporitory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/repositories/BookCommentsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/repositories/BookCommentsRepositoryCustom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/repositories/BookCommentsRepositoryCustomImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/repositories/BooksRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/repositories/LookupsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/repositories/PublishingHousesRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/repositories/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/repositories/exceptions/BookNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/services/AppSession.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/services/ConsoleIOService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/services/ConsoleMessageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/services/IOService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/services/Library.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/services/MessageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/banner.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/bundle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/bundle_en_US.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/bundle_ru_RU.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/otus/spring/library/rest/LibrarySpringRestApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/otus/spring/library/rest/repositories/BookCommentsRepositoryJpaTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/otus/spring/library/rest/repositories/BooksRepositoryJpaTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/otus/spring/library/rest/repositories/LookupsRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/META-INF/library-spring-rest.kotlin_module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/banner.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/bundle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/bundle_en_US.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/bundle_ru_RU.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/schema.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/ru/otus/spring/library/rest/LibrarySpringRestApplicationTests.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/ru/otus/spring/library/rest/repositories/BookCommentsRepositoryJpaTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/ru/otus/spring/library/rest/repositories/BooksRepositoryJpaTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,6 +250,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -27,7 +267,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1XlWELx0ilH7MePqENP1n8pkXjL" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -35,11 +277,36 @@
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Spring/2019-11/spring-21-start-SS/pom.xml" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="Application.LibrarySpringRestApplication (1)">
-    <configuration name="LibrarySpringRestApplication (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="ru.otus.spring.library.rest.repositories" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.LibrarySpringRestApplication3">
+    <configuration name="LibrarySpringRestApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.otus.spring.library.spring.rest.LibrarySpringRestApplication" />
+      <module name="library-spring-rest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.otus.spring.library.spring.rest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LibrarySpringRestApplication3" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="ru.otus.spring.library.rest.LibrarySpringRestApplication" />
       <module name="library-spring-rest" />
       <extension name="coverage">
@@ -52,15 +319,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LibrarySpringRestApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.otus.spring.library.spring.rest.LibrarySpringRestApplication" />
+    <configuration name="LookupsRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library-spring-rest" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.otus.spring.library.spring.rest.*" />
+          <option name="PATTERN" value="ru.otus.spring.library.rest.repositories.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="ru.otus.spring.library.rest.repositories" />
+      <option name="MAIN_CLASS_NAME" value="ru.otus.spring.library.rest.repositories.LookupsRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -89,13 +358,15 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Maven.library-spring-rest []" />
       <item itemvalue="Application.LibrarySpringRestApplication" />
-      <item itemvalue="Application.LibrarySpringRestApplication (1)" />
+      <item itemvalue="Application.LibrarySpringRestApplication3" />
+      <item itemvalue="JUnit.LookupsRepositoryTest" />
+      <item itemvalue="Maven.library-spring-rest []" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.LibrarySpringRestApplication (1)" />
+        <item itemvalue="Application.LibrarySpringRestApplication3" />
+        <item itemvalue="JUnit.LookupsRepositoryTest" />
         <item itemvalue="Application.LibrarySpringRestApplication" />
       </list>
     </recent_temporary>
@@ -125,26 +396,100 @@
     </task>
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="222" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581621109069">
+    <state x="222" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583243779690">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="222" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1581621109069" />
-    <state width="1491" height="210" key="GridCell.Tab.0.bottom" timestamp="1581621874913">
+    <state x="222" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1583243779690" />
+    <state width="450" height="466" key="DebuggerActiveHint" timestamp="1581661192915">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581621874913" />
-    <state width="1491" height="210" key="GridCell.Tab.0.center" timestamp="1581621874913">
+    <state width="450" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1581661192915" />
+    <state x="548" y="167" key="FileChooserDialogImpl" timestamp="1582046994621">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581621874913" />
-    <state width="1491" height="210" key="GridCell.Tab.0.left" timestamp="1581621874913">
+    <state x="548" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1582046994621" />
+    <state width="1491" height="112" key="GridCell.Tab.0.bottom" timestamp="1583754233004">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581621874913" />
-    <state width="1491" height="210" key="GridCell.Tab.0.right" timestamp="1581621874913">
+    <state width="1491" height="112" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1583754233004" />
+    <state width="1491" height="112" key="GridCell.Tab.0.center" timestamp="1583754233004">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581621874913" />
+    <state width="1491" height="112" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1583754233004" />
+    <state width="1491" height="112" key="GridCell.Tab.0.left" timestamp="1583754233004">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1491" height="112" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1583754233004" />
+    <state width="1491" height="112" key="GridCell.Tab.0.right" timestamp="1583754233004">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1491" height="112" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1583754233004" />
+    <state width="1491" height="269" key="GridCell.Tab.1.bottom" timestamp="1581691451479">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1491" height="269" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581691451479" />
+    <state width="1491" height="269" key="GridCell.Tab.1.center" timestamp="1581691451479">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1491" height="269" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1581691451479" />
+    <state width="1491" height="269" key="GridCell.Tab.1.left" timestamp="1581691451479">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1491" height="269" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1581691451479" />
+    <state width="1491" height="269" key="GridCell.Tab.1.right" timestamp="1581691451479">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1491" height="269" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1581691451479" />
+    <state x="298" y="67" key="Maven.ArtifactSearchDialog" timestamp="1581663676667">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="298" y="67" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1581663676667" />
+    <state x="276" y="54" key="SettingsEditor" timestamp="1582872644848">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="276" y="54" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1582872644848" />
+    <state width="498" height="452" key="SwitcherDM" timestamp="1582616593613">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="498" height="452" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1582616593613" />
+    <state x="463" y="236" width="770" height="461" key="com.intellij.ide.util.TipDialog" timestamp="1583587225473">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="463" y="236" width="770" height="461" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1583587225473" />
+    <state x="577" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583039083799">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="577" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1583039083799" />
+    <state x="527" y="130" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1581660247885">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="527" y="130" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824@0.0.1536.824" timestamp="1581660247885" />
+    <state x="463" y="10" width="611" height="804" key="find.popup" timestamp="1583611855092">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="463" y="10" width="611" height="804" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1583611855092" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1583695403021">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1583695403021" />
+    <state x="431" y="145" key="search.everywhere.popup" timestamp="1581837426260">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1581837426260" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/otus/spring/library/rest/repositories/LookupsRepositoryTest.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

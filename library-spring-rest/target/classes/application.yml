@@ -19,8 +19,11 @@ spring:
 
     datasource:
         url: jdbc:h2:mem:testdb
+        schema:
+            classpath: schema.sql
+        data:
+            classpath: data.sql
         initialization-mode: always
-        data: data.sql
 
     jpa:
         generate-ddl: false
@@ -32,9 +35,8 @@ spring:
                 format_sql: true
                 generate_statistics: false
 
-    shell:
-        interactive:
-            enabled: true
+    batch:
+        initialize-schema: always
 
     messages:
         basename: bundle

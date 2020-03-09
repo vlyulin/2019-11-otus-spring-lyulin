@@ -3,7 +3,6 @@
 
 ## Содержание:
 * [Домашнее задание "Переписать приложение с использованием AJAX и REST-контроллеров"](#Библиотека на Spring и Ajax)
-* [Запуск](#Запуск)
 * [Reference Documentation](#Reference Documentation)
 
 # Библиотека на Spring и Ajax
@@ -15,18 +14,6 @@
 1. Переписать приложение с классических View на AJAX архитектуру и REST-контроллеры.
 2. Минимум: получение одной сущности и отображение её на странице с помощью Vanilla JS или jQuery
 3. Опционально максимум: полноценное SPA приложение на React/Vue/Angular, только REST-контроллеры.
-
-# Запуск
-Запустить в developer's mode
-cd ./angularclient
-ng serve --open
-
-Запустить под английским языком
-cd ./angularclient 
-ng serve --open
-Запустить под российской локализацией 
-cd ./angularclient
-ng serve --configuration=ru --open
 
 ### Reference Documentation
 For further reference, please consider the following sections:

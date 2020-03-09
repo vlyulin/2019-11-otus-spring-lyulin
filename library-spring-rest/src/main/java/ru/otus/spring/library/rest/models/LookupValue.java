@@ -12,20 +12,11 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-// @IdClass(LookupValueId.class)
 @Table(name = "lookup_values")
 public class LookupValue implements Serializable {
 
     @EmbeddedId
     LookupValueId key;
-
-//    @Id @Column(name = "lookup_type")
-//    private String lookupType;
-//    @Id @Column(name = "lookup_code")
-//    private String lookupCode;
-//    @Id @Column(name = "language")
-//    private String language;
-
     @Column(name = "enabled_flag")
     private char enabledFlag;
     @Column(name = "start_date_active")

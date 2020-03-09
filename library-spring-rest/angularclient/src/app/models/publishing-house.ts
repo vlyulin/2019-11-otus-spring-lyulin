@@ -1,5 +1,5 @@
 export class PublishingHouse {
-    id: long;
+    id: number;
     name: string;
-    settlementYear int;
+    settlementYear: number;
 }
