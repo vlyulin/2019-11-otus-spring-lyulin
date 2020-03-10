@@ -8,7 +8,7 @@ import { CommentDetailResolverService } from './comment-detail-resolver.service'
 // https://stackblitz.com/angular/oyybmeleexvo?file=src%2Fapp%2Fcrisis-center%2Fcrisis-center-routing.module.ts
 // https://angular-2-training-book.rangle.io/routing/child_routes
 
-// С ресолвером не получилось
+// С ресолвером для редактирования на одной и той же странице не получилось
 // resolve: {
 //   comment: CommentDetailResolverService
 // }

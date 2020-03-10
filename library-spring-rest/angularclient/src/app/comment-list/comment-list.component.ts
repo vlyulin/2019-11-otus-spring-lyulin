@@ -36,12 +36,6 @@ export class CommentListComponent implements OnInit {
             switchMap((params: ParamMap) => {
                 let bookId = +params.get('bookId');
                 console.warn('this.bookId = '+bookId);
-                // if (bookId != null) {
-                //   console.warn('this.selectedBookId = '+bookId);
-                //   this.selectedBookId = bookId;
-                // }
-                // this.selectedCommentId = +params.get('commentId');
-                // console.warn('this.selectedBookId = '+this.selectedBookId);
                 if (bookId != -1) {
                   return this.commentService.getBookComments(bookId);
                 }

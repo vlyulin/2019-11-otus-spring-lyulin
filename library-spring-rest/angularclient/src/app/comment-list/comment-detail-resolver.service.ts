@@ -10,6 +10,9 @@ import { mergeMap, take }         from 'rxjs/operators';
 import { CommentService }  from '../services/comment.service';
 import { Comment } from '../models/comment';
 
+// Это была попытка сделать редактирование на одной и той же странице со списком комментариев,
+// но не получилось
+// Файл выкидывать жалко
 @Injectable({
   providedIn: 'root',
 })
@@ -17,9 +20,7 @@ export class CommentDetailResolverService implements Resolve<Comment> {
   constructor(private cs: CommentService, private router: Router) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Comment> | Observable<never> {
-    // let bookId = route.paramMap.get('bookId');
     let commentId = route.paramMap.get('commentId');
-    // console.warn('Resolver bookId = ' + bookId + ' commentId = ' + commentId);
     console.warn('Resolver commentId = ' + commentId);
     if(commentId == 'null') {
        console.warn('Resolver commentId == null');
@@ -31,7 +32,7 @@ export class CommentDetailResolverService implements Resolve<Comment> {
       mergeMap(comment => {
         if (comment) {
           return of(comment);
-        } else { // id not found
+        } else {
           this.router.navigate(['']);
           return EMPTY;
         }

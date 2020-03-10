@@ -17,7 +17,6 @@ import { CommentService } from '../../services/comment.service';
 export class CommentDetailComponent implements OnInit {
 
   // https://stackblitz.com/angular/oyybmeleexvo?file=src%2Fapp%2Fcrisis-center%2Fcrisis-detail%2Fcrisis-detail.component.ts
-  // comment$: Observable<Comment>;
   comment: Comment;
   editCommentText: string;
 
@@ -34,12 +33,6 @@ export class CommentDetailComponent implements OnInit {
     // https://stackoverflow.com/questions/40275862/how-to-get-parameter-on-angular2-route-in-angular-way
     this.route.paramMap.pipe(
                 switchMap((params: ParamMap) => {
-                      // const tree: UrlTree = this.router.parseUrl(this.router.url);
-                      // const g: UrlSegmentGroup = tree.root.children[PRIMARY_OUTLET];
-                      // const s: UrlSegment[] = g.segments;
-                      // s.forEach( (element) => {
-                      //   console.warn("UrlSegment = "+element);
-                      // });
                       let commentId = params.get('commentId');
                       if (commentId != '-1') {
                         return this.commentService.getComment(commentId);
@@ -47,16 +40,6 @@ export class CommentDetailComponent implements OnInit {
                       else {
                         return EMPTY;
                       }
-
-                      // let commentId = params.get('commentId')
-                      // console.warn('Comment-detail. Get commentId = '+commentId);
-//
-                      // if (commentId != null) {
-                      //   return this.commentService.getComment(commentId);
-                      // }
-                      // else {
-                      //   return EMPTY;
-                      // }
                   }
                 )
     ).subscribe( cmt => {
@@ -79,15 +62,10 @@ export class CommentDetailComponent implements OnInit {
 
       if(this.comment.comment != this.editCommentText) {
         console.warn("Comment changed. Saving...");
-        // if(!this.comment) {
-          // Это редактирование комментария
-          this.comment.comment = this.editCommentText;
-          this.commentService.saveComment(this.comment);
-       // }
-       // else {
-          // Инача сохранение нового комментария
-       // }
+        this.comment.comment = this.editCommentText;
+        this.commentService.saveComment(this.comment);
       }
+
       this.router.navigate(['bookComments', bookId])
   }
 

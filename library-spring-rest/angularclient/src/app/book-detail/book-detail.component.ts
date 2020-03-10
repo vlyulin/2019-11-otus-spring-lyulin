@@ -60,6 +60,7 @@ export class BookDetailComponent implements OnInit {
 
   // Анимация: https://webformyself.com/glubokoe-pogruzhenie-v-veb-animaciyu-s-angular/
   // https://angular.io/guide/router#activated-route-in-action
+  // Не до мультиков.
   ngOnInit(): void {
 
     // https://levelup.gitconnected.com/handle-multiple-api-requests-in-angular-using-mergemap-and-forkjoin-to-avoid-nested-subscriptions-a20fb5040d0c
@@ -103,12 +104,10 @@ export class BookDetailComponent implements OnInit {
   }
 
   onSubmit() : void {
-    // console.warn("On Save author = " + this.bookForm.value.name);
     this.book.id = this.bookForm.value.id;
     this.book.name = this.bookForm.value.name;
     this.book.publishingYear = this.bookForm.value.publishingYear;
     this.book.pages = this.bookForm.value.pages;
-    // console.warn('onSubmit: ' + this.bookForm.value.genre.meaning);
     this.book.genre = this.bookForm.value.genre;
     this.book.author = this.bookForm.value.author;
     this.book.publishingHouse = this.bookForm.value.publishingHouse;
@@ -119,5 +118,4 @@ export class BookDetailComponent implements OnInit {
   cancel() {
     this.router.navigate(['advancedBookSearch']);
   }
-
 }

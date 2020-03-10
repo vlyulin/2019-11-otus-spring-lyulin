@@ -37,7 +37,7 @@ export class BookListComponent implements OnInit {
                pagesFrom : new FormControl(),
                pagesTo : new FormControl()
              });
-     // TODO: Повторяемость фильтра при возврате на страницу книг
+     // Как установить значение в контрол
      // this.form.controls['bookName'].setValue('%ядов%');
   }
 
@@ -68,30 +68,6 @@ export class BookListComponent implements OnInit {
       });
   }
 
-  // clearSearch() {
-  //   console.warn('clearSearch: enter');
-  //   this.bookListSearchInfo.bookName = null;
-  //   this.bookListSearchInfo.genreMeaning = null;
-  //   this.bookListSearchInfo.authorName = null;
-  //   this.bookListSearchInfo.publishingHouseName = null;
-  //   this.bookListSearchInfo.publishingYearFrom = null;
-  //   this.bookListSearchInfo.publishingYearTo = null;
-  //   this.bookListSearchInfo.pagesFrom = null;
-  //   this.bookListSearchInfo.pagesTo = null;
-//
-  //   this.form.controls['bookName'].setValue(null);
-  //   this.form.controls['genreMeaning'].setValue(null);
-  //   this.form.controls['authorName'].setValue(null);
-  //   this.form.controls['publishingHouseName'].setValue(null);
-  //   this.form.controls['publishingYearFrom'].setValue(null);
-  //   this.form.controls['publishingYearTo'].setValue(null);
-  //   this.form.controls['pagesFrom'].setValue(null);
-  //   this.form.controls['pagesTo'].setValue(null);
-//
-  //   this.books = [];
-  //   this.clearFlag = true;
-  // }
-
   deleteBook( bookId : number | string ) {
       console.warn("deleteBook: enter. bookId = " + bookId);
       if( bookId != null ) {
@@ -110,7 +86,7 @@ export class BookListComponent implements OnInit {
               ).subscribe( data => {
                 this.books = data;
               });
-        // TODO: Не обновляет страницу
+        // TODO: Не обновляет страницу и все тут
         this.router.navigate(['advancedBookSearch']);
       }
     }
