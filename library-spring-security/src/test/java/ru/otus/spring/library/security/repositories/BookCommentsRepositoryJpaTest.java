@@ -1,4 +1,4 @@
-package ru.otus.spring.library.rest.repositories;
+package ru.otus.spring.library.security.repositories;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
