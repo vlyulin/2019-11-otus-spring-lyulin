@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+<h1>Library on thymeleaf</h1>
+<h2>Books:</h2>
+
+<table class="books">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Author</th>
+        <th scope="col">Pages</th>
+        <th scope="col">Genre</th>
+        <th scope="col">Publishing house</th>
+        <th scope="col">Publishing year</th>
+        <th scope="col">Operations</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.id}">book.id</td>
+        <td th:text="${book.name}">book.name</td>
+        <td th:text="${book.author.name}">book.author.name</td>
+        <td th:text="${book.pages}">book.pages</td>
+        <td th:text="${book.genre.meaning}">book.genre.meaning</td>
+        <td th:text="${book.publishingHouse.name}">book.publishingHouse.name</td>
+        <td th:text="${book.publishingYear}">book.publishingYear</td>
+        <td>
+            <button th:href="@{/bookComments(id=${book.id})}">Comments</button>
+            <button th:href="@{/bookEdit(id=${book.id})}">Edit</button>
+            <button th:href="@{/bookDelete(id=${book.id})}">Delete</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<button th:href="@{/book}" href="book.html">New book</button>
+<br>
+<div><a href='/'>Back</a></div>
+</body>

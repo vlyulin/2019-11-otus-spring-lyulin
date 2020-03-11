@@ -58,6 +58,21 @@ values (101, 'User01', '12345678', 'User 01');
 insert into users (user_id, login, password, name)
 values (102, 'User02', '12345678', 'User 02');
 
+insert into users (user_id, login, password, name)
+values (103, 'Admin', '12345678', 'Admin');
+
+insert into authorities (login, authority)
+values ('User01', 'USER');
+
+insert into authorities (login, authority)
+values ('User02', 'USER');
+
+insert into authorities (login, authority)
+values ('Admin', 'ADMIN');
+
+insert into authorities (login, authority)
+values ('Admin', 'USER');
+
 insert into comments (comment_id, book_id, comment, created_by, creation_date, last_updated_by, last_update_date)
 values( 1, 1, 'Зачетная.', 101, TODAY, NULL, NULL);
 
