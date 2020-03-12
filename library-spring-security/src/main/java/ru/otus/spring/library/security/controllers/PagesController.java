@@ -1,14 +1,9 @@
 package ru.otus.spring.library.security.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import ru.otus.spring.library.security.models.Book;
 import ru.otus.spring.library.security.models.User;
 import ru.otus.spring.library.security.repositories.BooksRepository;
@@ -48,13 +43,4 @@ public class PagesController {
         model.addAttribute("books", books);
         return "books";
     }
-
-//    @GetMapping("/authenticated")
-//    public String authenticatedPage() {
-//        SecurityContext securityContext = SecurityContextHolder.getContext();
-//        Authentication authentication = securityContext.getAuthentication();
-//        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-//        System.out.println(userDetails.getUsername());
-//        return "authenticated";
-//    }
 }

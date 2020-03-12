@@ -61,6 +61,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                  .dataSource(dataSource)
                  .usersByUsernameQuery("select login as principal, password as credentials, true from users where login = ?")
                  .authoritiesByUsernameQuery("select login as principal, authority as role from authorities where login = ?");
-                 // .rolePrefix("ROLE_");
+         // Добавляю ROLE_ тут и в таблицу authorities, как authority = 'ROLE_USER',
+         // безопасность перестает работать
+         // Пишет No authorised request.Status code: 403
+         // .rolePrefix("ROLE_");
      }
 }
