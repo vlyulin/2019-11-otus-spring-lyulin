@@ -10,6 +10,8 @@
 * [Папка library-orm](#Папка-library-orm)
 * [Папка library-spring-data](#Папка-library-spring-data)
 * [Папка library-nosql](#Папка-library-nosql)
+* [Папка library-spring-rest](#Папка-library-spring-rest)
+* [Папка library-spring-security](#Папка-library-spring-security)
 
 # Студент
 ФИО слушателя: Люлин Вадим Евгеньевич
@@ -43,3 +45,12 @@
 Домашнее задание по теме "Использовать MongoDB и spring-data для хранения информации о книгах"
 Приложение хранящее информацию о книгах в библиотеке
 
+## Папка library-spring-rest
+Переписать приложение с использованием AJAX и REST-контроллеров
+Цель: Цель: использовать Spring MVC для разработки современных AJAX/SPA приложений 
+c помощью Spring MVC Результат: современное приложение на стеке Spring
+
+## Папка library-spring-security
+В CRUD Web-приложение добавить механизм аутентификации
+Цель: Цель: защитить Web-приложение аутентифкацией и простой авторизацией 
+Результат: приложение с использованием Spring Security
