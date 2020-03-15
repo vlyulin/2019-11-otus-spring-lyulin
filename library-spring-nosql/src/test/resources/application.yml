@@ -39,3 +39,7 @@ org:
                     convert:
                         DefaultDbRefResolver: trace
 
+services:
+    mongo:
+        restart: always
+

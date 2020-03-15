@@ -13,7 +13,9 @@ public class CommentEventListener extends AbstractMongoEventListener<Comment> {
     SequenceGeneratorService sequenceGenerator;
     @Override
     public void onBeforeConvert(BeforeConvertEvent<Comment> event) {
-        if (event.getSource().getId() < 1) {
+        System.out.println("onBeforeConvert entring.");
+        if (event.getSource().getId() <= 0) {
+            System.out.println("Set id.");
             event.getSource().setId(sequenceGenerator.generateSequence(Comment.SEQUENCE_NAME));
         }
     }
