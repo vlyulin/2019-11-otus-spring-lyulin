@@ -8,7 +8,7 @@ import ru.otus.spring.libraryspringnosql.models.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@ChangeLog
+@ChangeLog( order = "001" )
 public class DatabaseChangelog {
 
     @ChangeSet(order = "001", id = "users", author = "vlyulin")
