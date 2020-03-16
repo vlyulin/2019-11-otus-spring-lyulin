@@ -1,16 +1,27 @@
 package ru.otus.spring.libraryspringnosql.repositories;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.MongoCollection;
+import de.flapdoodle.embed.process.collections.Collections;
+import org.bson.Document;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
+import org.springframework.data.mongodb.core.MongoAdmin;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import ru.otus.spring.libraryspringnosql.models.*;
 import ru.otus.spring.libraryspringnosql.services.AppSession;
+import ru.otus.spring.libraryspringnosql.services.CommentFactory;
+import ru.otus.spring.libraryspringnosql.services.NextSequenceService;
+
 import static org.assertj.core.api.Assertions.*;
 
 import java.time.LocalDate;
@@ -20,8 +31,13 @@ import java.util.List;
 // https://www.baeldung.com/spring-boot-embedded-mongodb
 @DataMongoTest
 @ExtendWith(SpringExtension.class)
+@Import({CommentFactory.class, NextSequenceService.class})
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @DisplayName("Тестирование репозитория Books")
 class BookRepositoryTest {
+
+    private static final String BOOKS_COLLECTION_NAME = "books";
+    public static final String USERS_COLLECTION_NAME = "users";
 
     private static final int BOOKS_COUNT = 3;
     private static final int SINGLE_BOOK_COUNT = 1;
@@ -29,32 +45,37 @@ class BookRepositoryTest {
     private static final String TOXIC_BOOK_NAME = "В ядовитом поясе";
     private static final String TOXIC_BOOK_PATTERN = "ядов";
 
-    @Autowired
-    MongoTemplate mongoTemplate;
-
-//    TODO: Пока не прописал тут все репозитории не заработал тест.
-//    Есть подозрение, что делаю неправильно.
-//    Надо как-то прописать конфигурацию?
-    @Autowired
-    UserRepository userRepository;
+    @Value("${spring.data.mongodb.database:library}")
+    private String databaseName;
 
     @Autowired
-    BooksRepository booksRepository;
+    private MongoTemplate mongoTemplate;
+
+    // @Autowired
+    // private UserRepository userRepository;
 
     @Autowired
-    BookCommentsRepository bookCommentsRepository;
+    private BooksRepository booksRepository;
+
+//    @Autowired
+//    private CommentFactory commentFactory;
+
+//    @Autowired
+//    private BookCommentsRepository bookCommentsRepository;
 
     @MockBean
     private AppSession session;
 
     @BeforeAll
-    public static void setup(@Autowired MongoTemplate mongoTemplate) {
+    public /*static*/ void setup(@Autowired MongoTemplate mongoTemplate) {
+
+        TestUtils.cleanUp(mongoTemplate, databaseName);
 
         User user = new User(101, "User01", "12345678", "User 01");
-        mongoTemplate.insert(user, "users");
+        mongoTemplate.save(user, USERS_COLLECTION_NAME);
 
         user = new User(102, "User02", "12345678", "User 02");
-        mongoTemplate.insert(user, "users");
+        mongoTemplate.save(user, USERS_COLLECTION_NAME);
 
             Author author = new Author();
             author.setCountry("EN");
@@ -86,7 +107,7 @@ class BookRepositoryTest {
 
             Book book = new Book(1L, "В ядовитом поясе", 2010, 320, lookupValueList, author, publishingHouse1);
 
-            mongoTemplate.insert(book, "books");
+            mongoTemplate.save(book, BOOKS_COLLECTION_NAME);
 
             // Second book
 
@@ -120,7 +141,7 @@ class BookRepositoryTest {
 
             book = new Book(2L, "Конец Вечности", 1955, 247, lookupValueList, author, publishingHouse2);
 
-            mongoTemplate.insert(book, "books");
+            mongoTemplate.save(book, BOOKS_COLLECTION_NAME);
 
             // Third book
 
@@ -150,7 +171,7 @@ class BookRepositoryTest {
 
             book = new Book(3L, "Звёздные короли", 1947, 150, lookupValueList, author, publishingHouse1);
 
-            mongoTemplate.insert(book, "books");
+            mongoTemplate.save(book, BOOKS_COLLECTION_NAME);
     }
 
     @DisplayName("Получение списка всех книг")

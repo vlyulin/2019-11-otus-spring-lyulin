@@ -17,6 +17,9 @@ logging:
             mongodb:
 
 spring:
+    main:
+        allow-bean-definition-overriding: true
+
     data:
         mongodb:
             host: 127.0.0.1

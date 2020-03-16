@@ -2,6 +2,7 @@ package ru.otus.spring.libraryspringnosql.bee.changelog;
 
 import com.github.cloudyrock.mongock.ChangeLog;
 import com.github.cloudyrock.mongock.ChangeSet;
+import com.mongodb.client.MongoDatabase;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import ru.otus.spring.libraryspringnosql.models.*;
 
@@ -9,9 +10,14 @@ import java.time.LocalDate;
 import java.util.List;
 
 @ChangeLog( order = "001" )
-public class DatabaseChangelog {
+public class InitMongoDBDataChangeLog {
 
-    @ChangeSet(order = "001", id = "users", author = "vlyulin")
+    @ChangeSet(order = "000", id = "dropDB", author = "vlyulin", runAlways = true)
+    public void dropDB(MongoDatabase database){
+        database.drop();
+    }
+
+    @ChangeSet(order = "002", id = "users", author = "vlyulin", runAlways = true)
     public void insertUsers(final MongoTemplate mongoTemplate) {
         User user = new User(101, "User01", "12345678", "User 01");
         mongoTemplate.insert(user, "users");
@@ -20,7 +26,7 @@ public class DatabaseChangelog {
         mongoTemplate.insert(user, "users");
     }
 
-    @ChangeSet(order = "002", id = "books", author = "vlyulin")
+    @ChangeSet(order = "003", id = "books", author = "vlyulin", runAlways = true)
     public void insertBooks(final MongoTemplate mongoTemplate) {
 
         Author author = new Author();
@@ -120,7 +126,7 @@ public class DatabaseChangelog {
         mongoTemplate.insert(book, "books");
     }
 
-    @ChangeSet(order = "003", id = "comments", author = "vlyulin")
+    @ChangeSet(order = "004", id = "comments", author = "vlyulin", runAlways = true)
     public void insertBookComments(final MongoTemplate mongoTemplate) {
 
         Book book1 = mongoTemplate.findById(1, Book.class);

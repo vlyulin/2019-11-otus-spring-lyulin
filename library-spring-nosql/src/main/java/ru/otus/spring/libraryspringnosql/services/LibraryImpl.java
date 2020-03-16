@@ -68,6 +68,7 @@ public class LibraryImpl implements Library {
 
     @Override
     public void deleteBookById(long bookId) {
+        bookCommentsRepository.deleteCommentsByBookId(bookId);
         booksRepository.deleteById(bookId);
     }
 

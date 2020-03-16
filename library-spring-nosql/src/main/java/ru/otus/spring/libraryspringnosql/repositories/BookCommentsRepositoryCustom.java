@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface BookCommentsRepositoryCustom {
     Comment addBookComment(long bookId, String cmt);
-    public Comment updateBookComment(long commentId, String cmt);
-    public List<Comment> findCommentsByBookId(long bookId);
+    Comment updateBookComment(long commentId, String cmt);
+    List<Comment> findCommentsByBookId(long bookId);
+    void deleteCommentsByBookId(long bookId);
 }
