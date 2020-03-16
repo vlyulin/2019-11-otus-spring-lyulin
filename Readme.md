@@ -10,6 +10,9 @@
 * [Папка library-orm](#Папка-library-orm)
 * [Папка library-spring-data](#Папка-library-spring-data)
 * [Папка library-nosql](#Папка-library-nosql)
+* [Папка library-spring-rest](#Папка-library-spring-rest)
+* [Папка library-spring-webflux](#Папка-library-spring-webflux)
+* [Папка library-spring-security](#Папка-library-spring-security)
 
 # Студент
 ФИО слушателя: Люлин Вадим Евгеньевич
@@ -42,4 +45,13 @@
 ## Папка library-nosql
 Домашнее задание по теме "Использовать MongoDB и spring-data для хранения информации о книгах"
 Приложение хранящее информацию о книгах в библиотеке
+
+## Папка library-spring-rest
+Домашнее задание по теме "Современные приложения на Spring MVC"
+
+## Папка library-spring-webflux
+Домашнее задание по теме "Spring Web Flux"
+
+## Папка library-spring-security
+Домашнее задание по теме "Spring Security: Механизмы аутентификации"
 
