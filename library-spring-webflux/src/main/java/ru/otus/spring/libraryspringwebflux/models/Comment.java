@@ -23,7 +23,6 @@ public class Comment {
     public static final String COMMENT_COLLECTION_NAME = "comments";
 
     @Id
-    @Field("id")
     private long Id;
     @DBRef
     private Book book;

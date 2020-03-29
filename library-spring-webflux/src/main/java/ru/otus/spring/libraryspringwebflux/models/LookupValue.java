@@ -3,6 +3,9 @@ package ru.otus.spring.libraryspringwebflux.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDate;
@@ -10,7 +13,20 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Document(collection = "lookupValues")
 public class LookupValue {
+
+    @Transient
+    public static final String GENRES_LOOKUP_TYPE = "GENRES";
+    @Transient
+    public static final String LOOKUP_COLLECTION_NAME = "lookupValues"; // TODO: А надо бы lookupvalues
+    @Transient
+    public static final String US = "US";
+    @Transient
+    public static final String RU = "RU";
+
+    @Id
+    private String id; // Облегчил себе жизнь
     @Field(name = "lookup_type")
     private String lookupType;
     @Field(name = "lookup_code")

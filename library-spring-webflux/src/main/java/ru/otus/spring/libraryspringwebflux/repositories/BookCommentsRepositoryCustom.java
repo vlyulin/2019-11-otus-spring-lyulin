@@ -8,5 +8,5 @@ public interface BookCommentsRepositoryCustom {
     Mono<Comment> addBookComment(long bookId, String cmt);
     Mono<Comment> updateBookComment(long commentId, String cmt);
     Flux<Comment> findCommentsByBookId(long bookId);
-    void deleteCommentsByBookId(long bookId);
+    // void deleteCommentsByBookId(long bookId);
 }

@@ -34,7 +34,6 @@ import static org.mockito.Mockito.when;
 // https://stackoverflow.com/questions/36448921/how-can-we-create-auto-generated-field-for-mongodb-using-spring-boot
 // https://www.baeldung.com/reactive-streams-step-verifier-test-publisher
 
-// @ExtendWith(SpringExtension.class)
 @RunWith(SpringRunner.class)
 @DataMongoTest
 // Вот тут для меня загадка, почему одни классы импортировать не надо, а без этих не компилируется
@@ -45,8 +44,6 @@ class BookCommentsRepositoryTest {
 
     private static final long TOXIC_BOOK_ID = 1;
     private static final int TOXIC_BOOK_COMMENTS_CNT = 2;
-    // private static final long TOXIC_BOOK_FIRST_COMMENT_ID = 1;
-    // public static final long TOXIC_BOOK_SECOND_COMMENT_ID = 2;
     public static final String NEW_COMMENT = "NEW COMMENT";
     public static final String USER_01 = "User01";
     public static final String PASSWORD = "12345678";
@@ -72,13 +69,17 @@ class BookCommentsRepositoryTest {
     @MockBean
     private AppSession session;
 
-    public /*static*/ void setupAddingBooks(MongoTemplate mongoTemplate) {
+    public void setupAddingUsers(MongoTemplate reactiveMongoTemplate) {
+        User user101 = new User(101L, "User01", "12345678", "User 01");
+        mongoTemplate.insert(user101, "users");
 
-        User user = new User(101, "User01", "12345678", "User 01");
-        mongoTemplate.insert(user, "users");
+        User user102 = new User(102L, "User02", "12345678", "User 02");
+        mongoTemplate.insert(user102, "users");
+    }
 
-        user = new User(102, "User02", "12345678", "User 02");
-        mongoTemplate.insert(user, "users");
+    public void setupAddingBooks(MongoTemplate mongoTemplate) {
+
+        setupAddingUsers(mongoTemplate);
 
         Author author = new Author();
         author.setCountry("EN");
@@ -110,8 +111,7 @@ class BookCommentsRepositoryTest {
 
         Book book = new Book(1L, "В ядовитом поясе", 2010, 320, lookupValueList, author, publishingHouse1);
 
-        // TODO: Правильно ли при инициализации базы не использовать рективщину?
-        mongoTemplate.insert(book, "books");
+        mongoTemplate.insert(book, Book.BOOKS_COLLECTION_NAME);
 
         // Second book
 
@@ -145,7 +145,7 @@ class BookCommentsRepositoryTest {
 
         book = new Book(2L, "Конец Вечности", 1955, 247, lookupValueList, author, publishingHouse2);
 
-        mongoTemplate.insert(book, "books");
+        mongoTemplate.insert(book, Book.BOOKS_COLLECTION_NAME);
 
         // Third book
 
@@ -175,11 +175,11 @@ class BookCommentsRepositoryTest {
 
         book = new Book(3L, "Звёздные короли", 1947, 150, lookupValueList, author, publishingHouse1);
 
-        mongoTemplate.insert(book, "books");
+        mongoTemplate.insert(book, Book.BOOKS_COLLECTION_NAME);
     }
 
     @BeforeAll
-    public /*static*/ void setupComments(@Autowired MongoTemplate mongoTemplate ) {
+    public void setupComments(@Autowired MongoTemplate mongoTemplate ) {
 
         TestUtils.cleanUp(mongoTemplate, databaseName);
         setupAddingBooks(mongoTemplate);
@@ -191,35 +191,35 @@ class BookCommentsRepositoryTest {
         User user101 = mongoTemplate.findById(101, User.class);
         User user102 = mongoTemplate.findById(102, User.class);
 
-        Comment comment = commentFactory.getComment();
+        Comment comment = commentFactory.getComment().block();
         comment.setBook(book1);
         comment.setComment(CMT_TEXT_1);
         comment.setCreatedBy(user101);
         comment.setCreationDate(LocalDate.now());
         mongoTemplate.save(comment, CMT_COLLECTION_NAME);
 
-        comment = commentFactory.getComment();
+        comment = commentFactory.getComment().block();
         comment.setBook(book1);
         comment.setComment(CMT_TEXT_2);
         comment.setCreatedBy(user102);
         comment.setCreationDate(LocalDate.now());
         mongoTemplate.save(comment, CMT_COLLECTION_NAME);
 
-        comment = commentFactory.getComment();
+        comment = commentFactory.getComment().block();
         comment.setBook(book2);
         comment.setComment("Замечательная книга.");
         comment.setCreatedBy(user101);
         comment.setCreationDate(LocalDate.now());
         mongoTemplate.save(comment, CMT_COLLECTION_NAME);
 
-        comment = commentFactory.getComment();
+        comment = commentFactory.getComment().block();
         comment.setBook(book2);
         comment.setComment("Можно почитать.");
         comment.setCreatedBy(user102);
         comment.setCreationDate(LocalDate.now());
         mongoTemplate.save(comment, CMT_COLLECTION_NAME);
 
-        comment = commentFactory.getComment();
+        comment = commentFactory.getComment().block();
         comment.setBook(book3);
         comment.setComment("Нудятина какая-то.");
         comment.setCreatedBy(user102);
@@ -234,24 +234,19 @@ class BookCommentsRepositoryTest {
     void getAllBookComments() {
         Flux<Comment> comments = bookCommentsRepository.findCommentsByBookId(TOXIC_BOOK_ID);
 
-        // TODO: Надо ли тут reactiveMongoTemplate или можно было бы и MongoTemplate обойтись?
+        // TODO: Надо ли в тестах использовать реактивщину (reactiveMongoTemplate) или можно было бы и MongoTemplate обойтись?
         Mono<Comment> comment1 = reactiveMongoTemplate.findOne(
                 Query.query(Criteria.where("comment").is(CMT_TEXT_1)), Comment.class, CMT_COLLECTION_NAME
         );
         Mono<Comment> comment2 = reactiveMongoTemplate.findOne(
                 Query.query(Criteria.where("comment").is(CMT_TEXT_2)), Comment.class, CMT_COLLECTION_NAME
         );
-        // TODO: Разобраться, что такое scanable
-        // Scannable.from(comments).inners().count();
         StepVerifier
                 .create(comments)
                 // TODO: Тут важен порядок. А как делать если порядок не известен?
                 .expectNext(comment1.block(), comment2.block())
-                // .expectNextCount(TOXIC_BOOK_COMMENTS_CNT)
                 .expectComplete()
                 .verify();
-
-        // assertThat(comments).hasSize(TOXIC_BOOK_COMMENTS_CNT).containsExactlyInAnyOrder(comment1, comment2);
     }
 
     @DisplayName("Проверка добавления комментария к книге")
@@ -269,23 +264,23 @@ class BookCommentsRepositoryTest {
         // TODO: Вопрос, правильно ли, что обязанность делать subscribe, это дело репозитория?
         //  Иначе у меня в базе не сохранялось
         Mono<Comment> comment = bookCommentsRepository.addBookComment(TOXIC_BOOK_ID, NEW_COMMENT);
-        // comment.subscribe();
 
         StepVerifier
                 .create(comment)
-//                .expectNextMatches(cmt -> cmt.getComment().equals(NEW_COMMENT))
+                // Хотелось проверить возвращаемое количество
+                // Но если expectNextMatches включить, то ломается assertNext
+        //      .expectNextMatches(cmt -> cmt.getComment().equals(NEW_COMMENT))
                 .assertNext(cmt -> {
                     assertEquals(NEW_COMMENT, cmt.getComment());
                 })
                 .expectComplete()
                 .verify();
 
-        // assertThat(comment).isNotNull();
-
         // TODO: Не ищет комментарии по идентификатору
         // Comment referenceComment = mongoTemplate.
         //         findById(comment.getId(), Comment.class, CMT_COLLECTION_NAME);
         // Но ищет по тексту. Загадка.
+        // На борьбу с поиском в базе потратил уйму времени
         Mono<Comment> foundedComment = reactiveMongoTemplate.findOne(
                 Query.query(Criteria.where("comment").is(NEW_COMMENT)), Comment.class, CMT_COLLECTION_NAME
         );

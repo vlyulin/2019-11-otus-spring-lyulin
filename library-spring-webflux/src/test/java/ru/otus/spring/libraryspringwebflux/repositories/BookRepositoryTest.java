@@ -52,17 +52,8 @@ class BookRepositoryTest {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    // @Autowired
-    // private UserRepository userRepository;
-
     @Autowired
     private BooksRepository booksRepository;
-
-//    @Autowired
-//    private CommentFactory commentFactory;
-
-//    @Autowired
-//    private BookCommentsRepository bookCommentsRepository;
 
     @MockBean
     private AppSession session;
@@ -205,10 +196,6 @@ class BookRepositoryTest {
                 })
                 .expectComplete()
                 .verify();
-
-//        assertThat(books).hasSize(SINGLE_BOOK_COUNT);
-//        Book book = books.get(0);
-//        assertThat(book).isNotNull().hasFieldOrPropertyWithValue("name", TOXIC_BOOK_NAME);
     }
 
     @DisplayName("Получение книги по идентификатору")
@@ -221,7 +208,6 @@ class BookRepositoryTest {
 //                .thenRequest(Long.MAX_VALUE)
 //                .expectNextCount(SINGLE_BOOK_COUNT)
                 // TODO: Разобраться с ошибкой java.lang.AssertionError: expectation "expectNextMatches" failed (expected: onNext(); actual: onComplete())
-//                .expectNextMatches(b -> b.getName().equals(TOXIC_BOOK_NAME))
 //                .expectNextMatches(b -> b.getName().equals(TOXIC_BOOK_NAME))
                 .assertNext(b -> {
                     assertEquals(TOXIC_BOOK_NAME, b.getName());

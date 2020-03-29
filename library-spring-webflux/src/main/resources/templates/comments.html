@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link data-th-href="@{/css/bootstrap.min.css}" rel="stylesheet">
+  <link data-th-href="@{/css/main.css}" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div id="title">
+        <h1>Spring Library on WebFlux + Thymeleaf</h1>
+        <h2>Comments:</h2>
+      </div>
+      <table id="comments" class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Comment</th>
+          <th scope="col">Created by</th>
+          <th scope="col">Creation date</th>
+          <th scope="col">Updated by</th>
+          <th scope="col">Last update date</th>
+          <th scope="col">Operations</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- https://www.baeldung.com/spring-thymeleaf-conditionals -->
+        <tr th:each="comment : ${comments}">
+          <td data-th-text="${comment.id}">comment.id</td>
+          <td data-th-text="${comment.comment}">comment</td>
+          <td data-th-text="${comment.createdBy}?${comment.createdBy.name}:''">comment.createdBy.name</td>
+          <td data-th-text="${comment.creationDate}">comment.creationDate</td>
+          <td data-th-text="${comment.lastUpdatedBy}?${comment.lastUpdatedBy.name}:''">comment.lastUpdatedBy.name</td>
+          <td data-th-text="${comment.lastUpdateDate}">comment.lastUpdateDate</td>
+          <td>
+            <a th:href="@{'/books/'+${comment.book.id}+'/comment/'+${comment.id}+'/edit'}">Edit</a> <br>
+            <a th:href="@{'/books/'+${comment.book.id}+'/comment/'+${comment.id}+'/delete'}">Delete</a><br>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <a th:href="@{'/books/' + ${bookId} + '/comment/new'}">New comment</a>
+      <a href='/books' style="margin-left :5px">Back</a>
+    </div>
+  </div>
+</body>

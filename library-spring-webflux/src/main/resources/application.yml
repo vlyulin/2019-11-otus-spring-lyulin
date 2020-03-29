@@ -24,15 +24,20 @@ spring:
         mongodb:
             host: 127.0.0.1
             port: 27017
-            database: library
+            # port: 0
+            database: webfluxlibrary
 
     shell:
         interactive:
-            enabled: true
+            enabled: false
 
     messages:
         basename: bundle
         encoding: UTF-8
+
+    thymeleaf:
+        reactive:
+            max-chunk-size: 8192
 
 org:
     springframework:
@@ -41,4 +46,3 @@ org:
                 core:
                     convert:
                         DefaultDbRefResolver: trace
-

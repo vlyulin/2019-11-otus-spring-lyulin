@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -16,6 +17,8 @@ import java.util.List;
 public class Book {
     private static final String GENRES = "GENRES";
     private static final String LANGUAGE = "RU";
+    @Transient
+    public static final String BOOKS_COLLECTION_NAME = "books";
 
     @Id
     private long id;

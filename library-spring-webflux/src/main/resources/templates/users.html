@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link data-th-href="@{/css/bootstrap.min.css}" rel="stylesheet">
+  <link data-th-href="@{/css/main.css}" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div id="title">
+        <h1>Spring Library on WebFlux + Thymeleaf</h1>
+        <h2>Users:</h2>
+      </div>
+      <table id="users" class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Login</th>
+          <th scope="col">Name</th>
+          <th scope="col">Password</th>
+          <th scope="col">Operations</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+          <td data-th-text="${user.id}">user.id</td>
+          <td th:text="${user.login}">user.login</td>
+          <td th:text="${user.name}">user.name</td>
+          <td th:text="${user.password}">user.password</td>
+          <td>None in this version.</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <a href='/'>Back</a>
+    </div>
+  </div>
+</body>

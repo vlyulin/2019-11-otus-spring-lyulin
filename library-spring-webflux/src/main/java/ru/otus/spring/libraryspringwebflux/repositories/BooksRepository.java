@@ -7,6 +7,7 @@ import reactor.core.publisher.Flux;
 import ru.otus.spring.libraryspringwebflux.models.Book;
 
 public interface BooksRepository extends ReactiveMongoRepository<Book, Long> {
+
     @Query("{ $or: [" +
                 "{'name': {'$regex': :#{#bookName}, $options: 'i'} } " +
                 "{'genre.meaning': {'$regex': :#{#genreMeaning}, $options: 'i'} }" +

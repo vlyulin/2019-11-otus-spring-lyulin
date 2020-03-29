@@ -14,15 +14,11 @@ import ru.otus.spring.libraryspringwebflux.services.CommentFactory;
 import java.time.LocalDate;
 
 // https://howtodoinjava.com/spring-webflux/spring-webflux-tutorial/
-
 @Repository
 public class BookCommentsRepositoryCustomImpl implements BookCommentsRepositoryCustom {
 
     @Autowired
     BooksRepository booksRepository;
-
-    // @Autowired
-    // MongoTemplate mongoTemplate;
 
     @Autowired
     ReactiveMongoOperations reactiveMongoOperations;
@@ -37,31 +33,12 @@ public class BookCommentsRepositoryCustomImpl implements BookCommentsRepositoryC
     public Mono<Comment> addBookComment(long bookId, String cmt) {
 
         return booksRepository.findById(bookId)
-                .map(book -> {
-                    Comment comment = commentFactory.getComment();
-                    comment.setBook(book);
-                    comment.setComment(cmt);
-                    comment.setCreatedBy(session.getUser());
-                    comment.setCreationDate(LocalDate.now());
-
-                    return comment;
+                .map( book -> {
+                    return commentFactory.getComment(book, cmt);
                 })
-                .flatMap( comment -> {
-                        reactiveMongoOperations.save(comment, Comment.COMMENT_COLLECTION_NAME)
-                            .subscribe();
-                        return Mono.just(comment);
+                .flatMap(comment -> {
+                    return reactiveMongoOperations.save(comment, Comment.COMMENT_COLLECTION_NAME);
                 });
-
-        // Mono<Book> monoBook = booksRepository.findById(bookId);
-        // return monoBook.map(book -> {
-        //     Comment comment = commentFactory.getComment();
-        //     comment.setBook(book);
-        //     comment.setComment(cmt);
-        //     comment.setCreatedBy(session.getUser());
-        //     comment.setCreationDate(LocalDate.now());
-        //     reactiveMongoOperations.save(comment, Comment.COMMENT_COLLECTION_NAME);
-        //     return comment;
-        // });
     }
 
     @Override
@@ -73,28 +50,14 @@ public class BookCommentsRepositoryCustomImpl implements BookCommentsRepositoryC
                 Comment.COMMENT_COLLECTION_NAME
         ).map( comment -> {
                     comment.setComment(cmt);
-                    // System.out.println("updateBookComment: " + session.getUser() + " " + LocalDate.now());
                     comment.setLastUpdatedBy(session.getUser());
                     comment.setLastUpdateDate(LocalDate.now());
                     return comment;
                 })
                 .flatMap( comment -> {
-                    // System.out.println("updateBookComment save: "+comment.getComment());
                     reactiveMongoOperations.save(comment, Comment.COMMENT_COLLECTION_NAME).subscribe();
                     return Mono.just(comment);
                 });
-
-        // Comment comment =  reactiveMongoOperations.findOne(
-        //         Query.query(Criteria.where("_id").is(commentId)),
-        //         Comment.class,
-        //         Comment.COMMENT_COLLECTION_NAME
-        // );
-        // comment.setComment(cmt);
-        // comment.setLastUpdatedBy(session.getUser());
-        // comment.setLastUpdateDate(LocalDate.now());
-        // reactiveMongoOperations.save(comment, Comment.COMMENT_COLLECTION_NAME);
-//
-        // return comment;
     }
 
     @Override
@@ -106,10 +69,9 @@ public class BookCommentsRepositoryCustomImpl implements BookCommentsRepositoryC
         );
     }
 
-    @Override
     public void deleteCommentsByBookId(long bookId) {
         reactiveMongoOperations.remove(
-                Query.query(Criteria.where("book.$id").is(bookId)),
+                Query.query(Criteria.where("book._id").is(bookId)),
                 Comment.class,
                 Comment.COMMENT_COLLECTION_NAME
         ).subscribe();
