@@ -53,13 +53,13 @@ insert into books (book_id, name, genre, author_id, publishing_house_id, publish
 values (3, 'Звёздные короли', 'SPACE_OPERA', 3, 2, 1947, 150);
 
 insert into users (user_id, login, password, name)
-values (101, 'User01', '12345678', 'User 01');
+values (101, 'User01', '$2y$12$9QTfCGvcHysFN8Mx/TkG9ejN8rbLdJEX3VPwkAxfH3NqiKEoHnLGy', 'User 01');
 
 insert into users (user_id, login, password, name)
-values (102, 'User02', '12345678', 'User 02');
+values (102, 'User02', '$2y$12$9QTfCGvcHysFN8Mx/TkG9ejN8rbLdJEX3VPwkAxfH3NqiKEoHnLGy', 'User 02');
 
 insert into users (user_id, login, password, name)
-values (103, 'Admin', '12345678', 'Admin');
+values (103, 'Admin', '$2y$12$9QTfCGvcHysFN8Mx/TkG9ejN8rbLdJEX3VPwkAxfH3NqiKEoHnLGy', 'Admin');
 
 insert into authorities (login, authority)
 values ('User01', 'USER');

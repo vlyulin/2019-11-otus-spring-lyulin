@@ -5,4 +5,5 @@ import ru.otus.spring.library.security.models.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByLoginIgnoreCase(String login);
+    User findByNameIgnoreCase(String name);
 }

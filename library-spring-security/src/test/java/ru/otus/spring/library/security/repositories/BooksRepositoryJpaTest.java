@@ -47,7 +47,7 @@ class BooksRepositoryJpaTest {
         List<Book> books = booksRepository.getBooks(
                 TOXIC_BOOK_PATTERN,
                 null,null,null,
-                -1,-1,-1, -1);
+                0,0,0, 0);
         assertThat(books).hasSize(SINGLE_BOOK_COUNT);
         Book book = books.get(0);
         assertThat(book).isNotNull().hasFieldOrPropertyWithValue("name", TOXIC_BOOK_NAME);

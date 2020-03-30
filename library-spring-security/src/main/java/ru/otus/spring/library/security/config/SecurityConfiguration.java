@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
@@ -30,6 +31,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests().antMatchers("/books").hasAnyAuthority("ADMIN", "USER")
                 .and()
+                .authorizeRequests().antMatchers("/books/edit*").hasAnyAuthority("ADMIN", "USER")
+                .and()
+                .authorizeRequests().antMatchers("/books/delete*").hasAnyAuthority("ADMIN", "USER")
+                .and()
+                .authorizeRequests().antMatchers("/books/*/comments").hasAnyAuthority("ADMIN", "USER")
+                .and()
+                .authorizeRequests().antMatchers("/user**").hasAuthority("ADMIN")
+                .and()
                 .authorizeRequests().antMatchers("/users").hasAuthority("ADMIN")
                 .and()
                 .formLogin()
@@ -38,20 +47,27 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout");
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new PasswordEncoder() {
-            @Override
-            public String encode(CharSequence charSequence) {
-                return charSequence.toString();
-            }
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new PasswordEncoder() {
+//            @Override
+//            public String encode(CharSequence charSequence) {
+//                return charSequence.toString();
+//            }
+//
+//            @Override
+//            public boolean matches(CharSequence charSequence, String s) {
+//                return charSequence.toString().equals(s);
+//            }
+//        };
+//    }
 
-            @Override
-            public boolean matches(CharSequence charSequence, String s) {
-                return charSequence.toString().equals(s);
-            }
-        };
-    }
+     // Кодировка паролей
+     // https://bcrypt-generator.com/
+     @Bean
+     public PasswordEncoder passwordEncoder() {
+         return new BCryptPasswordEncoder();
+     }
 
      @Autowired
      public void configure(AuthenticationManagerBuilder auth) throws Exception {

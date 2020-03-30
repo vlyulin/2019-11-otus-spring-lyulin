@@ -9,21 +9,23 @@
 <h1>Library on thymeleaf</h1>
 <h2>Users:</h2>
 
-<table class="users">
+<table class="users" width="100%">
   <thead class="thead-dark">
   <tr>
-    <th scope="col">#</th>
-    <th scope="col">Login</th>
-    <th scope="col">Name</th>
-    <th scope="col">Password</th>
-    <th scope="col">Operations</th>
+    <th scope="col" align= "left">#</th>
+    <th scope="col" align= "left">Login</th>
+    <th scope="col" align= "left">Name</th>
+    <th scope="col" align= "left">Password</th>
+    <th scope="col" align= "left">Operations</th>
   </tr>
   </thead>
   <tbody>
   <tr th:each="user : ${users}">
     <td th:text="${user.id}">user.id</td>
     <td th:text="${user.login}">user.login</td>
-    <td th:text="${user.name}">user.name</td>
+    <td>
+        <a href="#" th:href="@{'/user/'+${user.name}}" th:text="${user.name}"/>
+    </td>
     <td th:text="${user.password}">user.password</td>
     <td>None in this version.</td>
   </tr>

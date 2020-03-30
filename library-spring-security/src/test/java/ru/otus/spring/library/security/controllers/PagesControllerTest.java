@@ -2,31 +2,54 @@ package ru.otus.spring.library.security.controllers;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
+import org.springframework.security.config.annotation.SecurityBuilder;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import ru.otus.spring.library.security.config.SecurityConfiguration;
+import ru.otus.spring.library.security.repositories.BooksRepository;
+import ru.otus.spring.library.security.repositories.UserRepository;
+import ru.otus.spring.library.security.services.UserService;
+
+import javax.sql.DataSource;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
-// С @WebMvcTest получаю ошибку "java.lang.IllegalStateException: Failed to load ApplicationContext"
-// @WebMvcTest(PagesController.class)
-// С этими анотациями работает
-@SpringBootTest
-@AutoConfigureMockMvc
+// https://reflectoring.io/spring-boot-web-controller-test/
+@ExtendWith(SpringExtension.class)
+@WebMvcTest(controllers = PagesController.class)
+@Import(SecurityConfiguration.class)
 @DisplayName("Тестирование защиты доступа к различным страницам")
 class PagesControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @MockBean
+    private DataSource dataSource;
+
+    @Autowired
+    private SecurityConfiguration securityConfiguration;
+
+    @MockBean
+    private UserService userService;
+
+    @MockBean
+    private UserRepository userRepository;
+
+    @MockBean
+    private BooksRepository booksRepository;
 
     @WithAnonymousUser
     @Test

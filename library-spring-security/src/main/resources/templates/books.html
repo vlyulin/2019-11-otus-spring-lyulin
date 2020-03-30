@@ -9,17 +9,17 @@
 <h1>Library on thymeleaf</h1>
 <h2>Books:</h2>
 
-<table class="books">
+<table class="books" width="100%">
     <thead class="thead-dark">
     <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Author</th>
-        <th scope="col">Pages</th>
-        <th scope="col">Genre</th>
-        <th scope="col">Publishing house</th>
-        <th scope="col">Publishing year</th>
-        <th scope="col">Operations</th>
+        <th scope="col" align= "left">#</th>
+        <th scope="col" align= "left">Name</th>
+        <th scope="col" align= "left">Author</th>
+        <th scope="col" align= "left">Pages</th>
+        <th scope="col" align= "left">Genre</th>
+        <th scope="col" align= "left">Publishing house</th>
+        <th scope="col" align= "left">Publishing year</th>
+        <th scope="col" align= "left">Operations</th>
     </tr>
     </thead>
     <tbody>
@@ -32,14 +32,16 @@
         <td th:text="${book.publishingHouse.name}">book.publishingHouse.name</td>
         <td th:text="${book.publishingYear}">book.publishingYear</td>
         <td>
-            <button th:href="@{/bookComments(id=${book.id})}">Comments</button>
-            <button th:href="@{/bookEdit(id=${book.id})}">Edit</button>
-            <button th:href="@{/bookDelete(id=${book.id})}">Delete</button>
+            <a th:href="@{/books/edit/{id}(id=${book.id})}" role="button">Edit</a><br>
+            <a th:href="@{/books/delete/{id}(id=${book.id})}" role="button">Delete</a> <br>
+            <a th:href="@{'/books/'+${book.id}+'/comments'}" role="button">Comments</a>
         </td>
     </tr>
     </tbody>
 </table>
-<button th:href="@{/book}" href="book.html">New book</button>
 <br>
-<div><a href='/'>Back</a></div>
+<div>
+    <a th:href="@{/book}" href="book.html" style="margin-right: 3px">New book</a>
+    <a href='/'>Back</a>
+</div>
 </body>
