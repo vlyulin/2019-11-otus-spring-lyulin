@@ -1,0 +1,106 @@
+
+Q:
+
+После выполнения метода findAll () будет запущен @ PostFilter. 
+Обязательное правило hasPermission (filterObject, ‘READ’), 
+означает возврат только тех NoticeMessage , 
+на которые у текущего пользователя есть разрешение READ . 
+
+- Что значит "у текущего пользователя есть разрешение READ"?
+- А это задается через mask в acl_entry
+
+Q: Про BasePermission.ADMINISTRATION
+https://books.google.ru/books?id=rjRjDwAAQBAJ&pg=PA470&lpg=PA470&dq=what+is+BasePermission.ADMINISTRATION&source=bl&ots=8mR3iAUhqN&sig=ACfU3U26pUPWvlppE8LpCAMQ4o8LTOLyYQ&hl=en&sa=X&ved=2ahUKEwi_wYib7MvoAhUjxKYKHWccBukQ6AEwB3oECAsQKA#v=onepage&q=what%20is%20BasePermission.ADMINISTRATION&f=false
+
+в AclAuthorizationStrategiImpl задается роль, которая позволяет изменять Acl у объектов
+@Bean
+    public AclAuthorizationStrategy aclAuthorizationStrategy() {
+        return new AclAuthorizationStrategyImpl(new SimpleGrantedAuthority("ROLE_ADMIN"));
+    }
+	
+Q: Почему не работает 
+Permission perms = new CumulativePermission()
+                .set(BasePermission.READ)
+                .set(BasePermission.WRITE)
+                .set(BasePermission.DELETE)
+                .set(BasePermission.ADMINISTRATION);
+
+Бага, так не работает
+https://stackoverflow.com/questions/25971979/spring-security-acl-doesnt-compare-bitwise-permissions
+https://github.com/spring-projects/spring-security/issues/1388
+
+Надо переделывать AclImpl, BasicLookupStrategy etc.
+
+---------------------------------------------------
+Полезные ссылки:
+---------------------------------------------------
+A Custom Security Expression with Spring Security
+A Custom Permission Evaluator
+https://www.baeldung.com/spring-security-create-new-custom-security-expression#permissionEvaluator
+
+Retrieve User Information in Spring Security
+https://www.baeldung.com/get-user-in-spring-security
+	6. Get the User in Thymeleaf
+
+Spring Security with Thymeleaf
+https://www.baeldung.com/spring-security-thymeleaf
++
+https://stackoverflow.com/questions/45546327/get-current-users-extra-information-by-thymeleaf-sec-tag-working-with-spring-se
+
+Introduction to Spring Method Security
+https://www.baeldung.com/spring-security-method-security
+	
+Intro to Spring Security Expressions
+https://www.baeldung.com/spring-security-expressions
+
+Introduction to Using Thymeleaf in Spring
+display validation errors
+https://www.baeldung.com/thymeleaf-in-spring-mvc
+
+<tr th:if="${books.empty}">
+    <td colspan="2"> No Books Available </td>
+</tr>
+
+
+Links:
+https://books.google.ru/books?id=NL08BQAAQBAJ&pg=PA380&lpg=PA380&dq=Spring+ACL+insertAce+for+role&source=bl&ots=fu4S1jQmjA&sig=ACfU3U1vMYdRdsPu7EJveMZO_GBa-auWBA&hl=en&sa=X&ved=2ahUKEwjHirvb0svoAhUExMQBHXGGCJwQ6AEwCHoECAwQLw#v=onepage&q=Spring%20ACL%20insertAce%20for%20role&f=false
+
+User01 не увидит комментариев 18+
+http://localhost:8080/books/3/comments
+
+--------------
+
+Роли:
+
+ROLE_ADMIN - доступ к операциям с книгами, доступ к комментариям других владельцев
+ROLE_USER - не может видеть книги 18+
+ROLE_USER18+ - дополнительно видит книги 18+
+
+Пользователи:
+
+Admin/12345678  - роль ROLE_ADMIN
+User01/12345678 - роль ROLE_USER
+User02/12345678 - роль ROLE_USER18+
+
+Книги
+
+1) Книги могут видеть все
+2) Пользователь User01 не может видеть книги 18+. У нас только одна книга 18+, это id = 3, 'Звёздные короли'
+3) Для просмотра книг 18+ требуется роль ROLE_USER18+, которая дана пользователю User02
+4) Добавлять, редактировать и удалять книги может только администратор
+
+Комментарии
+
+5) Предустановленные комментарии в файле data.sql наследуют права от своей книги
+6) Новые коментарии создаются со своим ACL
+7) Добавлять комментарий может любой зарегистрированный пользователь
+8) Удалять комментарий может только владелец комментария или администратор
+Только владелец комментария видит ссылку Delete 
+Для предотвращения удаления комментария по ссылке используется Custom Expression @PreAuthorize("isCommentOwner(#commentId)")
+Примечание: пример прямой ссылки для удаления: http://localhost:8080/books/2/comment/3/delete
+Почему-то Custom Expression через класс MethodSecurityConfig, который возвращает CustomMethodSecurityExpressionHandler, не установился.
+Пришлось возвращать его через метод defaultMethodSecurityExpressionHandler в классе AclConfig.
+
+Вопросы:
+Spring Security и ACL сохраняют пользователей в разных таблицах, соответственно users и acl_sid.
+Как принято делать, соединить таблицы users и acl_sid?
