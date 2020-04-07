@@ -37,7 +37,7 @@ public class AppErrorController implements ErrorController {
                 "<body> " +
                         "<h1>Library on thymeleaf</h1>" +
                         "<br>" +
-                        "<div>No authorised request.</div> " +
+                        "<div>Unauthorised request.</div> " +
                 "<div>Status code: <b>%s</b> " +
                 "<div>Exception Message: <b>%s</b></div> " +
                         "<div><a href='/'>Back</a></div>" +

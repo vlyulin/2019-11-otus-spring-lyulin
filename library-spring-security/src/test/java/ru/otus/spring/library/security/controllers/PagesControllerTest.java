@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import ru.otus.spring.library.security.config.SecurityConfiguration;
 import ru.otus.spring.library.security.repositories.BooksRepository;
 import ru.otus.spring.library.security.repositories.UserRepository;
-import ru.otus.spring.library.security.services.UserService;
+import ru.otus.spring.library.security.services.UserDetailsServiceImpl;
 
 import javax.sql.DataSource;
 
@@ -43,7 +43,7 @@ class PagesControllerTest {
     private SecurityConfiguration securityConfiguration;
 
     @MockBean
-    private UserService userService;
+    private UserDetailsServiceImpl userService;
 
     @MockBean
     private UserRepository userRepository;
@@ -61,7 +61,7 @@ class PagesControllerTest {
 
     @WithMockUser(
             username = "Admin",
-            authorities = {"ADMIN"}
+            roles = {"ADMIN"}
     )
     @Test
     @DisplayName("Тестирование доступа к старнице users только с правами администратора")
@@ -72,7 +72,7 @@ class PagesControllerTest {
 
     @WithMockUser(
             username = "User01",
-            authorities = {"USER"}
+            roles = {"USER"}
     )
     @Test
     @DisplayName("Тестирование доступа к старнице books с правами пользователя")
@@ -83,7 +83,7 @@ class PagesControllerTest {
 
     @WithMockUser(
             username = "User01",
-            authorities = {"USER"}
+            roles = {"USER"}
     )
     @Test
     @DisplayName("Тестирование отсутствие доступа к старнице users с правами пользователя")

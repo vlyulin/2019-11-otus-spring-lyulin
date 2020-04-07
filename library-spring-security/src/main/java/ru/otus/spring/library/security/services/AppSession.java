@@ -1,9 +1,13 @@
 package ru.otus.spring.library.security.services;
 
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 import ru.otus.spring.library.security.config.Settings;
 import ru.otus.spring.library.security.models.User;
 import ru.otus.spring.library.security.repositories.UserRepository;
+
+import static org.springframework.security.core.context.SecurityContextHolder.getContext;
 
 /*
 * Сессия приложения. Содержит авторизовавшегося пользователя.
@@ -22,24 +26,13 @@ public class AppSession {
         this.userRepository = userRepository;
     }
 
-    public void openSession() {
-        this.user = userRepository.findByLoginIgnoreCase(settings.getLogin());
-        connected = true;
+    public User getUser() {
+        Authentication authentication = getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            String currentLogin = authentication.getName();
+            User user = userRepository.findByLoginIgnoreCase(currentLogin);
+            return user;
+        }
+        return null;
     }
-
-    public void openSession(String login) {
-        if (login.isBlank() || login.isEmpty() ) return;
-        this.user = userRepository.findByLoginIgnoreCase(login);
-        System.out.println("openSession: user " + user.getId());
-        this.connected = true;
-    }
-
-    public void closeSession() {
-        this.connected = false;
-        this.user = null;
-    }
-
-    public User getUser(){ return user; }
-    public boolean isConnected(){ return connected; }
-    Settings getSettings(){ return this.settings; }
 }

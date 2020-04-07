@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import ru.otus.spring.library.security.services.UserDetailsServiceImpl;
 
 import javax.sql.DataSource;
 
@@ -16,9 +17,13 @@ import javax.sql.DataSource;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private DataSource dataSource;
+    private UserDetailsServiceImpl userService;
 
-    public SecurityConfiguration(@Autowired  DataSource dataSource) {
+    public SecurityConfiguration(@Autowired DataSource dataSource,
+                                 @Autowired UserDetailsServiceImpl userService
+    ) {
         this.dataSource = dataSource;
+        this.userService = userService;
     }
 
     @Override
@@ -29,17 +34,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeRequests().antMatchers("/books").hasAnyAuthority("ADMIN", "USER")
+                .authorizeRequests().antMatchers("/books").hasAnyRole("ADMIN", "USER")
                 .and()
-                .authorizeRequests().antMatchers("/books/edit*").hasAnyAuthority("ADMIN", "USER")
+                .authorizeRequests().antMatchers("/books/edit*").hasAnyRole("ADMIN", "USER")
                 .and()
-                .authorizeRequests().antMatchers("/books/delete*").hasAnyAuthority("ADMIN", "USER")
+                .authorizeRequests().antMatchers("/books/delete*").hasAnyRole("ADMIN", "USER")
                 .and()
-                .authorizeRequests().antMatchers("/books/*/comments").hasAnyAuthority("ADMIN", "USER")
+                .authorizeRequests().antMatchers("/books/*/comments").hasAnyRole("ADMIN", "USER")
                 .and()
-                .authorizeRequests().antMatchers("/user**").hasAuthority("ADMIN")
+                .authorizeRequests().antMatchers("/user**").hasRole("ADMIN")
                 .and()
-                .authorizeRequests().antMatchers("/users").hasAuthority("ADMIN")
+                .authorizeRequests().antMatchers("/users").hasRole("ADMIN")
                 .and()
                 .formLogin()
                 .and()
@@ -47,20 +52,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout");
     }
 
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new PasswordEncoder() {
-//            @Override
-//            public String encode(CharSequence charSequence) {
-//                return charSequence.toString();
-//            }
-//
-//            @Override
-//            public boolean matches(CharSequence charSequence, String s) {
-//                return charSequence.toString().equals(s);
-//            }
-//        };
-//    }
 
      // Кодировка паролей
      // https://bcrypt-generator.com/
@@ -71,15 +62,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
      @Autowired
      public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        // https://www.boraji.com/spring-security-5-custom-userdetailsservice-example
+        auth.userDetailsService(userService);
+
          // https://www.baeldung.com/spring-security-jdbc-authentication
          // https://stackoverflow.com/questions/18104809/using-spring-security-websecurityconfigureradapter-auth-jdbcauthentication-u
-         auth.jdbcAuthentication()
-                 .dataSource(dataSource)
-                 .usersByUsernameQuery("select login as principal, password as credentials, true from users where login = ?")
-                 .authoritiesByUsernameQuery("select login as principal, authority as role from authorities where login = ?");
-         // Добавляю ROLE_ тут и в таблицу authorities, как authority = 'ROLE_USER',
-         // безопасность перестает работать
-         // Пишет No authorised request.Status code: 403
-         // .rolePrefix("ROLE_");
+//         auth.jdbcAuthentication()
+//                 .dataSource(dataSource)
+//                 .usersByUsernameQuery("select login as principal, password as credentials, true from users where login = ?")
+//                 .authoritiesByUsernameQuery("select login as principal, authority as role from authorities where login = ?");
+
      }
 }

@@ -1,6 +1,7 @@
 package ru.otus.spring.library.security.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +11,7 @@ import ru.otus.spring.library.security.models.Book;
 import ru.otus.spring.library.security.models.User;
 import ru.otus.spring.library.security.repositories.BooksRepository;
 import ru.otus.spring.library.security.repositories.UserRepository;
-import ru.otus.spring.library.security.services.UserService;
+import ru.otus.spring.library.security.services.UserDetailsServiceImpl;
 
 import java.util.List;
 
@@ -18,11 +19,11 @@ import java.util.List;
 public class PagesController {
 
     private final UserRepository userRepository;
-    private final UserService userService;
+    private final UserDetailsServiceImpl userService;
     private final BooksRepository booksRepository;
 
     @Autowired
-    public PagesController(UserService userService, BooksRepository booksRepository, UserRepository userRepository) {
+    public PagesController(UserDetailsServiceImpl userService, BooksRepository booksRepository, UserRepository userRepository) {
         this.userRepository = userRepository;
         this.userService = userService;
         this.booksRepository = booksRepository;
@@ -45,7 +46,8 @@ public class PagesController {
     @GetMapping("/user/{userName}")
     public String user(@PathVariable(value="userName") String userName, Model model) {
         try {
-            User user = userService.loadUserByUsername(userName);
+            // TODO: Есть вопрос как это будет работать?
+            UserDetails user = userService.loadUserByUsername(userName);
             model.addAttribute("users", user);
         } catch (UsernameNotFoundException e) {
             // Обработка ошибки
