@@ -9,10 +9,6 @@ import ru.otus.spring.library.security.repositories.UserRepository;
 
 import static org.springframework.security.core.context.SecurityContextHolder.getContext;
 
-/*
-* Сессия приложения. Содержит авторизовавшегося пользователя.
-* Пока указывается в свойствах.
-* */
 @Component
 public class AppSession {
 

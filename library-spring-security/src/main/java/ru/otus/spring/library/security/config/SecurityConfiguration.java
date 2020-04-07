@@ -64,13 +64,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      public void configure(AuthenticationManagerBuilder auth) throws Exception {
         // https://www.boraji.com/spring-security-5-custom-userdetailsservice-example
         auth.userDetailsService(userService);
-
-         // https://www.baeldung.com/spring-security-jdbc-authentication
-         // https://stackoverflow.com/questions/18104809/using-spring-security-websecurityconfigureradapter-auth-jdbcauthentication-u
-//         auth.jdbcAuthentication()
-//                 .dataSource(dataSource)
-//                 .usersByUsernameQuery("select login as principal, password as credentials, true from users where login = ?")
-//                 .authoritiesByUsernameQuery("select login as principal, authority as role from authorities where login = ?");
-
      }
 }
