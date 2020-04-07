@@ -14,6 +14,7 @@
 * [Папка library-spring-webflux](#Папка-library-spring-webflux)
 * [Папка library-spring-security](#Папка-library-spring-security)
 * [Папка library-spring-acl](#Папка library-spring-acl)
+* [Папка spring-batch](#Папка spring-batch)
 
 # Студент
 ФИО слушателя: Люлин Вадим Евгеньевич
@@ -59,3 +60,5 @@
 ## Папка library-spring-acl
 Домашнее задание по теме "Ввести авторизацию на основе URL и/или доменных сущностей"
 
+##Папка spring-batch
+Домашнее задание по теме "Spring Batch"
