@@ -75,27 +75,6 @@ public class JobConfig {
                 .reader(bookReader)
                 .processor(bookProcessor)
                 .writer(bookWriter)
-//                .listener(new ItemReadListener() {
-//                    public void beforeRead() { logger.info("Начало чтения"); }
-//                    public void afterRead(Object o) { logger.info("Конец чтения"); }
-//                    public void onReadError(Exception e) { logger.info("Ошибка чтения"); }
-//                })
-//                .listener(new ItemWriteListener() {
-//                    public void beforeWrite(List list) { logger.info("Начало записи"); }
-//                    public void afterWrite(List list) { logger.info("Конец записи"); }
-//                    public void onWriteError(Exception e, List list) { logger.info("Ошибка записи"); }
-//                })
-//                .listener(new ItemProcessListener() {
-//                    public void beforeProcess(Object o) {logger.info("Начало обработки");}
-//                    public void afterProcess(Object o, Object o2) {logger.info("Конец обработки");}
-//                    public void onProcessError(Object o, Exception e) {logger.info("Ошбка обработки");}
-//                })
-//                .listener(new ChunkListener() {
-//                    public void beforeChunk(ChunkContext chunkContext) {logger.info("Начало пачки");}
-//                    public void afterChunk(ChunkContext chunkContext) {logger.info("Конец пачки");}
-//                    public void afterChunkError(ChunkContext chunkContext) {logger.info("Ошибка пачки");}
-//                })
-//                .taskExecutor(new SimpleAsyncTaskExecutor())
                 .build();
     }
 
