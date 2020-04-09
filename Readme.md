@@ -15,6 +15,7 @@
 * [Папка library-spring-security](#Папка-library-spring-security)
 * [Папка library-spring-acl](#Папка library-spring-acl)
 * [Папка spring-batch](#Папка spring-batch)
+* [Папка spring-integration](#Папка spring-integration)
 
 # Студент
 ФИО слушателя: Люлин Вадим Евгеньевич
@@ -62,3 +63,6 @@
 
 ##Папка spring-batch
 Домашнее задание по теме "Spring Batch"
+
+##Папка spring-integration
+Домашнее задание по теме "Spring Integration: Endpoints и Flow Components"
