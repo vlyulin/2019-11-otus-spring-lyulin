@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.transaction.annotation.Transactional;
 import ru.otus.spring.libraryacl.models.Comment;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public interface BookCommentsRepository extends JpaRepository<Comment, Long>, Bo
     @PostFilter("hasPermission(filterObject, 'READ')")
     List<Comment> findByBookId(long bookId);
 
+    @Transactional
     @PreAuthorize("hasRole(ROLE_ADMIN)")
     void deleteByBookId(long bookId);
 
