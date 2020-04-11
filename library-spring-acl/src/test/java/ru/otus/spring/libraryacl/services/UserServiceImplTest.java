@@ -18,7 +18,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @Import(UserServiceImpl.class)
 class UserServiceImplTest {
 
-    public static final String EXISTING_USER01_NAME = "User 01";
     public static final String EXISTING_USER01_LOGIN = "User01";
     public static final String NON_EXISTING_USER_NAME = "NotExistenceUserName";
 
@@ -32,7 +31,7 @@ class UserServiceImplTest {
     @DisplayName("Проверка обработки пользователя, которого нет в базе")
     void loadUserByUsernameNotFound() {
         Exception exception = Assertions.assertThrows(UsernameNotFoundException.class, () -> {
-            User user = userService.loadUserByUsername(NON_EXISTING_USER_NAME);
+            User user = userService.loadUserByLogin(NON_EXISTING_USER_NAME);
         });
         String expectedMessage = NON_EXISTING_USER_NAME + " not found.";
         assertTrue(exception.getMessage().contains(expectedMessage));
@@ -41,7 +40,7 @@ class UserServiceImplTest {
     @Test
     @DisplayName("Проверка обработки пользователя, который есть в базе")
     void loadUserByUsername() {
-        User user = userService.loadUserByUsername(EXISTING_USER01_NAME);
+        User user = userService.loadUserByLogin(EXISTING_USER01_LOGIN);
         assertThat(user).isNotNull().hasFieldOrPropertyWithValue("login", EXISTING_USER01_LOGIN);
     }
 }

@@ -62,12 +62,8 @@ public class PagesController {
 
     @GetMapping("/user/{userName}")
     public String user(@PathVariable(value="userName") String userName, Model model) {
-        try {
-            User user = userService.loadUserByUsername(userName);
-            model.addAttribute("users", user);
-        } catch (UsernameNotFoundException e) {
-            // Обработка ошибки
-        }
+        User user = userService.loadUserByUsername(userName);
+        model.addAttribute("users", user);
         return "user";
     }
 

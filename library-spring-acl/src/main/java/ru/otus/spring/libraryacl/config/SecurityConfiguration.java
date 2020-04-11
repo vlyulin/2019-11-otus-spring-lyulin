@@ -3,12 +3,14 @@ package ru.otus.spring.libraryacl.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import ru.otus.spring.libraryacl.services.UserDetailsServiceImpl;
 
 import javax.sql.DataSource;
 
@@ -16,9 +18,13 @@ import javax.sql.DataSource;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private DataSource dataSource;
+    private UserDetailsServiceImpl userService;
 
-    public SecurityConfiguration(@Autowired  DataSource dataSource) {
+    public SecurityConfiguration(@Autowired  DataSource dataSource,
+                                 @Autowired UserDetailsServiceImpl userService
+    ) {
         this.dataSource = dataSource;
+        this.userService = userService;
     }
 
     @Override
@@ -69,11 +75,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
      @Autowired
      public void configure(AuthenticationManagerBuilder auth) throws Exception {
-         // https://www.baeldung.com/spring-security-jdbc-authentication
-         // https://stackoverflow.com/questions/18104809/using-spring-security-websecurityconfigureradapter-auth-jdbcauthentication-u
-         auth.jdbcAuthentication()
-                 .dataSource(dataSource)
-                 .usersByUsernameQuery("select login as principal, password as credentials, true from users where login = ?")
-                 .authoritiesByUsernameQuery("select login as principal, authority as role from authorities where login = ?");
+         auth.userDetailsService(userService);
      }
 }

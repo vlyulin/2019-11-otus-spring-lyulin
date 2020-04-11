@@ -3,6 +3,7 @@ package ru.otus.spring.libraryacl.repositories;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.otus.spring.libraryacl.models.Comment;
 import ru.otus.spring.libraryacl.services.SecurityService;
 
@@ -20,6 +21,7 @@ public class BookCommentsRepositoryCustomImpl implements BookCommentsRepositoryC
     private SecurityService securityService;
 
     @Override
+    @Transactional
     public Comment addBookComment(long bookId, String cmt) {
         Comment comment = new Comment();
         comment.setBookId(bookId);
@@ -34,6 +36,7 @@ public class BookCommentsRepositoryCustomImpl implements BookCommentsRepositoryC
 
     // https://stackoverflow.com/questions/52757368/spring-security-allow-each-user-to-see-their-own-profile-but-none-else
     @Override
+    @Transactional
     public void updateBookComment(long commentId, String cmt) {
         Optional<Comment> optComment = bookCommentsRepository.findById(commentId);
         if(optComment.isEmpty()) return;
@@ -43,6 +46,4 @@ public class BookCommentsRepositoryCustomImpl implements BookCommentsRepositoryC
         comment.setLastUpdateDate(LocalDate.now());
         bookCommentsRepository.save(comment);
     }
-
-    // TODO: delete comment, delete ACL: mutableAclService.deleteAcl(ObjectIdentityImpl(Comment.class, comment.getId());
 }

@@ -63,21 +63,21 @@ insert into users (user_id, login, password, name)
 values (103, 'Admin', '$2y$12$9QTfCGvcHysFN8Mx/TkG9ejN8rbLdJEX3VPwkAxfH3NqiKEoHnLGy', 'Admin');
 
 insert into authorities (login, authority)
-values ('User01', 'ROLE_USER');
+values ('User01', 'USER');
 
 -- User 02 имеет доста и к детским книгам ROLE_USER и к очень взрослым ROLE_USER18+
 insert into authorities (login, authority)
-values ('User02', 'ROLE_USER');
+values ('User02', 'USER');
 insert into authorities (login, authority)
-values ('User02', 'ROLE_USER18+');
+values ('User02', 'USER18+');
 
 -- У администратора есть все роли
 insert into authorities (login, authority)
-values ('Admin', 'ROLE_ADMIN');
+values ('Admin', 'ADMIN');
 insert into authorities (login, authority)
-values ('Admin', 'ROLE_USER');
+values ('Admin', 'USER');
 insert into authorities (login, authority)
-values ('Admin', 'ROLE_USER18+');
+values ('Admin', 'USER18+');
 
 insert into comments (comment_id, book_id, comment, created_by, creation_date, last_updated_by, last_update_date)
 values( 1, 1, 'Зачетная.', 101, TODAY, NULL, NULL);

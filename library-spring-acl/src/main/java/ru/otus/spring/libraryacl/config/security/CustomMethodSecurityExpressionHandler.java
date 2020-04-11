@@ -2,7 +2,6 @@ package ru.otus.spring.libraryacl.config.security;
 
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionOperations;
 import org.springframework.security.authentication.AuthenticationTrustResolver;
@@ -10,7 +9,7 @@ import org.springframework.security.authentication.AuthenticationTrustResolverIm
 import org.springframework.security.core.Authentication;
 import ru.otus.spring.libraryacl.repositories.BookCommentsRepository;
 
-@Configuration
+// @Component
 public class CustomMethodSecurityExpressionHandler extends DefaultMethodSecurityExpressionHandler {
 
     private final AuthenticationTrustResolver trustResolver = new AuthenticationTrustResolverImpl();
@@ -19,13 +18,11 @@ public class CustomMethodSecurityExpressionHandler extends DefaultMethodSecurity
 
     @Override
     protected MethodSecurityExpressionOperations createSecurityExpressionRoot(Authentication authentication, MethodInvocation invocation) {
-        // return super.createSecurityExpressionRoot(authentication, invocation);
         CustomMethodSecurityExpressionRoot root =
                 new CustomMethodSecurityExpressionRoot(authentication);
         root.setPermissionEvaluator(getPermissionEvaluator());
         root.setTrustResolver(this.trustResolver);
         root.setRoleHierarchy(getRoleHierarchy());
-        //
         root.setBookCommentsRepository(bookCommentsRepository);
         return root;
     }

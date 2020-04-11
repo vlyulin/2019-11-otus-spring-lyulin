@@ -26,3 +26,7 @@ spring:
     messages:
         basename: bundle
         encoding: UTF-8
+
+server:
+    error:
+        include-stacktrace: always
