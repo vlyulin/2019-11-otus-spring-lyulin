@@ -66,3 +66,6 @@
 
 ##Папка spring-integration
 Домашнее задание по теме "Spring Integration: Endpoints и Flow Components"
+
+##Папка library-spring-actuator
+Домашнее задание по теме "Монолиты vs. Microservices (Round 2), Spring Boot Actuator - must have в микросервисах"
