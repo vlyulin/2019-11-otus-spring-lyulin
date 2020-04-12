@@ -69,3 +69,7 @@
 
 ##Папка library-spring-actuator
 Домашнее задание по теме "Монолиты vs. Microservices (Round 2), Spring Boot Actuator - must have в микросервисах"
+
+##Папка library-spring-docker
+Домашнее задание по теме "Docker, оркестрация, облака, облачные хостинги"
+
