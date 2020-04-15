@@ -13,9 +13,10 @@
 * [Папка library-spring-rest](#Папка-library-spring-rest)
 * [Папка library-spring-webflux](#Папка-library-spring-webflux)
 * [Папка library-spring-security](#Папка-library-spring-security)
-* [Папка library-spring-acl](#Папка library-spring-acl)
-* [Папка spring-batch](#Папка spring-batch)
-* [Папка spring-integration](#Папка spring-integration)
+* [Папка library-spring-acl](#Папка-library-spring-acl)
+* [Папка spring-batch](#Папка-spring-batch)
+* [Папка spring-integration](#Папка-spring-integration)
+* [Папка library-spring-docker](#Папка-library-spring-docker)
 
 # Студент
 ФИО слушателя: Люлин Вадим Евгеньевич
@@ -61,15 +62,14 @@
 ## Папка library-spring-acl
 Домашнее задание по теме "Ввести авторизацию на основе URL и/или доменных сущностей"
 
-##Папка spring-batch
+## Папка spring-batch
 Домашнее задание по теме "Spring Batch"
 
-##Папка spring-integration
+## Папка spring-integration
 Домашнее задание по теме "Spring Integration: Endpoints и Flow Components"
 
-##Папка library-spring-actuator
+## Папка library-spring-actuator
 Домашнее задание по теме "Монолиты vs. Microservices (Round 2), Spring Boot Actuator - must have в микросервисах"
 
-##Папка library-spring-docker
+## Папка library-spring-docker
 Домашнее задание по теме "Docker, оркестрация, облака, облачные хостинги"
-
