@@ -13,9 +13,9 @@
 * [Папка library-spring-rest](#Папка-library-spring-rest)
 * [Папка library-spring-webflux](#Папка-library-spring-webflux)
 * [Папка library-spring-security](#Папка-library-spring-security)
-* [Папка library-spring-acl](#Папка library-spring-acl)
-* [Папка spring-batch](#Папка spring-batch)
-* [Папка spring-integration](#Папка spring-integration)
+* [Папка library-spring-acl](#Папка-library-spring-acl)
+* [Папка spring-batch](#Папка-spring-batch)
+* [Папка spring-integration](#Папка-spring-integration)
 
 # Студент
 ФИО слушателя: Люлин Вадим Евгеньевич
