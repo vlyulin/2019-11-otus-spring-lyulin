@@ -13,9 +13,11 @@
 * [Папка library-spring-rest](#Папка-library-spring-rest)
 * [Папка library-spring-webflux](#Папка-library-spring-webflux)
 * [Папка library-spring-security](#Папка-library-spring-security)
-* [Папка library-spring-acl](#Папка library-spring-acl)
-* [Папка spring-batch](#Папка spring-batch)
-* [Папка spring-integration](#Папка spring-integration)
+* [Папка library-spring-acl](#Папка-library-spring-acl)
+* [Папка spring-batch](#Папка-spring-batch)
+* [Папка spring-integration](#Папка-spring-integration)
+* [Папка spring-docker](#Папка-library-spring-docker)
+* [Папка spring-hystrix](#Папка-library-spring-hystrix)
 
 # Студент
 ФИО слушателя: Люлин Вадим Евгеньевич
@@ -73,3 +75,5 @@
 ##Папка library-spring-docker
 Домашнее задание по теме "Docker, оркестрация, облака, облачные хостинги"
 
+##Папка spring-hystrix
+Домашнее задание по теме "Spring Cloud Service Discovery, Zuul, Hystrix, Sleuth, Zipkin"
