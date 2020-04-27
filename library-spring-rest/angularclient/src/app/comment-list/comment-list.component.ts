@@ -67,7 +67,8 @@ export class CommentListComponent implements OnInit {
       // TODO: Refresh comment list
       let bookId = this.route.snapshot.paramMap.get('bookId');
       console.warn('deleteComment bookId = '+bookId);
-      this.router.navigate(['bookComments',bookId]);
+      location.reload(true); // Проверил, так лучше. Страница рефрешится.
+      // this.router.navigate(['bookComments',bookId]);
     }
   }
 }

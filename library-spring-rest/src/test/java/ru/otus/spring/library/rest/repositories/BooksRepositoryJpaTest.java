@@ -5,10 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.spring.library.rest.models.Book;
-import ru.otus.spring.library.rest.services.AppSession;
 
 import java.util.List;
 
@@ -30,9 +28,6 @@ class BooksRepositoryJpaTest {
 
     @Autowired
     BooksRepository booksRepository;
-
-    @MockBean
-    private AppSession session;
 
     @DisplayName("Получение списка всех книг")
     @Test

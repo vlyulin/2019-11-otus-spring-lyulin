@@ -5,7 +5,7 @@ import ru.otus.spring.library.rest.models.Comment;
 
 import java.util.List;
 
-public interface BookCommentsRepository extends JpaRepository<Comment, Long>, BookCommentsRepositoryCustom {
+public interface BookCommentsRepository extends JpaRepository<Comment, Long> {
 
     List<Comment> findByBookId(long bookId);
 

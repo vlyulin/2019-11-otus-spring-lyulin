@@ -2,6 +2,10 @@ localization:
     language: ru
     country: RU
 
+jwt:
+#    The secret key you've used is too short. If you are using HS256 which is HMAC with SHA-256 needs at least 256 bits or larger MUST be used with the HS256 algorithm.
+    secret: VGhlIHNlY3JldCBrZXkgeW91J3ZlIHVzZWQgaXMgdG9vIHNob3J0LiBJZiB5b3UgYXJlIHVzaW5nIEhTMjU2IHdoaWNoIGlzIEhNQUMgd2l0aCBTSEEtMjU2IG5lZWRzIGF0IGxlYXN0IDI1NiBiaXRzIG9yIGxhcmdlciBNVVNUIGJlIHVzZWQgd2l0aCB0aGUgSFMyNTYgYWxnb3JpdGhtLg==
+
 appsession:
     user: User01
 
@@ -14,7 +18,7 @@ logging:
 spring:
     h2:
         console:
-            enabled: true
+#            enabled: true
             path: /h2
 
     datasource:

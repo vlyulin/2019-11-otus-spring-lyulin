@@ -18,8 +18,10 @@ public class User {
     private long id;
     @Column(name = "login")
     private String login;
-    @Column(name = "password")
-    private String password;
     @Column(name = "name")
     private String name;
+    @Column(name = "password")
+    private String password;
+    @Transient
+    private String token;
 }

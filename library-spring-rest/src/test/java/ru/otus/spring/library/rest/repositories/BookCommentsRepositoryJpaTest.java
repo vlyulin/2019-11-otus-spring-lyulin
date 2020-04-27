@@ -2,20 +2,14 @@ package ru.otus.spring.library.rest.repositories;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.otus.spring.library.rest.models.Comment;
-import ru.otus.spring.library.rest.models.User;
-import ru.otus.spring.library.rest.repositories.exceptions.BookNotFoundException;
-import ru.otus.spring.library.rest.services.AppSession;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
 
 @DisplayName("Тестирование репозитория BookComments")
 @DataJpaTest
@@ -33,9 +27,6 @@ class BookCommentsRepositoryJpaTest {
     @Autowired
     private TestEntityManager em;
 
-    @MockBean
-    private AppSession session;
-
     @Autowired
     private BookCommentsRepository bookCommentsRepository;
 
@@ -48,44 +39,4 @@ class BookCommentsRepositoryJpaTest {
         assertThat(comments).hasSize(TOXIC_BOOK_COMMENTS_CNT).containsExactlyInAnyOrder(comment1, comment2);
     }
 
-    @DisplayName("Проверка добавления комментария к книге")
-    @Test
-    void addBookComment() throws BookNotFoundException {
-
-        User user = new User();
-        user.setId(101L);
-        user.setLogin(USER_01);
-        user.setName(USER_01);
-        user.setPassword(PASSWORD);
-
-        when(session.getUser()).thenReturn(user);
-
-        Comment comment = bookCommentsRepository.addBookComment(TOXIC_BOOK_ID, NEW_COMMENT);
-        assertThat(comment).isNotNull();
-        Comment referenceComment = em.find(Comment.class, comment.getCommentId());
-
-        assertThat(referenceComment).isNotNull().hasFieldOrPropertyWithValue("bookId",TOXIC_BOOK_ID);
-        assertThat(referenceComment).isNotNull().hasFieldOrPropertyWithValue("comment",NEW_COMMENT);
-    }
-
-    @DisplayName("Проверка изменения комментария к книге")
-    @Test
-    void updateBookComment() {
-
-        User user = new User();
-        user.setId(101L);
-        user.setLogin(USER_01);
-        user.setName(USER_01);
-        user.setPassword(PASSWORD);
-
-        Mockito.when(session.getUser()).thenReturn(user);
-
-        bookCommentsRepository.updateBookComment(TOXIC_BOOK_FIRST_COMMENT_ID, NEW_COMMENT);
-        Comment comment = em.find(Comment.class,TOXIC_BOOK_FIRST_COMMENT_ID);
-
-        assertThat(comment).isNotNull().hasFieldOrPropertyWithValue("comment",NEW_COMMENT);
-        // Проверка наличия информации о пользователе и времени внесшем изменения
-        assertThat(comment.getLastUpdatedBy()).isNotNull();
-        assertThat(comment.getLastUpdateDate()).isNotNull();
-    }
 }

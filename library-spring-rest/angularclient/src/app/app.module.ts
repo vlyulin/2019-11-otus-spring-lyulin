@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { BookListComponent } from './book-list/book-list.component';
@@ -14,6 +14,14 @@ import { BookService } from './services/book-service';
 import { LookupValueService } from './services/lookupvalue.service';
 import { CommentService } from './services/comment.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthenticationService } from './services/authentication.service';
+import { LoginComponent } from './login/login.component';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { ErrorInterceptor } from './helpers/error.interceptor';
+import { AlertComponent } from './directives/alert.component';
+import { AlertService } from './services/alert.service';
+import { DummyComponent } from './dummy/dummy.component';
+import { DummyService } from './services/dummy.service';
 
 // Запустить в developer's mode
 // ng serve --open
@@ -35,7 +43,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     UserListComponent,
     BookListComponent,
     BookDetailComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginComponent,
+    AlertComponent,
+    DummyComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +56,18 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [UserService, BookService, CommentService, LookupValueService, AuthGuard],
+  providers: [
+    UserService, 
+    BookService, 
+    CommentService, 
+    LookupValueService, 
+    AuthGuard, 
+    AlertService,
+    AuthenticationService,
+    DummyService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

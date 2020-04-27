@@ -5,15 +5,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.otus.spring.library.rest.models.LookupValue;
 import ru.otus.spring.library.rest.models.LookupValueId;
-import ru.otus.spring.library.rest.services.AppSession;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Тестирование репозитория LookupsRepository")
 @DataJpaTest
@@ -29,9 +26,6 @@ class LookupsRepositoryTest {
 
     @Autowired
     private TestEntityManager em;
-
-    @MockBean
-    private AppSession session;
 
     @Test
     void findByLookupTypeLookupCodeLanguage() {

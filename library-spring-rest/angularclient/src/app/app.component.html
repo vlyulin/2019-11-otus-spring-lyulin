@@ -86,15 +86,25 @@
         <div class="card-body">
           <h2 class="card-title text-center text-white py-3" i18n="@@AppName">Angular library client</h2>
           <ul class="text-center list-inline py-3">
+	          <li class="list-inline-item">
+              <a routerLink="/login" class="btn btn-info">Login</a>
+                </li>
             <li class="list-inline-item">
               <a routerLink="/users" class="btn btn-info" i18n="@@List_users">List users</a>
                 </li>
             <li class="list-inline-item">
               <a routerLink="/advancedBookSearch" class="btn btn-info" i18n="@@List_book">List books</a>
                 </li>
+            <li class="list-inline-item">
+              <a routerLink="/login" class="btn btn-info" i18n="@@Logout">Logout</a>
+                </li>
+            <li class="list-inline-item">
+              <a routerLink="/dummyService" class="btn btn-info" i18n="@@dummyService">Try unauthorized dummyService</a>
+                </li>
           </ul>
         </div>
       </div>
+      <alert-message></alert-message>
       <router-outlet></router-outlet>
     </div>
   </div>

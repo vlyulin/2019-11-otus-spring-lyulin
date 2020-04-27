@@ -16,15 +16,16 @@ public class AuthorsController {
         this.authorsReporitory = authorsReporitory;
     }
 
-    @RequestMapping(value = "/authors", method={RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/authors", method=RequestMethod.GET)
     @ResponseBody
     List<Author> getAuthors() {
         return authorsReporitory.findAll();
     }
 
-    @RequestMapping(value = "/author/{authorId}", method={RequestMethod.GET})
+    @RequestMapping(value = "/authors/{authorId}", method={RequestMethod.GET})
     @ResponseBody
-    public Author getAuthor(@PathVariable("authorId") long authorId) {
-        return authorsReporitory.findById(authorId).get();
+    public Author getAuthor(@PathVariable("authorId") long authorId) throws Exception {
+        return authorsReporitory.findById(authorId)
+                .orElseThrow(() -> new Exception("Author with " + authorId + " doesn't exists."));
     }
 }

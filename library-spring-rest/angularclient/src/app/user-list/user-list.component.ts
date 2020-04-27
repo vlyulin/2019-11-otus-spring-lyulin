@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
 import { UserService } from '../services/user.service';
-import { AuthGuard } from '../services/authguard.service';
+// import { AuthGuard } from '../services/authguard.service';
 
 @Component({
   selector: 'app-user-list',
@@ -13,8 +13,8 @@ export class UserListComponent implements OnInit {
   users: User[];
 
   constructor(
-    private userService: UserService,
-    private authGuard: AuthGuard
+    private userService: UserService
+    // private authGuard: AuthGuard
   ) { }
 
   ngOnInit(): void {
@@ -24,7 +24,7 @@ export class UserListComponent implements OnInit {
   }
 
   login( userLogin: string ) {
-    this.authGuard.login(userLogin);
+    // this.authGuard.login(userLogin);
   }
 
 }

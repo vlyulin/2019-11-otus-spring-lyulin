@@ -23,6 +23,9 @@ export class BookListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    console.warn("XXX BookListComponent Enter ngOnInit");
+
      if( this.bookListSearchInfo == null ) {
        this.bookListSearchInfo = new BookListSearchInfo();
      }
@@ -39,6 +42,7 @@ export class BookListComponent implements OnInit {
              });
      // Как установить значение в контрол
      // this.form.controls['bookName'].setValue('%ядов%');
+     console.warn("XXX BookListComponent Exit ngOnInit");
   }
 
   searchForm(searchInfo)
@@ -74,20 +78,21 @@ export class BookListComponent implements OnInit {
         console.warn("deleteBook: bookId = " + bookId);
         this.bookService.deleteBook( bookId );
         // TODO: Refresh comment list
-        this.bookService.getBooks(
-                this.bookListSearchInfo.bookName,
-                this.bookListSearchInfo.genreMeaning,
-                this.bookListSearchInfo.authorName,
-                this.bookListSearchInfo.publishingHouseName,
-                this.bookListSearchInfo.publishingYearFrom,
-                this.bookListSearchInfo.publishingYearTo,
-                this.bookListSearchInfo.pagesFrom,
-                this.bookListSearchInfo.pagesTo
-              ).subscribe( data => {
-                this.books = data;
-              });
+        // this.bookService.getBooks(
+        //         this.bookListSearchInfo.bookName,
+        //         this.bookListSearchInfo.genreMeaning,
+        //         this.bookListSearchInfo.authorName,
+        //         this.bookListSearchInfo.publishingHouseName,
+        //         this.bookListSearchInfo.publishingYearFrom,
+        //         this.bookListSearchInfo.publishingYearTo,
+        //         this.bookListSearchInfo.pagesFrom,
+        //         this.bookListSearchInfo.pagesTo
+        //       ).subscribe( data => {
+        //         this.books = data;
+        //       });
         // TODO: Не обновляет страницу и все тут
-        this.router.navigate(['advancedBookSearch']);
+        // this.router.navigate(['advancedBookSearch']);
+        location.reload(true);
       }
     }
 }

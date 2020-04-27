@@ -1,11 +1,13 @@
 package ru.otus.spring.library.rest.controllers;
 
 import org.springframework.http.MediaType;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import ru.otus.spring.library.rest.models.Comment;
+import ru.otus.spring.library.rest.models.User;
 import ru.otus.spring.library.rest.repositories.BookCommentsRepository;
 import ru.otus.spring.library.rest.repositories.UserRepository;
-import ru.otus.spring.library.rest.services.AppSession;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,12 +16,10 @@ import java.util.List;
 @RestController
 public class BookCommentsController {
 
-    private final AppSession appSession;
     private final BookCommentsRepository bookCommentsRepository;
     private final UserRepository userRepository;
 
-    public BookCommentsController(AppSession appSession, BookCommentsRepository bookCommentsRepository, UserRepository userRepository) {
-        this.appSession = appSession;
+    public BookCommentsController(BookCommentsRepository bookCommentsRepository, UserRepository userRepository) {
         this.bookCommentsRepository = bookCommentsRepository;
         this.userRepository = userRepository;
     }
@@ -41,39 +41,30 @@ public class BookCommentsController {
 
     @RequestMapping(value = "/saveBookComment", method = {RequestMethod.POST,RequestMethod.PUT, RequestMethod.PATCH}, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody void saveBookComment(@RequestBody Comment comment) {
-        System.out.println("saveBookComment: comment.comment = " + comment.getComment());
-        System.out.println("saveBookComment: appSession.getUser() = " + appSession.getUser());
 
-        // User user = new User(hashCode(), "User 003", "1234566", "User 003");
-        // comment.setCreatedBy(appSession.getUser());
-        // comment.setCreationDate(LocalDate.now());
-        // System.out.println("saveBookComment: comment.getCreatedBy().getName() = " + comment.getCreatedBy().getName());
+        User currentUser = null;
 
-        // TODO: Очистить
+        // Получаем текущего залогининого пользователя
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails ) {
+            String login = ((UserDetails)principal).getUsername();
+            currentUser = userRepository.findByLoginIgnoreCase(login);
+        }
+
         if( comment.getCreatedBy() == null || comment.getCreatedBy().getId() == 0 ) {
             // Указываем кто создал запись
-            System.out.println("Указываем кто создал запись");
-            comment.setCreatedBy(appSession.getUser());
+            if(currentUser != null) { comment.setCreatedBy(currentUser); }
             comment.setCreationDate(LocalDate.now());
-            // TODO: HHH000437: Attempting to save one or more entities that have a non-nullable association ...
+            // HHH000437: Attempting to save one or more entities that have a non-nullable association ...
             userRepository.save(comment.getCreatedBy());
         } else {
             // Указываем кто изменил запись
-            System.out.println("comment.getCreatedBy().getId() = " + comment.getCreatedBy().getId());
-            System.out.println("Указываем кто изменил запись");
-            comment.setCreatedBy(appSession.getUser());
-            comment.setCreationDate(LocalDate.now());
-            comment.setLastUpdatedBy(appSession.getUser());
+            if(currentUser != null) { comment.setLastUpdatedBy(currentUser); }
             comment.setLastUpdateDate(LocalDate.now());
-            // TODO: HHH000437: Attempting to save one or more entities that have a non-nullable association ...
-            System.out.println("saveBookComment:comment.getCreatedBy: " + comment.getCreatedBy());
-            System.out.println("saveBookComment:comment.getLastUpdatedBy: " + comment.getLastUpdatedBy());
-            // 
+            // HHH000437: Attempting to save one or more entities that have a non-nullable association ...
             userRepository.save(comment.getCreatedBy());
             userRepository.save(comment.getLastUpdatedBy());
         }
-        System.out.println("saveBookComment:comment.getCreatedBy: " + comment.getCreatedBy());
-        System.out.println("saveBookComment:comment.getLastUpdatedBy: " + comment.getLastUpdatedBy());
         bookCommentsRepository.save(comment);
     }
 
