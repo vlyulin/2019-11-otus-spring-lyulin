@@ -21,4 +21,3 @@ https://stackoverflow.com/questions/51986766/spring-security-getauthenticationma
 https://stackoverflow.com/questions/53943806/spring-cors-not-working-with-security-config
 12) Spring Security Fundamentals
 https://www.pluralsight.com/courses/spring-security-fundamentals?clickid=1bxTTkUpCxyOUnkwUx0Mo3EUUki2epQ8P2CoRk0&irgwc=1&mpid=1193463&utm_source=impactradius&utm_medium=digital_affiliate&utm_campaign=1193463&aid=7010a000001xAKZAA2
-
