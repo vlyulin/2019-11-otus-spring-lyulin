@@ -1,0 +1,19 @@
+oracle:
+  server:
+    url: https://egxt-dev4.fa.em2.oraclecloud.com
+  jwt:
+    token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsIng1dCI6Il9pajZSRWNqaFZNTHRKemZMMUVPWEJzS0ZadyIsImtpZCI6InRydXN0c2VydmljZSJ9.eyJleHAiOjE1ODg4ODYzMDAsInN1YiI6InYubHl1bGluQHBhcnRuZXIuYXVjaGFuLnJ1IiwiaXNzIjoid3d3Lm9yYWNsZS5jb20iLCJwcm4iOiJ2Lmx5dWxpbkBwYXJ0bmVyLmF1Y2hhbi5ydSIsImlhdCI6MTU4ODg3MTkwMH0.LX2Uw4bDUKISn3MXUAA9Jdn8oaEVVfSQ0dtqkLI-LT0bq6GvS-knzimB9E2qpEuXtIRoMJvjOm5e8gpHT-PCK-pgHnrw8kLYvU3_jIl2i4qUgkt4en6MyVUuUicBKNMP5G7ceddhn5rGgJSF3D8t3a54hmjXLVzudEkYhN-s6fkTZ3YU-pSqHfMqAAcW946TUldHCLW2WjLUCcgZ5UOkSRKkg9Q1cKyn8JNupXDItP_UAZhOlK2N-FCjJy4MQI0xljYWP1KZdXWc1tofBPP1FVvXLtStvgwJhFYM_E8tHblf_BX-PLBWCbFKL2i6eJmDqeTtPZxpiLAEexVhpJGZ_Q
+
+# https://www.baeldung.com/spring-boot-testing-log-level
+logging:
+  level:
+#    com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize: DEBUG
+    ru.otus.spring.ocae.controllers.StandardReceiptClient: DEBUG
+#    ru.otus.spring.ocae.controllers.StandardReceiptsController: DEBUG
+#    ru.otus.spring.ocae.config.RestTemplateHeaderModifierInterceptor: DEBUG
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: FULL

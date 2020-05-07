@@ -1,0 +1,3334 @@
+{
+  "Resources" : {
+    "standardReceipts" : {
+      "discrColumnType" : false,
+      "attributes" : [ {
+        "name" : "StandardReceiptId",
+        "type" : "integer",
+        "updatable" : true,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "inCreate",
+        "precision" : 18,
+        "hasDefaultValueExpression" : true,
+        "title" : "Standard Receipt ID",
+        "properties" : {
+          "fnd:GLOBALLY_UNIQUE" : "true"
+        },
+        "annotations" : {
+          "description" : "The unique identifier of the standard receipt."
+        }
+      }, {
+        "name" : "ReceiptNumber",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : true,
+        "allowChanges" : "always",
+        "precision" : 30,
+        "title" : "Receipt Number",
+        "maxLength" : "30",
+        "annotations" : {
+          "description" : "The receipt number of the standard receipt."
+        }
+      }, {
+        "name" : "BusinessUnit",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "always",
+        "precision" : 240,
+        "title" : "Business Unit",
+        "controlType" : "choice",
+        "maxLength" : "240",
+        "lov" : {
+          "childRef" : "businessUnits",
+          "attributeMap" : [ {
+            "source" : "BusinessUnit",
+            "target" : "BusinessUnit"
+          }, {
+            "source" : "OrgId",
+            "target" : "OrgId",
+            "derived" : true
+          } ],
+          "displayAttributes" : [ "BusinessUnit", "OrgId" ]
+        },
+        "annotations" : {
+          "description" : "A unit of an enterprise that performs one or more business functions that can be accumulated in a management hierarchy."
+        }
+      }, {
+        "name" : "ReceiptMethod",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : true,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "precision" : 30,
+        "title" : "Receipt Method",
+        "controlType" : "choice",
+        "maxLength" : "30",
+        "lov" : {
+          "childRef" : "receiptMethods",
+          "attributeMap" : [ {
+            "source" : "Receiptmethodname",
+            "target" : "ReceiptMethod"
+          }, {
+            "source" : "Receiptmethodid",
+            "target" : "ReceiptMethodId",
+            "derived" : true
+          }, {
+            "source" : "BankAccountId",
+            "target" : "RemittanceBankAccountId",
+            "derived" : true
+          }, {
+            "source" : "LegalEntityId",
+            "target" : "LegalEntityId",
+            "derived" : true
+          }, {
+            "source" : "BankAcctUseId",
+            "target" : "RemitBankAcctUseId",
+            "derived" : true
+          }, {
+            "source" : "OverrideFlag",
+            "target" : "RemittanceBankAllowOverride",
+            "derived" : true
+          }, {
+            "source" : "PaymentChannelCode",
+            "target" : "PaymentChannelCode",
+            "derived" : true
+          } ],
+          "displayAttributes" : [ "Receiptmethodname", "Receiptmethodid", "BankAccountId", "LegalEntityId", "BankAcctUseId", "OverrideFlag", "PaymentChannelCode" ]
+        },
+        "annotations" : {
+          "description" : "The receipt method used on the standard receipt."
+        }
+      }, {
+        "name" : "ReceiptDate",
+        "type" : "date",
+        "updatable" : true,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "always",
+        "title" : "Receipt Date",
+        "annotations" : {
+          "description" : "The date when the standard receipt was created."
+        }
+      }, {
+        "name" : "DocumentNumber",
+        "type" : "integer",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "precision" : 18,
+        "title" : "Document Number",
+        "annotations" : {
+          "description" : "The document sequence number on the standard receipt."
+        }
+      }, {
+        "name" : "Amount",
+        "type" : "number",
+        "updatable" : true,
+        "mandatory" : true,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "title" : "Receipt Amount",
+        "annotations" : {
+          "description" : "The amount of a standard receipt."
+        }
+      }, {
+        "name" : "Currency",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : true,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "precision" : 15,
+        "title" : "Currency",
+        "maxLength" : "15",
+        "annotations" : {
+          "description" : "The currency of a standard receipt."
+        }
+      }, {
+        "name" : "ConversionRateType",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "precision" : 30,
+        "title" : "Conversion Rate Type",
+        "controlType" : "choice",
+        "maxLength" : "30",
+        "properties" : {
+          "TOOLTIP" : "Conversion Rate Type"
+        },
+        "lov" : {
+          "childRef" : "conversionRateTypes",
+          "attributeMap" : [ {
+            "source" : "UserConversionType",
+            "target" : "ConversionRateType"
+          }, {
+            "source" : "ConversionType",
+            "target" : "ExchangeRateType",
+            "derived" : true
+          } ],
+          "displayAttributes" : [ "UserConversionType", "ConversionType" ]
+        },
+        "annotations" : {
+          "description" : "The conversion rate type of a standard receipt."
+        }
+      }, {
+        "name" : "ConversionDate",
+        "type" : "date",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "title" : "Conversion Date",
+        "annotations" : {
+          "description" : "The date when the standard receipt was converted."
+        }
+      }, {
+        "name" : "ConversionRate",
+        "type" : "number",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "title" : "Conversion Rate",
+        "annotations" : {
+          "description" : "The conversion rate between the standard receipt currency and the ledger currency."
+        }
+      }, {
+        "name" : "State",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "never",
+        "precision" : 255,
+        "title" : "State",
+        "maxLength" : "255",
+        "annotations" : {
+          "description" : "The state of the current payment entry progress in the standard receipt. The valid values are APPLIED, UNAPPLIED, UNIDENTIFIED, INSUFFICIENT FUNDS, REVERSE PAYMENT, and STOP PAYMENT."
+        }
+      }, {
+        "name" : "Status",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "never",
+        "precision" : 255,
+        "title" : "Status",
+        "maxLength" : "255",
+        "annotations" : {
+          "description" : "The status of the entered payment. The valid values are CONFIRMED, CLEARED, APPROVED, and REMITTED."
+        }
+      }, {
+        "name" : "RemittanceBankName",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "never",
+        "precision" : 360,
+        "title" : "Remittance Bank Name",
+        "maxLength" : "360",
+        "dependencies" : [ "BankName" ],
+        "annotations" : {
+          "description" : "The remittance bank name on the standard receipt."
+        }
+      }, {
+        "name" : "RemittanceBankBranch",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "never",
+        "precision" : 360,
+        "title" : "Remittance Bank Branch",
+        "maxLength" : "360",
+        "dependencies" : [ "BankBranchName" ],
+        "annotations" : {
+          "description" : "The remittance bank branch name on the standard receipt."
+        }
+      }, {
+        "name" : "RemittanceBankAccountNumber",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "precision" : 30,
+        "title" : "Remittance Bank Account Number",
+        "maxLength" : "30",
+        "annotations" : {
+          "description" : "The remittance bank account number on the standard receipt."
+        }
+      }, {
+        "name" : "RemittanceBankDepositDate",
+        "type" : "date",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "title" : "Remittance Bank Deposit Date",
+        "annotations" : {
+          "description" : "The date when the standard receipt was deposited."
+        }
+      }, {
+        "name" : "RemittanceBankAllowOverride",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "precision" : 1,
+        "title" : "Remittance Bank Allow Override",
+        "maxLength" : "1",
+        "annotations" : {
+          "description" : "The options that allow the remittance selection process to override the remittance account on a standard receipt."
+        }
+      }, {
+        "name" : "CustomerName",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : true,
+        "allowChanges" : "always",
+        "precision" : 360,
+        "title" : "Customer Name",
+        "maxLength" : "360",
+        "annotations" : {
+          "description" : "The name of the customer on the standard receipt."
+        }
+      }, {
+        "name" : "TaxpayerIdentificationNumber",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "never",
+        "precision" : 20,
+        "title" : "Taxpayer Identification Number",
+        "maxLength" : "20",
+        "annotations" : {
+          "description" : "The tax payer identification number of the customer on the standard receipt."
+        }
+      }, {
+        "name" : "CustomerSite",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : true,
+        "allowChanges" : "always",
+        "precision" : 150,
+        "title" : "Customer Site",
+        "controlType" : "choice",
+        "maxLength" : "150",
+        "lov" : {
+          "childRef" : "customerSiteUses",
+          "attributeMap" : [ {
+            "source" : "Location",
+            "target" : "CustomerSite"
+          }, {
+            "source" : "SiteUseId",
+            "target" : "CustomerSiteUseId",
+            "derived" : true
+          } ],
+          "displayAttributes" : [ "Location", "SiteUseId" ]
+        },
+        "annotations" : {
+          "description" : "The customer site of the customer on the standard receipt."
+        }
+      }, {
+        "name" : "CustomerAccountNumber",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : true,
+        "allowChanges" : "always",
+        "precision" : 30,
+        "title" : "Customer Account Number",
+        "controlType" : "choice",
+        "maxLength" : "30",
+        "lov" : {
+          "childRef" : "customerAccounts",
+          "attributeMap" : [ {
+            "source" : "AccountNumber",
+            "target" : "CustomerAccountNumber"
+          }, {
+            "source" : "CustAccountId",
+            "target" : "PayFromCustomer",
+            "derived" : true
+          }, {
+            "source" : "PartyId",
+            "target" : "ReceiptPartyId",
+            "derived" : true
+          } ],
+          "displayAttributes" : [ "AccountNumber", "CustAccountId", "PartyId" ]
+        },
+        "annotations" : {
+          "description" : "The customer account number of the customer on the standard receipt."
+        }
+      }, {
+        "name" : "CustomerBank",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "never",
+        "precision" : 360,
+        "title" : "Customer Bank",
+        "maxLength" : "360",
+        "annotations" : {
+          "description" : "The bank name of the customer on the standard receipt."
+        }
+      }, {
+        "name" : "CustomerBankBranch",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "never",
+        "precision" : 360,
+        "title" : "Customer Bank Branch",
+        "maxLength" : "360",
+        "annotations" : {
+          "description" : "The bank branch name of the customer on the standard receipt."
+        }
+      }, {
+        "name" : "CustomerBankAccountNumber",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "title" : "Customer Bank Account Number",
+        "annotations" : {
+          "description" : "The bank account number of the customer on the standard receipt."
+        }
+      }, {
+        "name" : "UnappliedAmount",
+        "type" : "number",
+        "updatable" : false,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "never",
+        "title" : "Unapplied Amount",
+        "annotations" : {
+          "description" : "The receipt amount that is unapplied to any transaction in the receipt currency."
+        }
+      }, {
+        "name" : "AccountedAmount",
+        "type" : "number",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : false,
+        "allowChanges" : "never",
+        "title" : "Accounted Amount",
+        "annotations" : {
+          "description" : "The receipt amount in the functional currency."
+        }
+      }, {
+        "name" : "AccountingDate",
+        "type" : "date",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "title" : "Accounting Date",
+        "dependencies" : [ "GlDate" ],
+        "annotations" : {
+          "description" : "The date when the standard receipt is accounted."
+        }
+      }, {
+        "name" : "MaturityDate",
+        "type" : "date",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "title" : "Maturity Date",
+        "dependencies" : [ "DueDate" ],
+        "annotations" : {
+          "description" : "The date when the standard receipt is matured."
+        }
+      }, {
+        "name" : "PostmarkDate",
+        "type" : "date",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "title" : "Postmark Date",
+        "annotations" : {
+          "description" : "The date when the standard receipt is postmarked."
+        }
+      }, {
+        "name" : "ReceiptAtRisk",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "never",
+        "precision" : 1,
+        "title" : "Receipt at Risk",
+        "maxLength" : "1",
+        "annotations" : {
+          "description" : "Identifies whether the receipt is currently at risk with the remittance bank."
+        }
+      }, {
+        "name" : "ReceivablesSpecialist",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : false,
+        "allowChanges" : "never",
+        "precision" : 360,
+        "title" : "Receivables Specialist",
+        "maxLength" : "360",
+        "annotations" : {
+          "description" : "The Receivables specialist assigned to the standard receipt."
+        }
+      }, {
+        "name" : "Comments",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "precision" : 2000,
+        "title" : "Comments",
+        "maxLength" : "2000",
+        "annotations" : {
+          "description" : "The comments about this receipt."
+        }
+      }, {
+        "name" : "CreditCardTokenNumber",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "title" : "Credit Card Token Number",
+        "annotations" : {
+          "description" : "The token number issued by tokenization service provider corresponding to a credit card number."
+        }
+      }, {
+        "name" : "CreditCardAuthorizationRequestIdentifier",
+        "type" : "integer",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "title" : "Credit Card Authorization Request Identifier",
+        "annotations" : {
+          "description" : "The authorization request identifier received from the tokenization service provider to authorize the credit card number."
+        }
+      }, {
+        "name" : "CardHolderFirstName",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "title" : "First Name of the Credit Card Holder",
+        "annotations" : {
+          "description" : "The first name of the credit card holder."
+        }
+      }, {
+        "name" : "CardHolderLastName",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "title" : "Last Name of the Credit Card Holder",
+        "annotations" : {
+          "description" : "The last name of the credit card holder."
+        }
+      }, {
+        "name" : "CreditCardIssuerCode",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "title" : "Credit Card Issuer Code",
+        "annotations" : {
+          "description" : "The code for the credit card issuer, such as Visa or MasterCard."
+        }
+      }, {
+        "name" : "CreditCardExpirationDate",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "title" : "Credit Card Expiration Date",
+        "annotations" : {
+          "description" : "The date when the credit card expires."
+        }
+      }, {
+        "name" : "VoiceAuthorizationCode",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "always",
+        "title" : "Credit Card Voice Authorization Code",
+        "annotations" : {
+          "description" : "The voice authorization code received from tokenization service provider for authorization."
+        }
+      }, {
+        "name" : "CreatedBy",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : false,
+        "allowChanges" : "never",
+        "precision" : 64,
+        "title" : "Created By",
+        "maxLength" : "64",
+        "annotations" : {
+          "description" : "The user who created the record."
+        }
+      }, {
+        "name" : "CreationDate",
+        "type" : "datetime",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : false,
+        "allowChanges" : "never",
+        "title" : "Creation Date",
+        "annotations" : {
+          "description" : "The date when the record was created."
+        }
+      }, {
+        "name" : "LastUpdateDate",
+        "type" : "datetime",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : false,
+        "allowChanges" : "never",
+        "title" : "Last Update Date",
+        "annotations" : {
+          "description" : "The date when the record was last updated."
+        }
+      }, {
+        "name" : "LastUpdatedBy",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : false,
+        "allowChanges" : "never",
+        "precision" : 64,
+        "title" : "Last Updated By",
+        "maxLength" : "64",
+        "annotations" : {
+          "description" : "The user who last updated the record."
+        }
+      } ],
+      "collection" : {
+        "rangeSize" : 25,
+        "finders" : [ {
+          "name" : "PrimaryKey",
+          "attributes" : [ {
+            "name" : "StandardReceiptId",
+            "type" : "integer",
+            "updatable" : true,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "inCreate",
+            "precision" : 18,
+            "hasDefaultValueExpression" : true,
+            "title" : "Standard Receipt ID",
+            "properties" : {
+              "fnd:GLOBALLY_UNIQUE" : "true"
+            }
+          } ]
+        }, {
+          "name" : "StandardReceiptsFinder",
+          "title" : "standardReceiptsSearchVC",
+          "attributes" : [ {
+            "name" : "BusinessUnit",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Optional",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "CustomerAccountNumber",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "SelectivelyRequired",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "CustomerName",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "SelectivelyRequired",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "CustomerSite",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "SelectivelyRequired",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "ReceiptDate",
+            "type" : "date",
+            "updatable" : true,
+            "required" : "SelectivelyRequired",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "ReceiptNumber",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "SelectivelyRequired",
+            "queryable" : false,
+            "allowChanges" : "always"
+          } ]
+        } ],
+        "links" : [ {
+          "rel" : "self",
+          "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts",
+          "name" : "self",
+          "kind" : "collection"
+        } ],
+        "actions" : [ {
+          "name" : "get",
+          "method" : "GET",
+          "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+        }, {
+          "name" : "create",
+          "method" : "POST",
+          "requestType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ],
+          "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+        } ]
+      },
+      "item" : {
+        "links" : [ {
+          "rel" : "lov",
+          "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/lov/businessUnits",
+          "name" : "businessUnits",
+          "kind" : "collection"
+        }, {
+          "rel" : "lov",
+          "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/lov/receiptMethods",
+          "name" : "receiptMethods",
+          "kind" : "collection"
+        }, {
+          "rel" : "lov",
+          "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/lov/conversionRateTypes",
+          "name" : "conversionRateTypes",
+          "kind" : "collection"
+        }, {
+          "rel" : "lov",
+          "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/lov/customerSiteUses",
+          "name" : "customerSiteUses",
+          "kind" : "collection"
+        }, {
+          "rel" : "lov",
+          "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/lov/customerAccounts",
+          "name" : "customerAccounts",
+          "kind" : "collection"
+        }, {
+          "rel" : "child",
+          "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/attachments",
+          "name" : "attachments",
+          "kind" : "collection",
+          "cardinality" : {
+            "value" : "1 to *",
+            "sourceAttributes" : "StandardReceiptId, AttachmentEntityName",
+            "destinationAttributes" : "Pk1Value, EntityName"
+          }
+        }, {
+          "rel" : "child",
+          "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/remittanceReferences",
+          "name" : "remittanceReferences",
+          "kind" : "collection",
+          "cardinality" : {
+            "value" : "1 to *",
+            "sourceAttributes" : "StandardReceiptId",
+            "destinationAttributes" : "CashReceiptId"
+          }
+        }, {
+          "rel" : "child",
+          "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptDFF",
+          "name" : "standardReceiptDFF",
+          "kind" : "collection",
+          "cardinality" : {
+            "value" : "1 to 1",
+            "sourceAttributes" : "StandardReceiptId",
+            "destinationAttributes" : "CashReceiptId"
+          }
+        }, {
+          "rel" : "child",
+          "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptGdf",
+          "name" : "standardReceiptGdf",
+          "kind" : "collection",
+          "cardinality" : {
+            "value" : "1 to 1",
+            "sourceAttributes" : "StandardReceiptId",
+            "destinationAttributes" : "CashReceiptId"
+          }
+        }, {
+          "rel" : "self",
+          "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}",
+          "name" : "self",
+          "kind" : "item"
+        }, {
+          "rel" : "canonical",
+          "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}",
+          "name" : "canonical",
+          "kind" : "item"
+        } ],
+        "actions" : [ {
+          "name" : "get",
+          "method" : "GET",
+          "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+        }, {
+          "name" : "delete",
+          "method" : "DELETE"
+        } ]
+      },
+      "annotations" : {
+        "description" : "The standard receipts resource is used to create standard receipts in Receivables to record payment from customers for goods received or services rendered. Standard receipts can be applied to one or more transactions. One or more remittance references can also be provided for applying the receipt to the transactions when the Apply Receipts Using AutoMatch process is run asynchronously."
+      },
+      "children" : {
+        "attachments" : {
+          "discrColumnType" : false,
+          "title" : "Attachments",
+          "titlePlural" : "Attachments",
+          "attributes" : [ {
+            "name" : "AttachedDocumentId",
+            "type" : "integer",
+            "updatable" : true,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "inCreate",
+            "precision" : 18,
+            "hasDefaultValueExpression" : true,
+            "title" : "Attached Document Id",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "true",
+              "fnd:GLOBALLY_UNIQUE" : "true"
+            },
+            "annotations" : {
+              "description" : "The unique identifier of the attached document."
+            }
+          }, {
+            "name" : "LastUpdateDate",
+            "type" : "datetime",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "title" : "Last Update Date",
+            "properties" : {
+              "FMT_FORMAT" : "d-MMM-yyyy HH:mm:ss"
+            },
+            "annotations" : {
+              "description" : "The date when the record was last updated."
+            }
+          }, {
+            "name" : "LastUpdatedBy",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 255,
+            "title" : "Last Updated By",
+            "maxLength" : "255",
+            "annotations" : {
+              "description" : "The user who last updated the record."
+            }
+          }, {
+            "name" : "DatatypeCode",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "precision" : 30,
+            "defaultValue" : "FILE",
+            "title" : "Type",
+            "maxLength" : "30",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "true"
+            },
+            "annotations" : {
+              "description" : "A value that indicates the data type."
+            }
+          }, {
+            "name" : "FileName",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "precision" : 2048,
+            "title" : "File Name",
+            "maxLength" : "2048",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "true"
+            },
+            "annotations" : {
+              "description" : "The file name of the attachment."
+            }
+          }, {
+            "name" : "DmFolderPath",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "precision" : 1000,
+            "title" : "Dm Folder Path",
+            "maxLength" : "1000",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "true"
+            },
+            "annotations" : {
+              "description" : "The folder path from which the attachment is created."
+            }
+          }, {
+            "name" : "DmDocumentId",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "precision" : 255,
+            "maxLength" : "255",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "true",
+              "fnd:OA_TRANSLATABLE" : "true"
+            },
+            "annotations" : {
+              "description" : "The document ID from which the attachment is created."
+            }
+          }, {
+            "name" : "DmVersionNumber",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "precision" : 255,
+            "maxLength" : "255",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "true"
+            },
+            "annotations" : {
+              "description" : "The document version number from which the attachment is created."
+            }
+          }, {
+            "name" : "Url",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "precision" : 4000,
+            "title" : "Url",
+            "maxLength" : "4000",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "true"
+            },
+            "annotations" : {
+              "description" : "The URL of a web page type attachment."
+            }
+          }, {
+            "name" : "CategoryName",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "precision" : 30,
+            "title" : "Category",
+            "maxLength" : "30",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "true"
+            },
+            "annotations" : {
+              "description" : "The category of the attachment."
+            }
+          }, {
+            "name" : "UserName",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 255,
+            "title" : "User Name",
+            "maxLength" : "255",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "false"
+            },
+            "annotations" : {
+              "description" : "The login credentials of the user who created the attachment."
+            }
+          }, {
+            "name" : "Uri",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "precision" : 4000,
+            "title" : "Uri",
+            "maxLength" : "4000",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "false"
+            },
+            "annotations" : {
+              "description" : "The URI of a Topology Manager type attachment."
+            }
+          }, {
+            "name" : "FileUrl",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : false,
+            "allowChanges" : "always",
+            "title" : "File Url",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "false"
+            },
+            "annotations" : {
+              "description" : "The URI of the file."
+            }
+          }, {
+            "name" : "UploadedText",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : false,
+            "allowChanges" : "always",
+            "title" : "Uploaded Text",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "false"
+            },
+            "annotations" : {
+              "description" : "The text content for a new text attachment."
+            }
+          }, {
+            "name" : "UploadedFileContentType",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : false,
+            "allowChanges" : "always",
+            "title" : "Uploaded File Content Type",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "false"
+            },
+            "annotations" : {
+              "description" : "The content type of the attachment."
+            }
+          }, {
+            "name" : "UploadedFileLength",
+            "type" : "integer",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : false,
+            "allowChanges" : "always",
+            "title" : "File Size",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "false"
+            },
+            "annotations" : {
+              "description" : "The size of the attachment file."
+            }
+          }, {
+            "name" : "UploadedFileName",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : false,
+            "allowChanges" : "always",
+            "title" : "Uploaded File Name",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "false"
+            },
+            "annotations" : {
+              "description" : "The name to assign to a new attachment file."
+            }
+          }, {
+            "name" : "ContentRepositoryFileShared",
+            "type" : "boolean",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : false,
+            "allowChanges" : "always",
+            "title" : "Shared",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "false"
+            },
+            "annotations" : {
+              "description" : "Indicates whether the attachment is shared"
+            }
+          }, {
+            "name" : "Title",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : false,
+            "allowChanges" : "always",
+            "title" : "Title",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "false"
+            },
+            "annotations" : {
+              "description" : "The title of the attachment."
+            }
+          }, {
+            "name" : "Description",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : false,
+            "allowChanges" : "always",
+            "precision" : 255,
+            "title" : "Description",
+            "maxLength" : "255",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "false"
+            },
+            "annotations" : {
+              "description" : "The description of the attachment."
+            }
+          }, {
+            "name" : "ErrorStatusCode",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : false,
+            "allowChanges" : "always",
+            "title" : "Error Status Code",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "false"
+            },
+            "annotations" : {
+              "description" : "The error code, if any, for the attachment."
+            }
+          }, {
+            "name" : "ErrorStatusMessage",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : false,
+            "allowChanges" : "always",
+            "title" : "Error Status Message",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "false"
+            },
+            "annotations" : {
+              "description" : "The error message, if any, for the attachment."
+            }
+          }, {
+            "name" : "CreatedBy",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 255,
+            "title" : "Created By",
+            "maxLength" : "255",
+            "annotations" : {
+              "description" : "The user who created the record."
+            }
+          }, {
+            "name" : "CreationDate",
+            "type" : "datetime",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "title" : "Creation Date",
+            "annotations" : {
+              "description" : "The date when the record was created."
+            }
+          }, {
+            "name" : "FileContents",
+            "type" : "attachment",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : false,
+            "allowChanges" : "always",
+            "title" : "File Contents",
+            "properties" : {
+              "XML_ELEMENT" : "#hide"
+            },
+            "actions" : [ {
+              "name" : "replace",
+              "method" : "PUT",
+              "requestType" : [ "application/octet-stream" ]
+            }, {
+              "name" : "delete",
+              "method" : "DELETE"
+            }, {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/octet-stream" ]
+            } ],
+            "annotations" : {
+              "description" : "The contents of the attachment."
+            }
+          }, {
+            "name" : "ExpirationDate",
+            "type" : "datetime",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "title" : "Expiration Date",
+            "annotations" : {
+              "description" : "The expiration date of the contents in the attachment."
+            }
+          }, {
+            "name" : "LastUpdatedByUserName",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "title" : "Last Updated By User",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "false"
+            },
+            "annotations" : {
+              "description" : "The user name who last updated the record."
+            }
+          }, {
+            "name" : "CreatedByUserName",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "title" : "Created By User Name",
+            "properties" : {
+              "fnd:FND_AUDIT_ATTR_ENABLED" : "false"
+            },
+            "annotations" : {
+              "description" : "The user name who created the record."
+            }
+          }, {
+            "name" : "AsyncTrackerId",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : false,
+            "allowChanges" : "inCreate",
+            "title" : "Asynchronous Upload Tracker Id",
+            "properties" : {
+              "DESCRIPTION" : "The identifier used to track asynchronous background uploads of file contents.  This field can only be used when the DatatypeCode=\"FILE\".  When queried it will only show when the ErrorCode=\"Pending\" which signifies that a background upload has been registered but not yet completed.  The async tracker id can only be set upon creation of an attachment.  If the FileContents and tracker id are set then the tracker will be ignored.",
+              "DISPLAYHINT" : "Hide",
+              "PAYLOADHINT" : "Show"
+            },
+            "annotations" : {
+              "description" : "Attribute provided for the exclusive use by the Attachment UI components to assist in uploading files."
+            }
+          } ],
+          "collection" : {
+            "rangeSize" : 0,
+            "finders" : [ {
+              "name" : "PrimaryKey",
+              "annotations" : {
+                "description" : "Finds the attached document with the specified primary key."
+              },
+              "attributes" : [ {
+                "name" : "AttachedDocumentId",
+                "type" : "integer",
+                "updatable" : true,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "inCreate",
+                "precision" : 18,
+                "hasDefaultValueExpression" : true,
+                "title" : "Attached Document Id",
+                "properties" : {
+                  "fnd:FND_AUDIT_ATTR_ENABLED" : "true",
+                  "fnd:GLOBALLY_UNIQUE" : "true"
+                },
+                "annotations" : {
+                  "description" : "The unique identifier of the attached document."
+                }
+              } ]
+            } ],
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/attachments",
+              "name" : "self",
+              "kind" : "collection"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ],
+              "annotations" : {
+                "title" : "Get all attachments."
+              }
+            }, {
+              "name" : "create",
+              "method" : "POST",
+              "requestType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ],
+              "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ],
+              "annotations" : {
+                "title" : "Create an attachment."
+              }
+            } ]
+          },
+          "item" : {
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/attachments/{id}",
+              "name" : "self",
+              "kind" : "item"
+            }, {
+              "rel" : "parent",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}",
+              "name" : "parent",
+              "kind" : "item"
+            }, {
+              "rel" : "canonical",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/attachments/{id}",
+              "name" : "canonical",
+              "kind" : "item"
+            }, {
+              "rel" : "enclosure",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/attachments/{id}/enclosure/FileContents",
+              "name" : "FileContents",
+              "kind" : "other"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ],
+              "annotations" : {
+                "title" : "Get an attachment."
+              }
+            } ]
+          },
+          "annotations" : {
+            "description" : "The attachments resource is used to view, create, and update attachments."
+          },
+          "links" : [ {
+            "rel" : "self",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/attachments/describe",
+            "name" : "self",
+            "kind" : "describe"
+          }, {
+            "rel" : "canonical",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/attachments/describe",
+            "name" : "canonical",
+            "kind" : "describe"
+          } ]
+        },
+        "businessUnits" : {
+          "discrColumnType" : false,
+          "attributes" : [ {
+            "name" : "OrgId",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never"
+          }, {
+            "name" : "ShortCode",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 240
+          }, {
+            "name" : "BusinessUnit",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 240
+          }, {
+            "name" : "LocationId",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 18
+          }, {
+            "name" : "ManagerId",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150
+          }, {
+            "name" : "LegalEntityId",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150
+          }, {
+            "name" : "PrimaryLedgerId",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150
+          }, {
+            "name" : "DefaultSetId",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150
+          }, {
+            "name" : "EnabledForHrFlag",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150
+          }, {
+            "name" : "FinBusinessUnitId",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150
+          }, {
+            "name" : "Status",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 30
+          }, {
+            "name" : "BusinessGroupId",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 18
+          }, {
+            "name" : "DefaultCurrencyCode",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150
+          }, {
+            "name" : "ProfitCenterFlag",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150
+          }, {
+            "name" : "CreatedBy",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 64
+          }, {
+            "name" : "CreationDate",
+            "type" : "datetime",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never"
+          }, {
+            "name" : "LastUpdatedBy",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 64
+          }, {
+            "name" : "LastUpdateDate",
+            "type" : "datetime",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never"
+          }, {
+            "name" : "LastUpdateLogin",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 32
+          }, {
+            "name" : "SetOfBooksId",
+            "type" : "number",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never"
+          } ],
+          "collection" : {
+            "rangeSize" : 0,
+            "finders" : [ {
+              "name" : "PrimaryKey",
+              "attributes" : [ {
+                "name" : "OrgId",
+                "type" : "integer",
+                "updatable" : true,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "never"
+              } ]
+            } ],
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/businessUnits",
+              "name" : "self",
+              "kind" : "collection"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+            } ]
+          },
+          "item" : {
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/businessUnits/{id}",
+              "name" : "self",
+              "kind" : "item"
+            }, {
+              "rel" : "parent",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}",
+              "name" : "parent",
+              "kind" : "item"
+            }, {
+              "rel" : "canonical",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/businessUnits/{id}",
+              "name" : "canonical",
+              "kind" : "item"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+            } ]
+          },
+          "links" : [ {
+            "rel" : "self",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/businessUnits/describe",
+            "name" : "self",
+            "kind" : "describe"
+          }, {
+            "rel" : "canonical",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/businessUnits/describe",
+            "name" : "canonical",
+            "kind" : "describe"
+          } ]
+        },
+        "conversionRateTypes" : {
+          "discrColumnType" : false,
+          "attributes" : [ {
+            "name" : "ConversionType",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 30,
+            "maxLength" : "30",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "UserConversionType",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 30,
+            "title" : "Conversion Rate Type",
+            "maxLength" : "30",
+            "properties" : {
+              "TOOLTIP" : "Conversion Rate Type"
+            }
+          }, {
+            "name" : "Description",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 240,
+            "title" : "Description",
+            "maxLength" : "240",
+            "properties" : {
+              "DISPLAYWIDTH" : "30",
+              "TOOLTIP" : "Description"
+            }
+          }, {
+            "name" : "PivotCurrencyCode",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 15,
+            "title" : "Cross Rate Pivot Currency",
+            "maxLength" : "15"
+          }, {
+            "name" : "EnableCrossRateFlag",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 1,
+            "title" : "Enable Cross Rates",
+            "maxLength" : "1",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "UserOverrideCrossRateFlag",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 1,
+            "title" : "Allow Cross Rates Override",
+            "maxLength" : "1",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "EnforceInverseRateFlag",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 1,
+            "title" : "Enforce Inverse Relationship",
+            "maxLength" : "1",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "Attribute1",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150,
+            "maxLength" : "150",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "Attribute2",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150,
+            "maxLength" : "150",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "Attribute3",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150,
+            "maxLength" : "150",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "Attribute4",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150,
+            "maxLength" : "150",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "Attribute5",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150,
+            "maxLength" : "150",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "Attribute6",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150,
+            "maxLength" : "150",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "Attribute7",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150,
+            "maxLength" : "150",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "Attribute8",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150,
+            "maxLength" : "150",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "Attribute9",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150,
+            "maxLength" : "150",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "Attribute10",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150,
+            "maxLength" : "150",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "Attribute11",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150,
+            "maxLength" : "150",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "Attribute12",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150,
+            "maxLength" : "150",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "Attribute13",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150,
+            "maxLength" : "150",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "Attribute14",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150,
+            "maxLength" : "150",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "Attribute15",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150,
+            "maxLength" : "150",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "SecurityFlag",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 1,
+            "maxLength" : "1",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "FemEnabledFlag",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 1,
+            "maxLength" : "1",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "FemScenario",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 100,
+            "maxLength" : "100",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "FemRateTypeCode",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 30,
+            "maxLength" : "30",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "FemTimeframe",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 9,
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "LastUpdateDate",
+            "type" : "datetime",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 6,
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "LastUpdatedBy",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 64,
+            "maxLength" : "64",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "CreationDate",
+            "type" : "datetime",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 6,
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "CreatedBy",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 64,
+            "maxLength" : "64",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "LastUpdateLogin",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 32,
+            "maxLength" : "32",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "ObjectVersionNumber",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 9,
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          }, {
+            "name" : "AttributeCategory",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150,
+            "maxLength" : "150",
+            "properties" : {
+              "DISPLAYHINT" : "Hide"
+            }
+          } ],
+          "collection" : {
+            "rangeSize" : 0,
+            "finders" : [ {
+              "name" : "PrimaryKey",
+              "attributes" : [ {
+                "name" : "ConversionType",
+                "type" : "string",
+                "updatable" : true,
+                "mandatory" : false,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "precision" : 30,
+                "maxLength" : "30",
+                "properties" : {
+                  "DISPLAYHINT" : "Hide"
+                }
+              } ]
+            } ],
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/conversionRateTypes",
+              "name" : "self",
+              "kind" : "collection"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+            } ]
+          },
+          "item" : {
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/conversionRateTypes/{id}",
+              "name" : "self",
+              "kind" : "item"
+            }, {
+              "rel" : "parent",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}",
+              "name" : "parent",
+              "kind" : "item"
+            }, {
+              "rel" : "canonical",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/conversionRateTypes/{id}",
+              "name" : "canonical",
+              "kind" : "item"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+            } ]
+          },
+          "links" : [ {
+            "rel" : "self",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/conversionRateTypes/describe",
+            "name" : "self",
+            "kind" : "describe"
+          }, {
+            "rel" : "canonical",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/conversionRateTypes/describe",
+            "name" : "canonical",
+            "kind" : "describe"
+          } ]
+        },
+        "customerAccounts" : {
+          "discrColumnType" : false,
+          "attributes" : [ {
+            "name" : "PartyId",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never"
+          }, {
+            "name" : "PartyName",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 360
+          }, {
+            "name" : "JgzzFiscalCode",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 20
+          }, {
+            "name" : "CustAccountId",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 18
+          }, {
+            "name" : "AccountNumber",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 30
+          }, {
+            "name" : "AccountName",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 240
+          }, {
+            "name" : "AccountEstablishedDate",
+            "type" : "date",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never"
+          } ],
+          "collection" : {
+            "rangeSize" : 0,
+            "finders" : [ {
+              "name" : "PrimaryKey",
+              "attributes" : [ {
+                "name" : "CustAccountId",
+                "type" : "integer",
+                "updatable" : true,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "precision" : 18
+              } ]
+            } ],
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/customerAccounts",
+              "name" : "self",
+              "kind" : "collection"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+            } ]
+          },
+          "item" : {
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/customerAccounts/{id}",
+              "name" : "self",
+              "kind" : "item"
+            }, {
+              "rel" : "parent",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}",
+              "name" : "parent",
+              "kind" : "item"
+            }, {
+              "rel" : "canonical",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/customerAccounts/{id}",
+              "name" : "canonical",
+              "kind" : "item"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+            } ]
+          },
+          "links" : [ {
+            "rel" : "self",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/customerAccounts/describe",
+            "name" : "self",
+            "kind" : "describe"
+          }, {
+            "rel" : "canonical",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/customerAccounts/describe",
+            "name" : "canonical",
+            "kind" : "describe"
+          } ]
+        },
+        "customerSiteUses" : {
+          "discrColumnType" : false,
+          "attributes" : [ {
+            "name" : "Location",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 255
+          }, {
+            "name" : "PrimaryFlag",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 1
+          }, {
+            "name" : "SiteUseId",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 18
+          }, {
+            "name" : "LocationId",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 18
+          }, {
+            "name" : "Address1",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 240
+          }, {
+            "name" : "SiteStartDate",
+            "type" : "date",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never"
+          }, {
+            "name" : "SiteUseStartDate",
+            "type" : "date",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never"
+          } ],
+          "collection" : {
+            "rangeSize" : 0,
+            "finders" : [ {
+              "name" : "PrimaryKey",
+              "attributes" : [ {
+                "name" : "SiteUseId",
+                "type" : "integer",
+                "updatable" : true,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "precision" : 18
+              } ]
+            } ],
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/customerSiteUses",
+              "name" : "self",
+              "kind" : "collection"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+            } ]
+          },
+          "item" : {
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/customerSiteUses/{id}",
+              "name" : "self",
+              "kind" : "item"
+            }, {
+              "rel" : "parent",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}",
+              "name" : "parent",
+              "kind" : "item"
+            }, {
+              "rel" : "canonical",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/customerSiteUses/{id}",
+              "name" : "canonical",
+              "kind" : "item"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+            } ]
+          },
+          "links" : [ {
+            "rel" : "self",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/customerSiteUses/describe",
+            "name" : "self",
+            "kind" : "describe"
+          }, {
+            "rel" : "canonical",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/customerSiteUses/describe",
+            "name" : "canonical",
+            "kind" : "describe"
+          } ]
+        },
+        "receiptMethods" : {
+          "discrColumnType" : false,
+          "attributes" : [ {
+            "name" : "Receiptmethodname",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 30
+          }, {
+            "name" : "Receiptmethodid",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 18
+          }, {
+            "name" : "PaymentTypeCode",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 30
+          }, {
+            "name" : "PaymentChannelCode",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 30
+          }, {
+            "name" : "Receiptclassname",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 30
+          }, {
+            "name" : "CreationStatus",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 30
+          }, {
+            "name" : "RemitFlag",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 1
+          }, {
+            "name" : "NotesReceivable",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 1
+          }, {
+            "name" : "CreationMethodCode",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 30
+          }, {
+            "name" : "Receiptclassid",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 18
+          }, {
+            "name" : "OrgId",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 18
+          }, {
+            "name" : "RemitBankAcctUseId",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 18
+          }, {
+            "name" : "OverrideFlag",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 1
+          }, {
+            "name" : "PrimaryFlag",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 1
+          }, {
+            "name" : "BankAcctUseId",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 18
+          }, {
+            "name" : "BankAccountName",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 360
+          }, {
+            "name" : "BankAccountNum",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 30
+          }, {
+            "name" : "MultiCurrencyAllowedFlag",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 1
+          }, {
+            "name" : "CurrencyCode",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 15
+          }, {
+            "name" : "BankAccountId",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 18
+          }, {
+            "name" : "AccountOwnerOrgId",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 18
+          }, {
+            "name" : "BankName",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 360
+          }, {
+            "name" : "BranchPartyId",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 18
+          }, {
+            "name" : "BankBranchName",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 360
+          }, {
+            "name" : "LegalEntityId",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 18
+          } ],
+          "collection" : {
+            "rangeSize" : 0,
+            "finders" : [ {
+              "name" : "PrimaryKey",
+              "attributes" : [ {
+                "name" : "Receiptmethodid",
+                "type" : "integer",
+                "updatable" : true,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "precision" : 18
+              } ]
+            } ],
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/receiptMethods",
+              "name" : "self",
+              "kind" : "collection"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+            } ]
+          },
+          "item" : {
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/receiptMethods/{id}",
+              "name" : "self",
+              "kind" : "item"
+            }, {
+              "rel" : "parent",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}",
+              "name" : "parent",
+              "kind" : "item"
+            }, {
+              "rel" : "canonical",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/receiptMethods/{id}",
+              "name" : "canonical",
+              "kind" : "item"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+            } ]
+          },
+          "links" : [ {
+            "rel" : "self",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/receiptMethods/describe",
+            "name" : "self",
+            "kind" : "describe"
+          }, {
+            "rel" : "canonical",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/receiptMethods/describe",
+            "name" : "canonical",
+            "kind" : "describe"
+          } ]
+        },
+        "remittanceReferences" : {
+          "discrColumnType" : false,
+          "attributes" : [ {
+            "name" : "RemittanceReferenceId",
+            "type" : "integer",
+            "updatable" : true,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "precision" : 18,
+            "hasDefaultValueExpression" : true,
+            "title" : "Remittance Reference ID",
+            "properties" : {
+              "fnd:GLOBALLY_UNIQUE" : "true"
+            },
+            "annotations" : {
+              "description" : "The unique identifier of the remittance reference of the standard receipt."
+            }
+          }, {
+            "name" : "ReceiptMatchBy",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : false,
+            "allowChanges" : "always",
+            "title" : "Receipt Match By",
+            "annotations" : {
+              "description" : "The document type used to match the standard receipt to a transaction."
+            }
+          }, {
+            "name" : "ReferenceNumber",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : false,
+            "allowChanges" : "always",
+            "precision" : 50,
+            "title" : "Reference Number",
+            "maxLength" : "50",
+            "annotations" : {
+              "description" : "The unique identifier of the selected document type."
+            }
+          }, {
+            "name" : "ReferenceAmount",
+            "type" : "number",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : false,
+            "allowChanges" : "always",
+            "title" : "Reference Amount",
+            "annotations" : {
+              "description" : "The receipt application amount."
+            }
+          }, {
+            "name" : "CreatedBy",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : false,
+            "allowChanges" : "never",
+            "precision" : 64,
+            "title" : "Created By",
+            "maxLength" : "64",
+            "annotations" : {
+              "description" : "The user who created the record."
+            }
+          }, {
+            "name" : "CreationDate",
+            "type" : "datetime",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : false,
+            "allowChanges" : "never",
+            "title" : "Creation Date",
+            "annotations" : {
+              "description" : "The date when the record was created."
+            }
+          }, 
+		  {
+            "name" : "LastUpdatedBy",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : false,
+            "allowChanges" : "never",
+            "precision" : 64,
+            "title" : "Last Updated By",
+            "maxLength" : "64",
+            "annotations" : {
+              "description" : "The user who last updated the record."
+            }
+          }, 
+		  {
+            "name" : "LastUpdateDate",
+            "type" : "datetime",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : false,
+            "allowChanges" : "never",
+            "title" : "Last Update Date",
+            "annotations" : {
+              "description" : "The date when the record was last updated."
+            }
+          } ],
+          "collection" : {
+            "rangeSize" : 0,
+            "finders" : [ {
+              "name" : "PrimaryKey",
+              "attributes" : [ {
+                "name" : "RemittanceReferenceId",
+                "type" : "integer",
+                "updatable" : true,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "always",
+                "precision" : 18,
+                "hasDefaultValueExpression" : true,
+                "title" : "Remittance Reference ID",
+                "properties" : {
+                  "fnd:GLOBALLY_UNIQUE" : "true"
+                }
+              } ]
+            } ],
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/remittanceReferences",
+              "name" : "self",
+              "kind" : "collection"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+            }, {
+              "name" : "create",
+              "method" : "POST",
+              "requestType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ],
+              "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+            } ]
+          },
+          "item" : {
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/remittanceReferences/{id}",
+              "name" : "self",
+              "kind" : "item"
+            }, {
+              "rel" : "parent",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}",
+              "name" : "parent",
+              "kind" : "item"
+            }, {
+              "rel" : "canonical",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/remittanceReferences/{id}",
+              "name" : "canonical",
+              "kind" : "item"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+            } ]
+          },
+          "annotations" : {
+            "description" : "The remittance references resource is used to add one or more remittance references to a standard receipt."
+          },
+          "links" : [ {
+            "rel" : "self",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/remittanceReferences/describe",
+            "name" : "self",
+            "kind" : "describe"
+          }, {
+            "rel" : "canonical",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/remittanceReferences/describe",
+            "name" : "canonical",
+            "kind" : "describe"
+          } ]
+        },
+        "standardReceiptDFF" : {
+          "discrColumnType" : true,
+          "attributes" : [ {
+            "name" : "CashReceiptId",
+            "type" : "integer",
+            "updatable" : true,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "precision" : 18,
+            "hasDefaultValueExpression" : true,
+            "properties" : {
+              "DISPLAYHINT" : "Hide",
+              "fnd:GLOBALLY_UNIQUE" : "true"
+            }
+          }, 
+		  {
+            "name" : "__FLEX_Context",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "precision" : 30,
+            "title" : "Context Value",
+            "controlType" : "choice",
+            "includeInCompactView" : true,
+            "maxLength" : "30",
+            "properties" : {
+              "DISPLAYWIDTH" : "30",
+              "FND_ACFF_AkaAttrName" : "__FLEX_Context_DisplayValue",
+              "FND_ACFF_FlexfieldResourceBundleResId" : "rev.a222.dAR_CASH_RECEIPTS..d5p",
+              "FND_ACFF_JavaType" : "java.lang.String",
+              "FND_ACFF_MaximumLength" : "1024",
+              "FND_ACFF_NLS_UNIT" : "Context Value",
+              "FND_ACFF_VAPPE_LVVO___FLEX_Context_Bind_ApplicationId" : "oracle.apps.fnd.applcore.flex.runtime.util.common.PortableExpression#$null$#222",
+              "FND_ACFF_VAPPE_LVVO___FLEX_Context_Bind_DescriptiveFlexfieldCode" : "oracle.apps.fnd.applcore.flex.runtime.util.common.PortableExpression#$null$#\"AR_CASH_RECEIPTS\"",
+              "FND_ACFF_VAPPE_LVVO___FLEX_Context_DisplayValue_Bind_ApplicationId" : "oracle.apps.fnd.applcore.flex.runtime.util.common.PortableExpression#$null$#222",
+              "FND_ACFF_VAPPE_LVVO___FLEX_Context_DisplayValue_Bind_ContextCode" : "oracle.apps.fnd.applcore.flex.runtime.util.common.PortableViewAttrExpression#__FLEX_Context#$|__FLEX_Context|$",
+              "FND_ACFF_VAPPE_LVVO___FLEX_Context_DisplayValue_Bind_DescriptiveFlexfieldCode" : "oracle.apps.fnd.applcore.flex.runtime.util.common.PortableExpression#$null$#\"AR_CASH_RECEIPTS\"",
+              "TOOLTIP" : "Context Value"
+            },
+            "lov" : {
+              "childRef" : "LVVO___FLEX_Context",
+              "attributeMap" : [ {
+                "source" : "ContextCode",
+                "target" : "__FLEX_Context"
+              } ],
+              "displayAttributes" : [ "Name" ],
+              "lovResourcePath" : [ {
+                "resource" : "FlexFndDffDescriptiveFlexfieldContexts",
+                "filter" : "?finder=ValidValuesFinder%3BBind_ApplicationId%3D222%2CBind_DescriptiveFlexfieldCode%3DAR_CASH_RECEIPTS"
+              } ]
+            }
+          }, {
+            "name" : "__FLEX_Context_DisplayValue",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "hasDefaultValueExpression" : true,
+            "title" : "Context Value",
+            "properties" : {
+              "DISPLAYHINT" : "Hide",
+              "DISPLAYWIDTH" : "30",
+              "FND_ACFF_AkaRealSegmentAttrName" : "__FLEX_Context",
+              "FND_ACFF_FlexfieldResourceBundleResId" : "rev.a222.dAR_CASH_RECEIPTS..d5p",
+              "FND_ACFF_IsReadOnly" : "true",
+              "FND_ACFF_JavaType" : "java.lang.String",
+              "FND_ACFF_ListDisplayAttrName" : "Name",
+              "FND_ACFF_MaximumLength" : "1024",
+              "FND_ACFF_NLS_UNIT" : "Context Value",
+              "TOOLTIP" : "Context Value",
+              "updateable" : "false"
+            }
+          } ],
+          "collection" : {
+            "rangeSize" : 0,
+            "finders" : [ {
+              "name" : "PrimaryKey",
+              "attributes" : [ {
+                "name" : "CashReceiptId",
+                "type" : "integer",
+                "updatable" : true,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "always",
+                "precision" : 18,
+                "hasDefaultValueExpression" : true,
+                "properties" : {
+                  "DISPLAYHINT" : "Hide",
+                  "fnd:GLOBALLY_UNIQUE" : "true"
+                }
+              } ]
+            } ],
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptDFF",
+              "name" : "self",
+              "kind" : "collection"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+            }, {
+              "name" : "create",
+              "method" : "POST",
+              "requestType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ],
+              "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+            } ]
+          },
+          "item" : {
+            "links" : [ {
+              "rel" : "lov",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptDFF/{id}/lov/LVVO___FLEX_Context",
+              "name" : "LVVO___FLEX_Context",
+              "kind" : "collection"
+            }, {
+              "rel" : "self",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptDFF/{id}",
+              "name" : "self",
+              "kind" : "item"
+            }, {
+              "rel" : "parent",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}",
+              "name" : "parent",
+              "kind" : "item"
+            }, {
+              "rel" : "canonical",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptDFF/{id}",
+              "name" : "canonical",
+              "kind" : "item"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+            } ]
+          },
+          "subtypes" : {
+            "discriminator" : "__FLEX_Context",
+            "mapping" : {
+              "$ref" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/describe?polymorphicType=standardReceipts.standardReceiptDFF"
+            }
+          },
+          "children" : {
+            "LVVO___FLEX_Context" : {
+              "discrColumnType" : false,
+              "attributes" : [ {
+                "name" : "ApplicationId",
+                "type" : "integer",
+                "updatable" : false,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "precision" : 18
+              }, {
+                "name" : "DescriptiveFlexfieldCode",
+                "type" : "string",
+                "updatable" : false,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "precision" : 40
+              }, {
+                "name" : "ContextCode",
+                "type" : "string",
+                "updatable" : false,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "precision" : 80
+              }, {
+                "name" : "Name",
+                "type" : "string",
+                "updatable" : false,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "precision" : 80,
+                "title" : "Name",
+                "maxLength" : "80"
+              }, {
+                "name" : "Description",
+                "type" : "string",
+                "updatable" : false,
+                "mandatory" : false,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "precision" : 240,
+                "title" : "Description",
+                "maxLength" : "240"
+              }, {
+                "name" : "EnabledFlag",
+                "type" : "string",
+                "updatable" : false,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "precision" : 1
+              } ],
+              "collection" : {
+                "rangeSize" : 0,
+                "finders" : [ {
+                  "name" : "PrimaryKey",
+                  "attributes" : [ {
+                    "name" : "ApplicationId",
+                    "type" : "integer",
+                    "updatable" : true,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "never",
+                    "precision" : 18
+                  }, {
+                    "name" : "ContextCode",
+                    "type" : "string",
+                    "updatable" : true,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "never",
+                    "precision" : 80
+                  }, {
+                    "name" : "DescriptiveFlexfieldCode",
+                    "type" : "string",
+                    "updatable" : true,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "never",
+                    "precision" : 40
+                  } ]
+                }, {
+                  "name" : "ValidValuesFinder",
+                  "title" : "ValidValuesCriteria",
+                  "attributes" : [ {
+                    "name" : "Bind_ApplicationId",
+                    "type" : "integer",
+                    "updatable" : true,
+                    "required" : "Optional",
+                    "queryable" : false,
+                    "allowChanges" : "always"
+                  }, {
+                    "name" : "Bind_DescriptiveFlexfieldCode",
+                    "type" : "string",
+                    "updatable" : true,
+                    "required" : "Optional",
+                    "queryable" : false,
+                    "allowChanges" : "always"
+                  } ]
+                } ],
+                "links" : [ {
+                  "rel" : "self",
+                  "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptDFF/{id}/child/LVVO___FLEX_Context",
+                  "name" : "self",
+                  "kind" : "collection"
+                } ],
+                "actions" : [ {
+                  "name" : "get",
+                  "method" : "GET",
+                  "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+                } ]
+              },
+              "item" : {
+                "links" : [ {
+                  "rel" : "self",
+                  "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptDFF/{id}/child/LVVO___FLEX_Context/{id}",
+                  "name" : "self",
+                  "kind" : "item"
+                }, {
+                  "rel" : "parent",
+                  "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptDFF/{id}",
+                  "name" : "parent",
+                  "kind" : "item"
+                }, {
+                  "rel" : "canonical",
+                  "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptDFF/{id}/child/LVVO___FLEX_Context/{id}",
+                  "name" : "canonical",
+                  "kind" : "item"
+                } ],
+                "actions" : [ {
+                  "name" : "get",
+                  "method" : "GET",
+                  "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+                } ]
+              },
+              "links" : [ {
+                "rel" : "self",
+                "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptDFF/{id}/child/LVVO___FLEX_Context/describe",
+                "name" : "self",
+                "kind" : "describe"
+              }, {
+                "rel" : "canonical",
+                "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptDFF/{id}/child/LVVO___FLEX_Context/describe",
+                "name" : "canonical",
+                "kind" : "describe"
+              } ]
+            }
+          },
+          "links" : [ {
+            "rel" : "self",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptDFF/describe",
+            "name" : "self",
+            "kind" : "describe"
+          }, {
+            "rel" : "canonical",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptDFF/describe",
+            "name" : "canonical",
+            "kind" : "describe"
+          }, {
+            "rel" : "lov",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/FlexFndDffDescriptiveFlexfieldContexts",
+            "name" : "FlexFndDffDescriptiveFlexfieldContexts",
+            "kind" : "collection"
+          } ]
+        },
+        "standardReceiptGdf" : {
+          "discrColumnType" : true,
+          "attributes" : [ {
+            "name" : "CashReceiptId",
+            "type" : "integer",
+            "updatable" : true,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "precision" : 18,
+            "hasDefaultValueExpression" : true,
+            "properties" : {
+              "DISPLAYHINT" : "Hide",
+              "fnd:GLOBALLY_UNIQUE" : "true"
+            }
+          }, {
+            "name" : "__FLEX_Context",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "precision" : 30,
+            "title" : "Regional Information",
+            "controlType" : "choice",
+            "includeInCompactView" : true,
+            "maxLength" : "30",
+            "properties" : {
+              "DISPLAYWIDTH" : "30",
+              "FND_ACFF_AkaAttrName" : "__FLEX_Context_DisplayValue",
+              "FND_ACFF_FlexfieldResourceBundleResId" : "rev.a7003.dJG_AR_CASH_RECEIPTS..d5p",
+              "FND_ACFF_NLS_UNIT" : "Regional Information",
+              "FND_ACFF_VAPPE_LVVO___FLEX_Context_Bind_ValidationDate" : "oracle.apps.fnd.applcore.flex.runtime.util.common.PortableExpression#$null$#oracle.apps.fnd.applcore.oaext.model.FlexfieldQueryContext.getValidationDate(adf.isCriteriaRow, adf.object.viewObject)",
+              "FND_ACFF_VAPPE_LVVO___FLEX_Context_DisplayValue_Bind_Id" : "oracle.apps.fnd.applcore.flex.runtime.util.common.PortableViewAttrExpression#__FLEX_Context#$|__FLEX_Context|$",
+              "FND_ACFF_VAPPE_LVVO___FLEX_Context_DisplayValue_flex_vst_bind1" : "oracle.apps.fnd.applcore.flex.runtime.util.common.PortableExpression#$null$#\"JG_AR_CASH_RECEIPTS\"",
+              "FND_ACFF_VAPPE_LVVO___FLEX_Context_DisplayValue_flex_vst_bind2" : "oracle.apps.fnd.applcore.flex.runtime.util.common.PortableExpression#$null$#adf.isCriteriaRow?null:FLEX_PARAM_GLOBAL_COUNTRY_CODE",
+              "FND_ACFF_VAPPE_LVVO___FLEX_Context_DisplayValue_flex_vst_bind3" : "oracle.apps.fnd.applcore.flex.runtime.util.common.PortableExpression#$null$#adf.isCriteriaRow?null:FLEX_PARAM_GLOBAL_COUNTRY_CODE",
+              "FND_ACFF_VAPPE_LVVO___FLEX_Context_flex_vst_bind1" : "oracle.apps.fnd.applcore.flex.runtime.util.common.PortableExpression#$null$#\"JG_AR_CASH_RECEIPTS\"",
+              "FND_ACFF_VAPPE_LVVO___FLEX_Context_flex_vst_bind2" : "oracle.apps.fnd.applcore.flex.runtime.util.common.PortableExpression#$null$#adf.isCriteriaRow?null:FLEX_PARAM_GLOBAL_COUNTRY_CODE",
+              "FND_ACFF_VAPPE_LVVO___FLEX_Context_flex_vst_bind3" : "oracle.apps.fnd.applcore.flex.runtime.util.common.PortableExpression#$null$#adf.isCriteriaRow?null:FLEX_PARAM_GLOBAL_COUNTRY_CODE",
+              "TOOLTIP" : "Regional Information"
+            },
+            "lov" : {
+              "childRef" : "LVVO___FLEX_Context",
+              "attributeMap" : [ {
+                "source" : "Id",
+                "target" : "__FLEX_Context"
+              } ],
+              "displayAttributes" : [ "Value" ]
+            }
+          }, {
+            "name" : "__FLEX_Context_DisplayValue",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "hasDefaultValueExpression" : true,
+            "title" : "Regional Information",
+            "properties" : {
+              "DISPLAYHINT" : "Hide",
+              "DISPLAYWIDTH" : "30",
+              "FND_ACFF_AkaRealSegmentAttrName" : "__FLEX_Context",
+              "FND_ACFF_FlexfieldResourceBundleResId" : "rev.a7003.dJG_AR_CASH_RECEIPTS..d5p",
+              "FND_ACFF_IsReadOnly" : "true",
+              "FND_ACFF_ListDisplayAttrName" : "Value",
+              "FND_ACFF_NLS_UNIT" : "Regional Information",
+              "TOOLTIP" : "Regional Information",
+              "updateable" : "false"
+            }
+          } ],
+          "collection" : {
+            "rangeSize" : 0,
+            "finders" : [ {
+              "name" : "PrimaryKey",
+              "attributes" : [ {
+                "name" : "CashReceiptId",
+                "type" : "integer",
+                "updatable" : true,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "always",
+                "precision" : 18,
+                "hasDefaultValueExpression" : true,
+                "properties" : {
+                  "DISPLAYHINT" : "Hide",
+                  "fnd:GLOBALLY_UNIQUE" : "true"
+                }
+              } ]
+            } ],
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptGdf",
+              "name" : "self",
+              "kind" : "collection"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+            }, {
+              "name" : "create",
+              "method" : "POST",
+              "requestType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ],
+              "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+            } ]
+          },
+          "item" : {
+            "links" : [ {
+              "rel" : "lov",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptGdf/{id}/lov/LVVO___FLEX_Context",
+              "name" : "LVVO___FLEX_Context",
+              "kind" : "collection"
+            }, {
+              "rel" : "self",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptGdf/{id}",
+              "name" : "self",
+              "kind" : "item"
+            }, {
+              "rel" : "parent",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}",
+              "name" : "parent",
+              "kind" : "item"
+            }, {
+              "rel" : "canonical",
+              "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptGdf/{id}",
+              "name" : "canonical",
+              "kind" : "item"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+            } ]
+          },
+          "subtypes" : {
+            "discriminator" : "__FLEX_Context",
+            "mapping" : {
+              "$ref" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/describe?polymorphicType=standardReceipts.standardReceiptGdf"
+            }
+          },
+          "children" : {
+            "LVVO___FLEX_Context" : {
+              "discrColumnType" : false,
+              "attributes" : [ {
+                "name" : "Id",
+                "type" : "string",
+                "updatable" : false,
+                "mandatory" : false,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "properties" : {
+                  "DISPLAYHINT" : "Hide",
+                  "DISPLAYWIDTH" : "30"
+                }
+              }, {
+                "name" : "Value",
+                "type" : "string",
+                "updatable" : false,
+                "mandatory" : false,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "title" : "Value",
+                "properties" : {
+                  "DISPLAYWIDTH" : "30"
+                }
+              }, {
+                "name" : "Description",
+                "type" : "string",
+                "updatable" : false,
+                "mandatory" : false,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "title" : "Description",
+                "properties" : {
+                  "DISPLAYWIDTH" : "30"
+                }
+              }, {
+                "name" : "StartDateActive",
+                "type" : "date",
+                "updatable" : false,
+                "mandatory" : false,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "properties" : {
+                  "DISPLAYHINT" : "Hide",
+                  "DISPLAYWIDTH" : "30"
+                }
+              }, {
+                "name" : "EndDateActive",
+                "type" : "date",
+                "updatable" : false,
+                "mandatory" : false,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "properties" : {
+                  "DISPLAYHINT" : "Hide",
+                  "DISPLAYWIDTH" : "30"
+                }
+              }, {
+                "name" : "EnabledFlag",
+                "type" : "string",
+                "updatable" : false,
+                "mandatory" : false,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "properties" : {
+                  "DISPLAYHINT" : "Hide",
+                  "DISPLAYWIDTH" : "30"
+                }
+              } ],
+              "collection" : {
+                "rangeSize" : 0,
+                "finders" : [ {
+                  "name" : "PrimaryKey",
+                  "attributes" : [ {
+                    "name" : "Id",
+                    "type" : "string",
+                    "updatable" : true,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "never",
+                    "properties" : {
+                      "DISPLAYHINT" : "Hide",
+                      "DISPLAYWIDTH" : "30"
+                    }
+                  } ]
+                } ],
+                "links" : [ {
+                  "rel" : "self",
+                  "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptGdf/{id}/child/LVVO___FLEX_Context",
+                  "name" : "self",
+                  "kind" : "collection"
+                } ],
+                "actions" : [ {
+                  "name" : "get",
+                  "method" : "GET",
+                  "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+                } ]
+              },
+              "item" : {
+                "links" : [ {
+                  "rel" : "self",
+                  "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptGdf/{id}/child/LVVO___FLEX_Context/{id}",
+                  "name" : "self",
+                  "kind" : "item"
+                }, {
+                  "rel" : "parent",
+                  "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptGdf/{id}",
+                  "name" : "parent",
+                  "kind" : "item"
+                }, {
+                  "rel" : "canonical",
+                  "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptGdf/{id}/child/LVVO___FLEX_Context/{id}",
+                  "name" : "canonical",
+                  "kind" : "item"
+                } ],
+                "actions" : [ {
+                  "name" : "get",
+                  "method" : "GET",
+                  "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+                } ]
+              },
+              "links" : [ {
+                "rel" : "self",
+                "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptGdf/{id}/child/LVVO___FLEX_Context/describe",
+                "name" : "self",
+                "kind" : "describe"
+              }, {
+                "rel" : "canonical",
+                "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptGdf/{id}/child/LVVO___FLEX_Context/describe",
+                "name" : "canonical",
+                "kind" : "describe"
+              } ]
+            }
+          },
+          "links" : [ {
+            "rel" : "self",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptGdf/describe",
+            "name" : "self",
+            "kind" : "describe"
+          }, {
+            "rel" : "canonical",
+            "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/{id}/child/standardReceiptGdf/describe",
+            "name" : "canonical",
+            "kind" : "describe"
+          } ]
+        }
+      },
+      "links" : [ {
+        "rel" : "self",
+        "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/describe",
+        "name" : "self",
+        "kind" : "describe"
+      }, {
+        "rel" : "canonical",
+        "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/standardReceipts/describe",
+        "name" : "canonical",
+        "kind" : "describe"
+      } ]
+    }
+  }
+}
