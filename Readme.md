@@ -64,20 +64,20 @@
 ## Папка library-spring-acl
 Домашнее задание по теме "Ввести авторизацию на основе URL и/или доменных сущностей"
 
-##Папка spring-batch
+## Папка spring-batch
 Домашнее задание по теме "Spring Batch"
 
-##Папка spring-integration
+## Папка spring-integration
 Домашнее задание по теме "Spring Integration: Endpoints и Flow Components"
 
-##Папка library-spring-actuator
+## Папка library-spring-actuator
 Домашнее задание по теме "Монолиты vs. Microservices (Round 2), Spring Boot Actuator - must have в микросервисах"
 
-##Папка library-spring-docker
+## Папка library-spring-docker
 Домашнее задание по теме "Docker, оркестрация, облака, облачные хостинги"
 
-##Папка library-spring-hystrix
+## Папка library-spring-hystrix
 Домашнее задание по теме "Spring Cloud Service Discovery, Zuul, Hystrix, Sleuth, Zipkin"
 
-##Папка oca-extension
+## Папка oca-extension
 Проектная работа по теме: Creating extension for Oracle Cloud Applications with Spring Framework
