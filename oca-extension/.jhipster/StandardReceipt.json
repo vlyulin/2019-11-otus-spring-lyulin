@@ -1,0 +1,193 @@
+{
+    "name": "StandardReceipt",
+    "fields": [
+        {
+            "fieldName": "standardReceiptId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "receiptNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "businessUnit",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "receiptMethod",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "receiptDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "documentNumber",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "currency",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "conversionRateType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "conversionDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "conversionRate",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "state",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "remittanceBankName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "remittanceBankBranch",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "remittanceBankAccountNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "remittanceBankDepositDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "remittanceBankAllowOverride",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "customerName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "taxpayerIdentificationNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "customerSite",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "customerAccountNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "customerBank",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "customerBankBranch",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "customerBankAccountNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "unappliedAmount",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "accountedAmount",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "accountingDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "maturityDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "postmarkDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "receiptAtRisk",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "receivablesSpecialist",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "comments",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "creditCardTokenNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "creditCardAuthorizationRequestIdentifier",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "cardHolderFirstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cardHolderLastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "creditCardIssuerCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "creditCardExpirationDate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "voiceAuthorizationCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "creationDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "lastUpdateDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "lastUpdatedBy",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200513210000",
+    "entityTableName": "standard_receipt",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,173 @@
+<div>
+    <h2 id="page-heading">
+        <span>Standard Receipts</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-standard-receipt" [routerLink]="['/standard-receipt/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Standard Receipt
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="standardReceipts?.length === 0">
+        <span>No standardReceipts found</span>
+    </div>
+
+    <div class="row justify-content-left">
+        <div class="col-8">
+            <form name="editForm" role="form" novalidate (ngSubmit)="find()" [formGroup]="queryForm">   
+                <div>
+                    <jhi-alert-error></jhi-alert-error>
+    
+                    <div class="form-group">
+                        <label for="id">Query:</label>
+                        <input type="text" class="form-control" id="q" name="q" formControlName="q"/>
+                        <button type="submit" id="query" class="btn btn-primary">Find</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="standardReceipts?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span>Standard Receipt Id</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!-- <th scope="col"  jhiSortBy="standardReceiptId"><span>Standard Receipt Id</span> <fa-icon icon="sort"></fa-icon></th> -->
+                    <th scope="col"  jhiSortBy="receiptNumber"><span>Receipt Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="businessUnit"><span>Business Unit</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="receiptMethod"><span>Receipt Method</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="receiptDate"><span>Receipt Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="documentNumber"><span>Document Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="amount"><span>Amount</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="currency"><span>Currency</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="conversionRateType"><span>Conversion Rate Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="conversionDate"><span>Conversion Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="conversionRate"><span>Conversion Rate</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="state"><span>State</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="status"><span>Status</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="remittanceBankName"><span>Remittance Bank Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="remittanceBankBranch"><span>Remittance Bank Branch</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="remittanceBankAccountNumber"><span>Remittance Bank Account Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="remittanceBankDepositDate"><span>Remittance Bank Deposit Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="remittanceBankAllowOverride"><span>Remittance Bank Allow Override</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="customerName"><span>Customer Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="taxpayerIdentificationNumber"><span>Taxpayer Identification Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="customerSite"><span>Customer Site</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="customerAccountNumber"><span>Customer Account Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="customerBank"><span>Customer Bank</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="customerBankBranch"><span>Customer Bank Branch</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="customerBankAccountNumber"><span>Customer Bank Account Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="unappliedAmount"><span>Unapplied Amount</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="accountedAmount"><span>Accounted Amount</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="accountingDate"><span>Accounting Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="maturityDate"><span>Maturity Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="postmarkDate"><span>Postmark Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="receiptAtRisk"><span>Receipt At Risk</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="receivablesSpecialist"><span>Receivables Specialist</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="comments"><span>Comments</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="creditCardTokenNumber"><span>Credit Card Token Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="creditCardAuthorizationRequestIdentifier"><span>Credit Card Authorization Request Identifier</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cardHolderFirstName"><span>Card Holder First Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cardHolderLastName"><span>Card Holder Last Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="creditCardIssuerCode"><span>Credit Card Issuer Code</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="creditCardExpirationDate"><span>Credit Card Expiration Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="voiceAuthorizationCode"><span>Voice Authorization Code</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createdBy"><span>Created By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="creationDate"><span>Creation Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lastUpdateDate"><span>Last Update Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lastUpdatedBy"><span>Last Updated By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let standardReceipt of standardReceipts ;trackBy: trackId">
+                    <td><a [routerLink]="['/standard-receipt', standardReceipt.standardReceiptId, 'view']">{{ standardReceipt.standardReceiptId }}</a></td>
+                    <!-- <td>{{ standardReceipt.standardReceiptId }}</td> -->
+                    <td>{{ standardReceipt.receiptNumber }}</td>
+                    <td>{{ standardReceipt.businessUnit }}</td>
+                    <td>{{ standardReceipt.receiptMethod }}</td>
+                    <td>{{ standardReceipt.receiptDate | date:'mediumDate' }}</td>
+                    <td>{{ standardReceipt.documentNumber }}</td>
+                    <td>{{ standardReceipt.amount }}</td>
+                    <td>{{ standardReceipt.currency }}</td>
+                    <td>{{ standardReceipt.conversionRateType }}</td>
+                    <td>{{ standardReceipt.conversionDate | date:'mediumDate' }}</td>
+                    <td>{{ standardReceipt.conversionRate }}</td>
+                    <td>{{ standardReceipt.state }}</td>
+                    <td>{{ standardReceipt.status }}</td>
+                    <td>{{ standardReceipt.remittanceBankName }}</td>
+                    <td>{{ standardReceipt.remittanceBankBranch }}</td>
+                    <td>{{ standardReceipt.remittanceBankAccountNumber }}</td>
+                    <td>{{ standardReceipt.remittanceBankDepositDate | date:'mediumDate' }}</td>
+                    <td>{{ standardReceipt.remittanceBankAllowOverride }}</td>
+                    <td>{{ standardReceipt.customerName }}</td>
+                    <td>{{ standardReceipt.taxpayerIdentificationNumber }}</td>
+                    <td>{{ standardReceipt.customerSite }}</td>
+                    <td>{{ standardReceipt.customerAccountNumber }}</td>
+                    <td>{{ standardReceipt.customerBank }}</td>
+                    <td>{{ standardReceipt.customerBankBranch }}</td>
+                    <td>{{ standardReceipt.customerBankAccountNumber }}</td>
+                    <td>{{ standardReceipt.unappliedAmount }}</td>
+                    <td>{{ standardReceipt.accountedAmount }}</td>
+                    <td>{{ standardReceipt.accountingDate | date:'mediumDate' }}</td>
+                    <td>{{ standardReceipt.maturityDate | date:'mediumDate' }}</td>
+                    <td>{{ standardReceipt.postmarkDate | date:'mediumDate' }}</td>
+                    <td>{{ standardReceipt.receiptAtRisk }}</td>
+                    <td>{{ standardReceipt.receivablesSpecialist }}</td>
+                    <td>{{ standardReceipt.comments }}</td>
+                    <td>{{ standardReceipt.creditCardTokenNumber }}</td>
+                    <td>{{ standardReceipt.creditCardAuthorizationRequestIdentifier }}</td>
+                    <td>{{ standardReceipt.cardHolderFirstName }}</td>
+                    <td>{{ standardReceipt.cardHolderLastName }}</td>
+                    <td>{{ standardReceipt.creditCardIssuerCode }}</td>
+                    <td>{{ standardReceipt.creditCardExpirationDate }}</td>
+                    <td>{{ standardReceipt.voiceAuthorizationCode }}</td>
+                    <td>{{ standardReceipt.createdBy }}</td>
+                    <td>{{ standardReceipt.creationDate | date:'mediumDate' }}</td>
+                    <td>{{ standardReceipt.lastUpdateDate | date:'mediumDate' }}</td>
+                    <td>{{ standardReceipt.lastUpdatedBy }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/standard-receipt', standardReceipt.standardReceiptId, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/standard-receipt', standardReceipt.standardReceiptId, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <!-- <button type="submit" (click)="delete(standardReceipt)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button> -->
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="standardReceipts?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

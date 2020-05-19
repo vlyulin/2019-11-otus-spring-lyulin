@@ -1,0 +1,33 @@
+{
+    "name": "CashBankBranchesLOV",
+    "fields": [
+        {
+            "fieldName": "branchPartyId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "bankBranchName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "branchNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bankName",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200513210200",
+    "entityTableName": "cash_bank_branches_lov",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

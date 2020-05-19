@@ -1,0 +1,29 @@
+{
+    "name": "CashBankAccountsLOV",
+    "fields": [
+        {
+            "fieldName": "bankAccountId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "bankAccountName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "maskedAccountNumber",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200513210300",
+    "entityTableName": "cash_bank_accounts_lov",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

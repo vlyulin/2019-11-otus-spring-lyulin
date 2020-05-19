@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "ru.otus.spring.oca"
+    },
+    "jhipsterVersion": "6.8.0",
+    "applicationType": "monolith",
+    "baseName": "OracleCloudAppExtension",
+    "packageName": "ru.otus.spring.oca",
+    "packageFolder": "ru/otus/spring/oca",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "oracle",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NTk4YThkNmFmYmIzYjg1NThhNjg5MDcyYzBkZGIwMjlmYWNlMTBlZGZmODQ0NjM1ZGZiM2ExZDBmM2FjMmQ4MjFiNmY4ZDJjMDFlOWQ0YmIzMTJmODgwMjFhOWQ0ZjU3NWM2ZDY5YjY4MTA4NGU2ZjdjOWZhZmUwODdmZTA4YzI=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1589402939566,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "blueprints": []
+  }
+}

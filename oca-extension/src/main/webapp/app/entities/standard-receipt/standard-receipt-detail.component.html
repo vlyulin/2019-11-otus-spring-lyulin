@@ -1,0 +1,202 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="standardReceipt">
+            <h2><span>Standard Receipt</span> {{ standardReceipt.standardReceiptId }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Standard Receipt Id</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.standardReceiptId }}</span>
+                </dd>
+                <dt><span>Receipt Number</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.receiptNumber }}</span>
+                </dd>
+                <dt><span>Business Unit</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.businessUnit }}</span>
+                </dd>
+                <dt><span>Receipt Method</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.receiptMethod }}</span>
+                </dd>
+                <dt><span>Receipt Date</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.receiptDate }}</span>
+                </dd>
+                <dt><span>Document Number</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.documentNumber }}</span>
+                </dd>
+                <dt><span>Amount</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.amount }}</span>
+                </dd>
+                <dt><span>Currency</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.currency }}</span>
+                </dd>
+                <dt><span>Conversion Rate Type</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.conversionRateType }}</span>
+                </dd>
+                <dt><span>Conversion Date</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.conversionDate }}</span>
+                </dd>
+                <dt><span>Conversion Rate</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.conversionRate }}</span>
+                </dd>
+                <dt><span>State</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.state }}</span>
+                </dd>
+                <dt><span>Status</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.status }}</span>
+                </dd>
+                <dt><span>Remittance Bank Name</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.remittanceBankName }}</span>
+                </dd>
+                <dt><span>Remittance Bank Branch</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.remittanceBankBranch }}</span>
+                </dd>
+                <dt><span>Remittance Bank Account Number</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.remittanceBankAccountNumber }}</span>
+                </dd>
+                <dt><span>Remittance Bank Deposit Date</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.remittanceBankDepositDate }}</span>
+                </dd>
+                <dt><span>Remittance Bank Allow Override</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.remittanceBankAllowOverride }}</span>
+                </dd>
+                <dt><span>Customer Name</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.customerName }}</span>
+                </dd>
+                <dt><span>Taxpayer Identification Number</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.taxpayerIdentificationNumber }}</span>
+                </dd>
+                <dt><span>Customer Site</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.customerSite }}</span>
+                </dd>
+                <dt><span>Customer Account Number</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.customerAccountNumber }}</span>
+                </dd>
+                <dt><span>Customer Bank</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.customerBank }}</span>
+                </dd>
+                <dt><span>Customer Bank Branch</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.customerBankBranch }}</span>
+                </dd>
+                <dt><span>Customer Bank Account Number</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.customerBankAccountNumber }}</span>
+                </dd>
+                <dt><span>Unapplied Amount</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.unappliedAmount }}</span>
+                </dd>
+                <dt><span>Accounted Amount</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.accountedAmount }}</span>
+                </dd>
+                <dt><span>Accounting Date</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.accountingDate }}</span>
+                </dd>
+                <dt><span>Maturity Date</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.maturityDate }}</span>
+                </dd>
+                <dt><span>Postmark Date</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.postmarkDate }}</span>
+                </dd>
+                <dt><span>Receipt At Risk</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.receiptAtRisk }}</span>
+                </dd>
+                <dt><span>Receivables Specialist</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.receivablesSpecialist }}</span>
+                </dd>
+                <dt><span>Comments</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.comments }}</span>
+                </dd>
+                <dt><span>Credit Card Token Number</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.creditCardTokenNumber }}</span>
+                </dd>
+                <dt><span>Credit Card Authorization Request Identifier</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.creditCardAuthorizationRequestIdentifier }}</span>
+                </dd>
+                <dt><span>Card Holder First Name</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.cardHolderFirstName }}</span>
+                </dd>
+                <dt><span>Card Holder Last Name</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.cardHolderLastName }}</span>
+                </dd>
+                <dt><span>Credit Card Issuer Code</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.creditCardIssuerCode }}</span>
+                </dd>
+                <dt><span>Credit Card Expiration Date</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.creditCardExpirationDate }}</span>
+                </dd>
+                <dt><span>Voice Authorization Code</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.voiceAuthorizationCode }}</span>
+                </dd>
+                <dt><span>Created By</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.createdBy }}</span>
+                </dd>
+                <dt><span>Creation Date</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.creationDate }}</span>
+                </dd>
+                <dt><span>Last Update Date</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.lastUpdateDate }}</span>
+                </dd>
+                <dt><span>Last Updated By</span></dt>
+                <dd>
+                    <span>{{ standardReceipt.lastUpdatedBy }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/standard-receipt', standardReceipt.standardReceiptId, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

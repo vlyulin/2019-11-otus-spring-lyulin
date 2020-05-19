@@ -1,0 +1,220 @@
+{
+  "Resources" : {
+    "cashBankBranchesLOV" : {
+      "discrColumnType" : false,
+      "attributes" : [ {
+        "name" : "BranchPartyId",
+        "type" : "integer",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "precision" : 18
+      }, {
+        "name" : "BankBranchName",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "precision" : 360,
+        "maxLength" : "360",
+        "properties" : {
+          "DISPLAYWIDTH" : "30"
+        }
+      }, {
+        "name" : "BranchNumber",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : false,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "precision" : 30,
+        "title" : "Branch Number",
+        "maxLength" : "30",
+        "properties" : {
+          "DISPLAYWIDTH" : "30"
+        }
+      }, {
+        "name" : "BankName",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "precision" : 360,
+        "maxLength" : "360",
+        "properties" : {
+          "DISPLAYWIDTH" : "30"
+        }
+      } ],
+      "collection" : {
+        "rangeSize" : 500,
+        "finders" : [ {
+          "name" : "BankBranchAltKey",
+          "attributes" : [ {
+            "name" : "BankBranchName",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 360,
+            "maxLength" : "360",
+            "properties" : {
+              "DISPLAYWIDTH" : "30"
+            }
+          }, {
+            "name" : "BankName",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 360,
+            "maxLength" : "360",
+            "properties" : {
+              "DISPLAYWIDTH" : "30"
+            }
+          } ]
+        }, {
+          "name" : "BankBranchCeLovFinder",
+          "title" : "BankBranchCeLovCriteria",
+          "attributes" : [ {
+            "name" : "bindBankName",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Optional",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "bindBranchName",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Optional",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "bindBranchNumber",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Optional",
+            "queryable" : false,
+            "allowChanges" : "always"
+          } ]
+        }, {
+          "name" : "BankBranchesLOVSearchFinder",
+          "title" : "BankBranchesLOVSearchCriteria",
+          "attributes" : [ {
+            "name" : "bindBankHomeCountry",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Optional",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "bindBankName",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Optional",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "bindBankNumber",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Optional",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "bindBankPartyNumber",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Optional",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "bindBranchName",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Optional",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "bindBranchNumber",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Optional",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "bindBranchPartyNumber",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Optional",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "bindEFTSWIFTCode",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Optional",
+            "queryable" : false,
+            "allowChanges" : "always"
+          } ]
+        }, {
+          "name" : "PrimaryKey",
+          "attributes" : [ {
+            "name" : "BranchPartyId",
+            "type" : "integer",
+            "updatable" : true,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 18
+          } ]
+        } ],
+        "links" : [ {
+          "rel" : "self",
+          "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranchesLOV",
+          "name" : "self",
+          "kind" : "collection"
+        } ],
+        "actions" : [ {
+          "name" : "get",
+          "method" : "GET",
+          "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+        } ]
+      },
+      "item" : {
+        "links" : [ {
+          "rel" : "self",
+          "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranchesLOV/{id}",
+          "name" : "self",
+          "kind" : "item"
+        }, {
+          "rel" : "canonical",
+          "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranchesLOV/{id}",
+          "name" : "canonical",
+          "kind" : "item"
+        } ],
+        "actions" : [ {
+          "name" : "get",
+          "method" : "GET",
+          "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+        } ]
+      },
+      "links" : [ {
+        "rel" : "self",
+        "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranchesLOV/describe",
+        "name" : "self",
+        "kind" : "describe"
+      }, {
+        "rel" : "canonical",
+        "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/cashBankBranchesLOV/describe",
+        "name" : "canonical",
+        "kind" : "describe"
+      } ]
+    }
+  }
+}
