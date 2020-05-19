@@ -18,6 +18,7 @@
 * [Папка spring-integration](#Папка-spring-integration)
 * [Папка library-spring-docker](#Папка-library-spring-docker)
 * [Папка library-spring-hystrix](#Папка-library-spring-hystrix)
+* [Папка oca-extension](#Папка-oca-extension)
 
 # Студент
 ФИО слушателя: Люлин Вадим Евгеньевич
@@ -77,3 +78,6 @@
 
 ##Папка library-spring-hystrix
 Домашнее задание по теме "Spring Cloud Service Discovery, Zuul, Hystrix, Sleuth, Zipkin"
+
+##Папка oca-extension
+Проектная работа по теме: Creating extension for Oracle Cloud Applications with Spring Framework
