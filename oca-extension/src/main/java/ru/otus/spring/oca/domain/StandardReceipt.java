@@ -1,7 +1,7 @@
 package ru.otus.spring.oca.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
+import ru.otus.spring.oca.service.mapper.JsonViews;
 
 import java.util.Date;
 
@@ -10,24 +10,36 @@ public class StandardReceipt {
     @JsonProperty("StandardReceiptId")
     Long	StandardReceiptId; //Standard Receipt ID
     @JsonProperty("ReceiptNumber")
+    @JsonView(JsonViews.StandardReceiptCreateView.class)
     String	ReceiptNumber; //Receipt Number
     @JsonProperty("BusinessUnit")
+    @JsonView(JsonViews.StandardReceiptCreateView.class)
     String	BusinessUnit; //Business Unit
     @JsonProperty("ReceiptMethod")
+    @JsonView(JsonViews.StandardReceiptCreateView.class)
     String	ReceiptMethod; //Receipt Method
     @JsonProperty("ReceiptDate")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonView(JsonViews.StandardReceiptCreateView.class)
     Date ReceiptDate; //Receipt Date
     @JsonProperty("DocumentNumber")
+    @JsonView(JsonViews.StandardReceiptCreateView.class)
     Long	DocumentNumber; //Document Number
     @JsonProperty("Amount")
+    @JsonView(JsonViews.StandardReceiptCreateView.class)
     Float	Amount; //Receipt Amount
     @JsonProperty("Currency")
+    @JsonView(JsonViews.StandardReceiptCreateView.class)
     String	Currency; //Currency
     @JsonProperty("ConversionRateType")
+    @JsonView(JsonViews.StandardReceiptCreateView.class)
     String	ConversionRateType; //Conversion Rate Type
     @JsonProperty("ConversionDate")
+    @JsonView(JsonViews.StandardReceiptCreateView.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     Date	ConversionDate; //Conversion Date
     @JsonProperty("ConversionRate")
+    @JsonView(JsonViews.StandardReceiptCreateView.class)
     Float	ConversionRate; //Conversion Rate
     @JsonProperty("State")
     String	State; //State
@@ -38,18 +50,25 @@ public class StandardReceipt {
     @JsonProperty("RemittanceBankBranch")
     String	RemittanceBankBranch; //Remittance Bank Branch
     @JsonProperty("RemittanceBankAccountNumber")
+    @JsonView(JsonViews.StandardReceiptCreateView.class)
     String	RemittanceBankAccountNumber; //Remittance Bank Account Number
     @JsonProperty("RemittanceBankDepositDate")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonView(JsonViews.StandardReceiptCreateView.class)
     Date	RemittanceBankDepositDate; //Remittance Bank Deposit Date
     @JsonProperty("RemittanceBankAllowOverride")
+    @JsonView(JsonViews.StandardReceiptCreateView.class)
     String	RemittanceBankAllowOverride; //Remittance Bank Allow Override
     @JsonProperty("CustomerName")
+    @JsonView(JsonViews.StandardReceiptCreateView.class)
     String	CustomerName; //Customer Name
     @JsonProperty("TaxpayerIdentificationNumber")
     String	TaxpayerIdentificationNumber; //Taxpayer Identification Number
     @JsonProperty("CustomerSite")
+    @JsonView(JsonViews.StandardReceiptCreateView.class)
     String	CustomerSite; //Customer Site
     @JsonProperty("CustomerAccountNumber")
+    @JsonView(JsonViews.StandardReceiptCreateView.class)
     String	CustomerAccountNumber; //Customer Account Number
     @JsonProperty("CustomerBank")
     String	CustomerBank; //Customer Bank
@@ -62,16 +81,20 @@ public class StandardReceipt {
     @JsonProperty("AccountedAmount")
     Float	AccountedAmount; //Accounted Amount
     @JsonProperty("AccountingDate")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     Date	AccountingDate; //Accounting Date
     @JsonProperty("MaturityDate")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     Date	MaturityDate; //Maturity Date
     @JsonProperty("PostmarkDate")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     Date	PostmarkDate; //Postmark Date
     @JsonProperty("ReceiptAtRisk")
     String	ReceiptAtRisk; //Receipt at Risk
     @JsonProperty("ReceivablesSpecialist")
     String	ReceivablesSpecialist; //Receivables Specialist
     @JsonProperty("Comments")
+    @JsonView(JsonViews.StandardReceiptCreateView.class)
     String	Comments; //Comments
     @JsonProperty("CreditCardTokenNumber")
     String	CreditCardTokenNumber; //Credit Card Token Number
@@ -90,12 +113,13 @@ public class StandardReceipt {
     @JsonProperty("CreatedBy")
     String	CreatedBy; //Created By
     @JsonProperty("CreationDate")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     Date	CreationDate; //Creation Date
     @JsonProperty("LastUpdateDate")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     Date	LastUpdateDate; //Last Update Date
     @JsonProperty("LastUpdatedBy")
     String	LastUpdatedBy; //Last Updated By
-    // @JsonUnwrapped
 
     public Long getStandardReceiptId() {
         return StandardReceiptId;
@@ -189,16 +213,16 @@ public class StandardReceipt {
         return State;
     }
 
-    public void setState(String state) {
-        State = state;
+    public void setState(String State) {
+        this.State = State;
     }
 
     public String getStatus() {
         return Status;
     }
 
-    public void setStatus(String status) {
-        Status = status;
+    public void setStatus(String Status) {
+        this.Status = Status;
     }
 
     public String getRemittanceBankName() {

@@ -1,6 +1,8 @@
 package ru.otus.spring.oca.web.rest;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import io.github.jhipster.web.util.HeaderUtil;
@@ -22,10 +24,14 @@ import ru.otus.spring.oca.domain.CashBanksLOV;
 import ru.otus.spring.oca.domain.StandardReceipt;
 import ru.otus.spring.oca.service.mapper.HalMapper;
 import ru.otus.spring.oca.service.Utils;
+import ru.otus.spring.oca.service.mapper.JsonViews;
 import ru.otus.spring.oca.web.rest.errors.BadRequestAlertException;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -106,36 +112,58 @@ public class StandardReceiptResource {
      */
     // Метод используется для тестового создания поступления, чтобы не перебивать значения полей
     @PutMapping("/standard-receipts")
-    public ResponseEntity<StandardReceipt> updateStandardReceipt(@RequestBody StandardReceipt standardReceipt) throws URISyntaxException {
+    public ResponseEntity<StandardReceipt> updateStandardReceipt(@RequestBody StandardReceipt standardReceipt) throws URISyntaxException, JsonProcessingException, ParseException {
         log.debug("REST request to update StandardReceipt : {}", standardReceipt);
         if (standardReceipt.getStandardReceiptId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         standardReceipt.setStandardReceiptId(null);
         standardReceipt.setReceiptNumber("XXVL: "+standardReceipt.getReceiptNumber());
+        standardReceipt.setDocumentNumber(null);
         standardReceipt.setComments("XXVL");
-        standardReceipt.setAccountingDate(null);
+        // standardReceipt.setReceiptDate(new SimpleDateFormat("dd/MM/yyyy").parse("20/05/2020"));
+//        standardReceipt.setReceiptDate(new SimpleDateFormat("dd/MM/yyyy").parse("20/05/2020"));
+//        standardReceipt.setAccountingDate(new SimpleDateFormat("dd/MM/yyyy").parse("20/05/2020"));
+        standardReceipt.setReceiptDate(new Date());
+        standardReceipt.setAccountingDate(new Date());
+        standardReceipt.setReceiptMethod("RUH001 D-HSBC RUB MAIN 100268");
+        standardReceipt.setRemittanceBankAccountNumber("40702810000000100268");
+        standardReceipt.setRemittanceBankName("ООО \"ЭЙЧ-ЭС-БИ-СИ БАНК (РР)\"");
+        standardReceipt.setRemittanceBankBranch("000");
+        standardReceipt.setRemittanceBankDepositDate(null);
+        // standardReceipt.setAccountingDate(null);
         standardReceipt.setMaturityDate(null);
         standardReceipt.setCreatedBy(null);
         standardReceipt.setCreationDate(null);
         standardReceipt.setLastUpdateDate(null);
         standardReceipt.setLastUpdatedBy(null);
+        standardReceipt.setState(null);
+        standardReceipt.setStatus(null);
+
+        // {"StandardReceiptId":null,"ReceiptNumber":"XXVL: 00000000289","BusinessUnit":"RU01_BU","ReceiptMethod":"RUH001 D-HSBC RUB MAIN 100268","ReceiptDate":"2020-05-19","DocumentNumber":null,"Amount":38400.0,"Currency":"RUB","ConversionRateType":null,"ConversionDate":null,"ConversionRate":null,"RemittanceBankAccountNumber":"40702810000000100268","RemittanceBankDepositDate":null,"RemittanceBankAllowOverride":"Y","CustomerName":"Чигоев Александр Георгиевич ИП","CustomerSite":"44108","CustomerAccountNumber":"C70000015","Comments":"XXVL"}
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setAccept(Collections.singletonList(MediaType.ALL));
+        headers.set("Accept-Encoding","gzip, deflate, br");
+        headers.set("Connection", "keep-alive");
+        headers.setBearerAuth("eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsIng1dCI6Il9pajZSRWNqaFZNTHRKemZMMUVPWEJzS0ZadyIsImtpZCI6InRydXN0c2VydmljZSJ9.eyJleHAiOjE1OTAwMjM5NDksInN1YiI6InYubHl1bGluQHBhcnRuZXIuYXVjaGFuLnJ1IiwiaXNzIjoid3d3Lm9yYWNsZS5jb20iLCJwcm4iOiJ2Lmx5dWxpbkBwYXJ0bmVyLmF1Y2hhbi5ydSIsImlhdCI6MTU5MDAwOTU0OX0.NgNtIoVNL2havjMNUyG5y6rgrYwJ0xBp6DfQBb45uY3z4x2YylZDtwjl5uAo2KUdZB8PbQNjR7Nn29mmmicPBM0sA4PRxLNEiQt0xfmZnXhklZBaIEK6tOqeHGa9o4fz0WIOkqkbhjrK9QG_1A7WB1Yd4MdNXp6E6lui3dYWhu4FiL5oBmyU3qxtRzSXLG83X5GeD5HUY_KxspQMI15qKNxrw8NIku39tV1Pr8Og18RLFVBgczxnw-bO8NBczo3LZOX6fcUS4gyrPMRh1VzezYg_eoe2N-cijzy-dZvBSHcwbVNq4AaqFST3SQA0VSPd6QuTpD7hcWEiyOq7HIK9-Q");
 
-        HttpEntity<StandardReceipt> request = new HttpEntity<>(standardReceipt, headers);
-        System.out.println("XXX: " + request);
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.disable(MapperFeature.DEFAULT_VIEW_INCLUSION);
+        String json = mapper
+            .writerWithView(JsonViews.StandardReceiptCreateView.class)
+            .writeValueAsString(standardReceipt);
+        HttpEntity<String> entity = new HttpEntity<>(json,headers);
 
-        StandardReceipt result =
-            restTemplate.postForObject(RESTAPIURL, request, StandardReceipt.class);
+        ResponseEntity<String> response = restTemplate.postForEntity(RESTAPIURL,entity,String.class);
 
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName,
                 false,
                 ENTITY_NAME,
                 standardReceipt.getStandardReceiptId().toString()))
-            .body(result);
+            .body(null);
     }
 
     /**
