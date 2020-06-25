@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link data-th-href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link data-th-href="@{/css/main.css}" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="row">
+      <div id="title">
+          <h1>Spring Library on WebFlux + Thymeleaf</h1>
+      </div>
+  </div>
+  <div class="row">
+      <ul class="text-center list-inline py-3">
+        <li class="list-inline-item">
+          <a th:href="@{/users}" href="users.html">Users</a>
+            </li>
+        <li class="list-inline-item">
+          <a th:href="@{/books}" href="books.html">Books</a>
+            </li>
+      </ul>
+  </div>
+</div>
+
+</body>
+</html>

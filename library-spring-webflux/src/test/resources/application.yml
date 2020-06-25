@@ -1,0 +1,41 @@
+localization:
+    language: ru
+    country: RU
+
+appsession:
+    user: User01
+
+logging:
+    level:
+        org:
+            springframework:
+                data: debug
+                boot:
+
+spring:
+    data:
+        mongodb:
+            host: 127.0.0.1
+            port: 0
+            database: webfluxlibrary
+
+    shell:
+        interactive:
+            enabled: false
+
+    messages:
+        basename: bundle
+        encoding: UTF-8
+
+org:
+    springframework:
+        data:
+            mongodb:
+                core:
+                    convert:
+                        DefaultDbRefResolver: trace
+
+services:
+    mongo:
+        restart: always
+

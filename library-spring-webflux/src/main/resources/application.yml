@@ -1,0 +1,48 @@
+localization:
+    language: ru
+    country: RU
+
+appsession:
+    user: User01
+
+logging:
+    level:
+        org:
+            springframework:
+                data: debug
+                boot:
+                    autoconfigure:
+                        mongo:
+                            embedded:
+            mongodb:
+
+spring:
+    main:
+        allow-bean-definition-overriding: true
+
+    data:
+        mongodb:
+            host: 127.0.0.1
+            port: 27017
+            # port: 0
+            database: webfluxlibrary
+
+    shell:
+        interactive:
+            enabled: false
+
+    messages:
+        basename: bundle
+        encoding: UTF-8
+
+    thymeleaf:
+        reactive:
+            max-chunk-size: 8192
+
+org:
+    springframework:
+        data:
+            mongodb:
+                core:
+                    convert:
+                        DefaultDbRefResolver: trace
