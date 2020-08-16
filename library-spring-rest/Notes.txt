@@ -1,0 +1,23 @@
+
+1) Angular 6: https://jasonwatmore.com/post/2018/05/16/angular-6-user-registration-and-login-example-tutorial
+2) Angular 6 github: https://github.com/cornflourblue/angular-6-registration-login-example/blob/master/src/app/app.routing.ts
+3) REST Security with JWT using Java and Spring Security
+https://www.toptal.com/java/rest-security-with-jwt-spring-security-and-java
+4) A Custom Filter in the Spring Security Filter Chain
+https://www.baeldung.com/spring-security-custom-filter
+5) How to Read HTTP Headers in Spring REST Controllers
+https://www.baeldung.com/spring-rest-http-headers
+6) github Spring boot security
+https://github.com/BHRother/spring-boot-security-jwt/blob/master/src/main/java/nl/palmapps/myawesomeproject/security/JwtAuthenticationTokenFilter.java
+7) How to configure a custom filter programatically in Spring Security?
+https://stackoverflow.com/questions/23810846/how-to-configure-a-custom-filter-programatically-in-spring-security
+8) github
+https://github.com/BHRother/spring-boot-security-jwt/blob/master/src/main/java/nl/palmapps/myawesomeproject/security/JwtAuthenticationTokenFilter.java
+9) Angular docs
+https://angular.io/cli/generate#interceptor-command
+10) Spring Security getAuthenticationManager() returns null within custom filter
+https://stackoverflow.com/questions/51986766/spring-security-getauthenticationmanager-returns-null-within-custom-filter
+11) Spring - CORS not working with Security Config
+https://stackoverflow.com/questions/53943806/spring-cors-not-working-with-security-config
+12) Spring Security Fundamentals
+https://www.pluralsight.com/courses/spring-security-fundamentals?clickid=1bxTTkUpCxyOUnkwUx0Mo3EUUki2epQ8P2CoRk0&irgwc=1&mpid=1193463&utm_source=impactradius&utm_medium=digital_affiliate&utm_campaign=1193463&aid=7010a000001xAKZAA2

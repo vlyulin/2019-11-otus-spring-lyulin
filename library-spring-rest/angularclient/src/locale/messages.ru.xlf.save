@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="Library" datatype="html">
+        <source>Library</source>
+		<target>Библиотека</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">78</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="AppName" datatype="html">
+        <source>Angular library client</source>
+		<target>Клиент к библиотеке на Angular</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">87</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="List_users" datatype="html">
+        <source>List users</source>
+		<target>Список пользователей</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">90</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="List_book" datatype="html">
+        <source>List books</source>
+		<target>Список книг</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="UserTblLogin" datatype="html">
+        <source>Login</source>
+		<target>Авторизация</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user-list/user-list.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="UserTblName" datatype="html">
+        <source>Name</source>
+		<target>Имя</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user-list/user-list.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="UserTblPswd" datatype="html">
+        <source>Password</source>
+		<target>Пароль</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user-list/user-list.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="UserTblOper" datatype="html">
+        <source>Operations</source>
+		<target>Операции</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user-list/user-list.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="UserTblBtnLogin" datatype="html">
+        <source>Login</source>
+		<target>Авторизация</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user-list/user-list.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BSBookName" datatype="html">
+        <source>Book name:</source>
+		<target>Наименование:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BSAuthorName" datatype="html">
+        <source>Author name:</source>
+		<target>Автор:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BSGenreName" datatype="html">
+        <source>Genre name:</source>
+		<target>Жанр:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BSPagesFrom" datatype="html">
+        <source>Pages from:</source>
+		<target>Страниц с:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BSPagesTo" datatype="html">
+        <source>Pages to:</source>
+		<target>Страниц по:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BSPubHouse" datatype="html">
+        <source>Publishing House:</source>
+		<target>Издательство:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BSPubYearFrom" datatype="html">
+        <source>Publishing Year from:</source>
+		<target>Год издания с:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BSPubYearTo" datatype="html">
+        <source>Publishing Year to:</source>
+		<target>Год издания по:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BSBtnSearch" datatype="html">
+        <source>Search</source>
+		<target>Поиск</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BookTblName" datatype="html">
+        <source>Name</source>
+		<target>Имя</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BookTblAuthor" datatype="html">
+        <source>Author</source>
+		<target>Автор</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BookTblPages" datatype="html">
+        <source>Pages</source>
+		<target>Страниц</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BookTblGenre" datatype="html">
+        <source>Genre</source>
+		<target>Жанр</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BookTblPubHouse" datatype="html">
+        <source>Publishing house</source>
+		<target>Издательство</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BookTblPubYear" datatype="html">
+        <source>Publishing year</source>
+		<target>Год издания</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BookTblOpers" datatype="html">
+        <source>Operations</source>
+		<target>Операции</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">78</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BookTblBtnComments" datatype="html">
+        <source>Comments</source>
+		<target>Комментарии</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BookTblBtnEdit" datatype="html">
+        <source>Edit</source>
+		<target>Редактировать</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">97</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BookTblDel" datatype="html">
+        <source>Delete</source>
+		<target>Удалить</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BookBtnNewBook" datatype="html">
+        <source>New book</source>
+		<target>Новая книга</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-list/book-list.component.html</context>
+          <context context-type="linenumber">103</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BTName" datatype="html">
+        <source>Name:</source>
+		<target>Наименование:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-detail/book-detail.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BTPubYear" datatype="html">
+        <source>Publishing year:</source>
+		<target>Год издания:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-detail/book-detail.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BTPages" datatype="html">
+        <source>Pages:</source>
+		<target>Страниц:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-detail/book-detail.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BTAuthor" datatype="html">
+        <source>Author:</source>
+		<target>Автор:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-detail/book-detail.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BTPubHouse" datatype="html">
+        <source>Publishing house:</source>
+		<target>Издательство:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-detail/book-detail.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BTBtnSave" datatype="html">
+        <source>Save</source>
+		<target>Созранить</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-detail/book-detail.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BTBtnCancel" datatype="html">
+        <source>Cancel</source>
+		<target>Прервать</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/book-detail/book-detail.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="PageNotFound" datatype="html">
+        <source>Page not found</source>
+		<target>Страница не найдена</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/page-not-found/page-not-found.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CmntTblComment" datatype="html">
+        <source>Comment</source>
+		<target>Комментарий</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/comment-list/comment-list.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CmntTblCreatedBy" datatype="html">
+        <source>Created by</source>
+		<target>Создан</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/comment-list/comment-list.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CmntTblCreationDate" datatype="html">
+        <source>Creation date</source>
+		<target>Дата сооздания</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/comment-list/comment-list.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CmntTblUpdatedBy" datatype="html">
+        <source>Updated by</source>
+		<target>Изменено</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/comment-list/comment-list.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CmntTblLastUpdDate" datatype="html">
+        <source>Last update date</source>
+		<target>Дата изменения</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/comment-list/comment-list.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CmntTblOpers" datatype="html">
+        <source>Operations</source>
+		<target>Операции</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/comment-list/comment-list.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CmntBtnEdit" datatype="html">
+        <source>Edit</source>
+		<target>Редактировать</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/comment-list/comment-list.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CmntBtnDel" datatype="html">
+        <source>Delete</source>
+		<target>Удалить</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/comment-list/comment-list.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CmntBtnComment" datatype="html">
+        <source>Comment</source>
+		<target>Комментировать</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/comment-list/comment-list.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="CmntBtnBack" datatype="html">
+        <source>Back</source>
+		<target>Назад</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/comment-list/comment-list.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
