@@ -21,6 +21,6 @@ public class JWTConfigurer extends SecurityConfigurerAdapter<DefaultSecurityFilt
         http.addFilterBefore(customFilter, UsernamePasswordAuthenticationFilter.class);
         // VL JInjection
         OracleJWTFilter oracleJWTFilter = new OracleJWTFilter(oracleTokenProvider);
-        http.addFilterBefore(oracleJWTFilter, UsernamePasswordAuthenticationFilter.class); // TODO: Почему именно этот класс?
+        http.addFilterBefore(oracleJWTFilter, UsernamePasswordAuthenticationFilter.class);
     }
 }

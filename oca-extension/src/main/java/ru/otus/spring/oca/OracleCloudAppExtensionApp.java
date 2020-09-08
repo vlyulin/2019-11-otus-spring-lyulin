@@ -22,8 +22,8 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @SpringBootApplication
-@EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
-//@EnableHypermediaSupport(type = EnableHypermediaSupport.HypermediaType.COLLECTION_JSON)
+// @EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
+@EnableConfigurationProperties
 public class OracleCloudAppExtensionApp {
 
     private static final Logger log = LoggerFactory.getLogger(OracleCloudAppExtensionApp.class);

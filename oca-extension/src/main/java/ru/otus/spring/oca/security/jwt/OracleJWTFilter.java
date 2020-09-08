@@ -32,7 +32,7 @@ public class OracleJWTFilter extends GenericFilterBean {
         // TODO: Проверить, что уже авторизованы
         // SecurityContextHolder.getContext().getAuthentication();
         String oracleJwt = resolveOracleToken(httpServletRequest);
-        System.out.println("XXX Oracle jwt: " + oracleJwt);
+        // System.out.println("XXX Oracle jwt: " + oracleJwt);
         oracleTokenProvider.setOracleJwtToken(oracleJwt);
         filterChain.doFilter(servletRequest, servletResponse);
     }
@@ -40,7 +40,6 @@ public class OracleJWTFilter extends GenericFilterBean {
     private String resolveOracleToken(HttpServletRequest request) {
         String bearerToken = request.getHeader(ORACLE_AUTHORIZATION_HEADER);
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
-            // return bearerToken.substring(7); // Нет смысла вырезать, потом добавлять
             return  bearerToken;
         }
         return null;

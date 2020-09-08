@@ -44,8 +44,6 @@ public class AppConfig {
         List<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();
         interceptors.add(loggingRequestInterceptor);
         restTemplate.setInterceptors(interceptors);
-        // TODO: Обработка ошибок. Переделать
-        // restTemplate.setErrorHandler(new RestTemplateResponseErrorHandler());
 
         return restTemplate;
     }

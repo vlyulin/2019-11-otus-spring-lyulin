@@ -1,6 +1,5 @@
 package ru.otus.spring.oca.web.rest;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,18 +19,15 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import ru.otus.spring.oca.domain.CashBanksLOV;
 import ru.otus.spring.oca.domain.StandardReceipt;
-import ru.otus.spring.oca.service.mapper.HalMapper;
 import ru.otus.spring.oca.service.Utils;
+import ru.otus.spring.oca.service.mapper.HalMapper;
 import ru.otus.spring.oca.service.mapper.JsonViews;
 import ru.otus.spring.oca.web.rest.errors.BadRequestAlertException;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -60,8 +56,7 @@ public class StandardReceiptResource {
         HalMapper<StandardReceipt> halMapper
     ) {
         // this.RESTAPIURL = serverUrl + standardReceiptsUrl;
-        this.RESTAPIURL = "https://egxt-dev4.fa.em2.oraclecloud.com" +
-            "/fscmRestApi/resources/11.13.18.05/standardReceipts";
+        this.RESTAPIURL = "https://egxt-dev4.fa.em2.oraclecloud.com/fscmRestApi/resources/11.13.18.05/standardReceipts";
         this.restTemplate = restTemplate;
         this.halMapper = halMapper;
     }
@@ -121,9 +116,6 @@ public class StandardReceiptResource {
         standardReceipt.setReceiptNumber("XXVL: "+standardReceipt.getReceiptNumber());
         standardReceipt.setDocumentNumber(null);
         standardReceipt.setComments("XXVL");
-        // standardReceipt.setReceiptDate(new SimpleDateFormat("dd/MM/yyyy").parse("20/05/2020"));
-//        standardReceipt.setReceiptDate(new SimpleDateFormat("dd/MM/yyyy").parse("20/05/2020"));
-//        standardReceipt.setAccountingDate(new SimpleDateFormat("dd/MM/yyyy").parse("20/05/2020"));
         standardReceipt.setReceiptDate(new Date());
         standardReceipt.setAccountingDate(new Date());
         standardReceipt.setReceiptMethod("RUH001 D-HSBC RUB MAIN 100268");
@@ -131,7 +123,6 @@ public class StandardReceiptResource {
         standardReceipt.setRemittanceBankName("ООО \"ЭЙЧ-ЭС-БИ-СИ БАНК (РР)\"");
         standardReceipt.setRemittanceBankBranch("000");
         standardReceipt.setRemittanceBankDepositDate(null);
-        // standardReceipt.setAccountingDate(null);
         standardReceipt.setMaturityDate(null);
         standardReceipt.setCreatedBy(null);
         standardReceipt.setCreationDate(null);
@@ -140,14 +131,8 @@ public class StandardReceiptResource {
         standardReceipt.setState(null);
         standardReceipt.setStatus(null);
 
-        // {"StandardReceiptId":null,"ReceiptNumber":"XXVL: 00000000289","BusinessUnit":"RU01_BU","ReceiptMethod":"RUH001 D-HSBC RUB MAIN 100268","ReceiptDate":"2020-05-19","DocumentNumber":null,"Amount":38400.0,"Currency":"RUB","ConversionRateType":null,"ConversionDate":null,"ConversionRate":null,"RemittanceBankAccountNumber":"40702810000000100268","RemittanceBankDepositDate":null,"RemittanceBankAllowOverride":"Y","CustomerName":"Чигоев Александр Георгиевич ИП","CustomerSite":"44108","CustomerAccountNumber":"C70000015","Comments":"XXVL"}
-
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setAccept(Collections.singletonList(MediaType.ALL));
-        headers.set("Accept-Encoding","gzip, deflate, br");
-        headers.set("Connection", "keep-alive");
-        headers.setBearerAuth("eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsIng1dCI6Il9pajZSRWNqaFZNTHRKemZMMUVPWEJzS0ZadyIsImtpZCI6InRydXN0c2VydmljZSJ9.eyJleHAiOjE1OTAwMjM5NDksInN1YiI6InYubHl1bGluQHBhcnRuZXIuYXVjaGFuLnJ1IiwiaXNzIjoid3d3Lm9yYWNsZS5jb20iLCJwcm4iOiJ2Lmx5dWxpbkBwYXJ0bmVyLmF1Y2hhbi5ydSIsImlhdCI6MTU5MDAwOTU0OX0.NgNtIoVNL2havjMNUyG5y6rgrYwJ0xBp6DfQBb45uY3z4x2YylZDtwjl5uAo2KUdZB8PbQNjR7Nn29mmmicPBM0sA4PRxLNEiQt0xfmZnXhklZBaIEK6tOqeHGa9o4fz0WIOkqkbhjrK9QG_1A7WB1Yd4MdNXp6E6lui3dYWhu4FiL5oBmyU3qxtRzSXLG83X5GeD5HUY_KxspQMI15qKNxrw8NIku39tV1Pr8Og18RLFVBgczxnw-bO8NBczo3LZOX6fcUS4gyrPMRh1VzezYg_eoe2N-cijzy-dZvBSHcwbVNq4AaqFST3SQA0VSPd6QuTpD7hcWEiyOq7HIK9-Q");
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(MapperFeature.DEFAULT_VIEW_INCLUSION);

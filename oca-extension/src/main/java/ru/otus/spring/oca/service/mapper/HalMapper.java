@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /*
- * VL. Сервисный класс для получения экзэмпляра класса из HAL данных
+ * Сервисный класс для получения экзэмпляра класса из HAL данных
  */
 @Service
 public class HalMapper<T> {
@@ -20,7 +20,6 @@ public class HalMapper<T> {
         this.objectMapper = objectMapper;
     }
 
-    // TODO: Возможно, есть более элегантное решение получения класса T
     public List<T> process(LinkedHashMap map, Class<T> type) {
         List<T> listOfT = new ArrayList<T>();
         ArrayList<Map<String, String>> list = (ArrayList<Map<String, String>>) map.get("items");
