@@ -1,0 +1,61 @@
+{
+    "name": "CustomerAccountSitesLOV",
+    "fields": [
+        {
+            "fieldName": "customerName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "accountNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "accountDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "taxpayerIdentificationNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "taxRegistrationNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "customerAccountId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "partyNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "siteName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "primarySite",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "siteUseId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "setName",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200513210400",
+    "entityTableName": "customer_account_sites_lov",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

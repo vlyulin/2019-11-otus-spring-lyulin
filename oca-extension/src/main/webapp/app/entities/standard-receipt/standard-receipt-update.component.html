@@ -1,0 +1,322 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-standard-receipt-heading">Create or edit a Standard Receipt</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <!-- <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div> -->
+
+                <div class="form-group" [hidden]="!editForm.get('standardReceiptId')!.value">
+                    <label class="form-control-label" for="field_standardReceiptId">Standard Receipt Id</label>
+                    <input type="number" class="form-control" name="standardReceiptId" id="field_standardReceiptId"
+                           formControlName="standardReceiptId" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_receiptNumber">Receipt Number</label>
+                    <input type="text" class="form-control" name="receiptNumber" id="field_receiptNumber"
+                           formControlName="receiptNumber"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_businessUnit">Business Unit</label>
+                    <input type="text" class="form-control" name="businessUnit" id="field_businessUnit"
+                           formControlName="businessUnit"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_receiptMethod">Receipt Method</label>
+                    <input type="text" class="form-control" name="receiptMethod" id="field_receiptMethod"
+                           formControlName="receiptMethod"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_receiptDate">Receipt Date</label>
+                    <div class="input-group">
+                        <input id="field_receiptDate" type="text" class="form-control" name="receiptDate" ngbDatepicker #receiptDateDp="ngbDatepicker" formControlName="receiptDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="receiptDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_documentNumber">Document Number</label>
+                    <input type="number" class="form-control" name="documentNumber" id="field_documentNumber"
+                           formControlName="documentNumber"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_amount">Amount</label>
+                    <input type="number" class="form-control" name="amount" id="field_amount"
+                           formControlName="amount"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_currency">Currency</label>
+                    <input type="text" class="form-control" name="currency" id="field_currency"
+                           formControlName="currency"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_conversionRateType">Conversion Rate Type</label>
+                    <input type="text" class="form-control" name="conversionRateType" id="field_conversionRateType"
+                           formControlName="conversionRateType"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_conversionDate">Conversion Date</label>
+                    <div class="input-group">
+                        <input id="field_conversionDate" type="text" class="form-control" name="conversionDate" ngbDatepicker #conversionDateDp="ngbDatepicker" formControlName="conversionDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="conversionDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_conversionRate">Conversion Rate</label>
+                    <input type="number" class="form-control" name="conversionRate" id="field_conversionRate"
+                           formControlName="conversionRate"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_state">State</label>
+                    <input type="text" class="form-control" name="state" id="field_state"
+                           formControlName="state"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_status">Status</label>
+                    <input type="text" class="form-control" name="status" id="field_status"
+                           formControlName="status"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_remittanceBankName">Remittance Bank Name</label>
+                    <input type="text" class="form-control" name="remittanceBankName" id="field_remittanceBankName"
+                           formControlName="remittanceBankName"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_remittanceBankBranch">Remittance Bank Branch</label>
+                    <input type="text" class="form-control" name="remittanceBankBranch" id="field_remittanceBankBranch"
+                           formControlName="remittanceBankBranch"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_remittanceBankAccountNumber">Remittance Bank Account Number</label>
+                    <input type="text" class="form-control" name="remittanceBankAccountNumber" id="field_remittanceBankAccountNumber"
+                           formControlName="remittanceBankAccountNumber"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_remittanceBankDepositDate">Remittance Bank Deposit Date</label>
+                    <div class="input-group">
+                        <input id="field_remittanceBankDepositDate" type="text" class="form-control" name="remittanceBankDepositDate" ngbDatepicker #remittanceBankDepositDateDp="ngbDatepicker" formControlName="remittanceBankDepositDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="remittanceBankDepositDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_remittanceBankAllowOverride">Remittance Bank Allow Override</label>
+                    <input type="text" class="form-control" name="remittanceBankAllowOverride" id="field_remittanceBankAllowOverride"
+                           formControlName="remittanceBankAllowOverride"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_customerName">Customer Name</label>
+                    <input type="text" class="form-control" name="customerName" id="field_customerName"
+                           formControlName="customerName"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_taxpayerIdentificationNumber">Taxpayer Identification Number</label>
+                    <input type="text" class="form-control" name="taxpayerIdentificationNumber" id="field_taxpayerIdentificationNumber"
+                           formControlName="taxpayerIdentificationNumber"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_customerSite">Customer Site</label>
+                    <input type="text" class="form-control" name="customerSite" id="field_customerSite"
+                           formControlName="customerSite"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_customerAccountNumber">Customer Account Number</label>
+                    <input type="text" class="form-control" name="customerAccountNumber" id="field_customerAccountNumber"
+                           formControlName="customerAccountNumber"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_customerBank">Customer Bank</label>
+                    <input type="text" class="form-control" name="customerBank" id="field_customerBank"
+                           formControlName="customerBank"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_customerBankBranch">Customer Bank Branch</label>
+                    <input type="text" class="form-control" name="customerBankBranch" id="field_customerBankBranch"
+                           formControlName="customerBankBranch"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_customerBankAccountNumber">Customer Bank Account Number</label>
+                    <input type="text" class="form-control" name="customerBankAccountNumber" id="field_customerBankAccountNumber"
+                           formControlName="customerBankAccountNumber"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_unappliedAmount">Unapplied Amount</label>
+                    <input type="number" class="form-control" name="unappliedAmount" id="field_unappliedAmount"
+                           formControlName="unappliedAmount"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_accountedAmount">Accounted Amount</label>
+                    <input type="number" class="form-control" name="accountedAmount" id="field_accountedAmount"
+                           formControlName="accountedAmount"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_accountingDate">Accounting Date</label>
+                    <div class="input-group">
+                        <input id="field_accountingDate" type="text" class="form-control" name="accountingDate" ngbDatepicker #accountingDateDp="ngbDatepicker" formControlName="accountingDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="accountingDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_maturityDate">Maturity Date</label>
+                    <div class="input-group">
+                        <input id="field_maturityDate" type="text" class="form-control" name="maturityDate" ngbDatepicker #maturityDateDp="ngbDatepicker" formControlName="maturityDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="maturityDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_postmarkDate">Postmark Date</label>
+                    <div class="input-group">
+                        <input id="field_postmarkDate" type="text" class="form-control" name="postmarkDate" ngbDatepicker #postmarkDateDp="ngbDatepicker" formControlName="postmarkDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="postmarkDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_receiptAtRisk">Receipt At Risk</label>
+                    <input type="text" class="form-control" name="receiptAtRisk" id="field_receiptAtRisk"
+                           formControlName="receiptAtRisk"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_receivablesSpecialist">Receivables Specialist</label>
+                    <input type="text" class="form-control" name="receivablesSpecialist" id="field_receivablesSpecialist"
+                           formControlName="receivablesSpecialist"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_comments">Comments</label>
+                    <input type="text" class="form-control" name="comments" id="field_comments"
+                           formControlName="comments"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_creditCardTokenNumber">Credit Card Token Number</label>
+                    <input type="text" class="form-control" name="creditCardTokenNumber" id="field_creditCardTokenNumber"
+                           formControlName="creditCardTokenNumber"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_creditCardAuthorizationRequestIdentifier">Credit Card Authorization Request Identifier</label>
+                    <input type="number" class="form-control" name="creditCardAuthorizationRequestIdentifier" id="field_creditCardAuthorizationRequestIdentifier"
+                           formControlName="creditCardAuthorizationRequestIdentifier"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cardHolderFirstName">Card Holder First Name</label>
+                    <input type="text" class="form-control" name="cardHolderFirstName" id="field_cardHolderFirstName"
+                           formControlName="cardHolderFirstName"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cardHolderLastName">Card Holder Last Name</label>
+                    <input type="text" class="form-control" name="cardHolderLastName" id="field_cardHolderLastName"
+                           formControlName="cardHolderLastName"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_creditCardIssuerCode">Credit Card Issuer Code</label>
+                    <input type="text" class="form-control" name="creditCardIssuerCode" id="field_creditCardIssuerCode"
+                           formControlName="creditCardIssuerCode"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_creditCardExpirationDate">Credit Card Expiration Date</label>
+                    <input type="text" class="form-control" name="creditCardExpirationDate" id="field_creditCardExpirationDate"
+                           formControlName="creditCardExpirationDate"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_voiceAuthorizationCode">Voice Authorization Code</label>
+                    <input type="text" class="form-control" name="voiceAuthorizationCode" id="field_voiceAuthorizationCode"
+                           formControlName="voiceAuthorizationCode"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createdBy">Created By</label>
+                    <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                           formControlName="createdBy"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_creationDate">Creation Date</label>
+                    <div class="input-group">
+                        <input id="field_creationDate" type="text" class="form-control" name="creationDate" ngbDatepicker #creationDateDp="ngbDatepicker" formControlName="creationDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="creationDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastUpdateDate">Last Update Date</label>
+                    <div class="input-group">
+                        <input id="field_lastUpdateDate" type="text" class="form-control" name="lastUpdateDate" ngbDatepicker #lastUpdateDateDp="ngbDatepicker" formControlName="lastUpdateDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="lastUpdateDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastUpdatedBy">Last Updated By</label>
+                    <input type="text" class="form-control" name="lastUpdatedBy" id="field_lastUpdatedBy"
+                           formControlName="lastUpdatedBy"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

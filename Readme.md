@@ -76,7 +76,7 @@
 ## Папка library-spring-docker
 Домашнее задание по теме "Docker, оркестрация, облака, облачные хостинги"
 
-##Папка library-spring-hystrix
+## Папка library-spring-hystrix
 Домашнее задание по теме "Spring Cloud Service Discovery, Zuul, Hystrix, Sleuth, Zipkin"
 
 ##Папка oca-extension

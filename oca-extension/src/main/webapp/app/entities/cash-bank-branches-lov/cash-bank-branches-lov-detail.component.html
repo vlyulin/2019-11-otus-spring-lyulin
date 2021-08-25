@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="cashBankBranchesLOV">
+            <h2><span>Cash Bank Branches LOV</span> {{ cashBankBranchesLOV.branchPartyId }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Branch Party Id</span></dt>
+                <dd>
+                    <span>{{ cashBankBranchesLOV.branchPartyId }}</span>
+                </dd>
+                <dt><span>Bank Branch Name</span></dt>
+                <dd>
+                    <span>{{ cashBankBranchesLOV.bankBranchName }}</span>
+                </dd>
+                <dt><span>Branch Number</span></dt>
+                <dd>
+                    <span>{{ cashBankBranchesLOV.branchNumber }}</span>
+                </dd>
+                <dt><span>Bank Name</span></dt>
+                <dd>
+                    <span>{{ cashBankBranchesLOV.bankName }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/cash-bank-branches-lov', cashBankBranchesLOV.branchPartyId, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

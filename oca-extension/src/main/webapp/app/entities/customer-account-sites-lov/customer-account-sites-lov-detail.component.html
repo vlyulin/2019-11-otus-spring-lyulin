@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="customerAccountSitesLOV">
+            <h2><span>Customer Account Sites LOV</span> {{ customerAccountSitesLOV.siteUseId }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Customer Name</span></dt>
+                <dd>
+                    <span>{{ customerAccountSitesLOV.customerName }}</span>
+                </dd>
+                <dt><span>Account Number</span></dt>
+                <dd>
+                    <span>{{ customerAccountSitesLOV.accountNumber }}</span>
+                </dd>
+                <dt><span>Account Description</span></dt>
+                <dd>
+                    <span>{{ customerAccountSitesLOV.accountDescription }}</span>
+                </dd>
+                <dt><span>Taxpayer Identification Number</span></dt>
+                <dd>
+                    <span>{{ customerAccountSitesLOV.taxpayerIdentificationNumber }}</span>
+                </dd>
+                <dt><span>Tax Registration Number</span></dt>
+                <dd>
+                    <span>{{ customerAccountSitesLOV.taxRegistrationNumber }}</span>
+                </dd>
+                <dt><span>Customer Account Id</span></dt>
+                <dd>
+                    <span>{{ customerAccountSitesLOV.customerAccountId }}</span>
+                </dd>
+                <dt><span>Party Number</span></dt>
+                <dd>
+                    <span>{{ customerAccountSitesLOV.partyNumber }}</span>
+                </dd>
+                <dt><span>Site Name</span></dt>
+                <dd>
+                    <span>{{ customerAccountSitesLOV.siteName }}</span>
+                </dd>
+                <dt><span>Primary Site</span></dt>
+                <dd>
+                    <span>{{ customerAccountSitesLOV.primarySite }}</span>
+                </dd>
+                <!-- <dt><span>Site Use Id</span></dt>
+                <dd>
+                    <span>{{ customerAccountSitesLOV.siteUseId }}</span>
+                </dd> -->
+                <dt><span>Set Name</span></dt>
+                <dd>
+                    <span>{{ customerAccountSitesLOV.setName }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/customer-account-sites-lov', customerAccountSitesLOV.siteUseId, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="cashBankAccountsLOV">
+            <h2><span>Cash Bank Accounts LOV</span> {{ cashBankAccountsLOV.bankAccountId }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Bank Account Id</span></dt>
+                <dd>
+                    <span>{{ cashBankAccountsLOV.bankAccountId }}</span>
+                </dd>
+                <dt><span>Bank Account Name</span></dt>
+                <dd>
+                    <span>{{ cashBankAccountsLOV.bankAccountName }}</span>
+                </dd>
+                <dt><span>Masked Account Number</span></dt>
+                <dd>
+                    <span>{{ cashBankAccountsLOV.maskedAccountNumber }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/cash-bank-accounts-lov', cashBankAccountsLOV.bankAccountId, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

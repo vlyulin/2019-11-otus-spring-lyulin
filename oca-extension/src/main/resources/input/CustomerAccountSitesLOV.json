@@ -1,0 +1,322 @@
+{
+  "Resources" : {
+    "customerAccountSitesLOV" : {
+      "discrColumnType" : false,
+      "title" : "Customer Account Sites List of Values",
+      "titlePlural" : "Customer Account Sites List of Values",
+      "ServiceConfiguration" : {
+        "Cache-Control" : "max-age=3600"
+      },
+      "attributes" : [ {
+        "name" : "CustomerName",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "precision" : 360,
+        "title" : "Customer Name",
+        "maxLength" : "360",
+        "annotations" : {
+          "description" : "Customer Name"
+        }
+      }, {
+        "name" : "AccountNumber",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "precision" : 30,
+        "title" : "Account Number",
+        "maxLength" : "30",
+        "annotations" : {
+          "description" : "Account Number"
+        }
+      }, {
+        "name" : "AccountDescription",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : false,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "precision" : 240,
+        "title" : "Account Description",
+        "maxLength" : "240",
+        "annotations" : {
+          "description" : "Account Description"
+        }
+      }, {
+        "name" : "TaxpayerIdentificationNumber",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : false,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "precision" : 20,
+        "title" : "Taxpayer Identification Number",
+        "maxLength" : "20",
+        "annotations" : {
+          "description" : "Taxpayer Identification Number"
+        }
+      }, {
+        "name" : "TaxRegistrationNumber",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : false,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "precision" : 50,
+        "title" : "Tax Registration Number",
+        "maxLength" : "50",
+        "properties" : {
+          "DISPLAYWIDTH" : "15"
+        },
+        "annotations" : {
+          "description" : "A unique sequence of letters or numbers assigned to a party or party site by a tax authority when the party or party site is registered and by which the party or party site registration will be identified."
+        }
+      }, {
+        "name" : "CustomerAccountId",
+        "type" : "integer",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "precision" : 18,
+        "title" : "Customer Account ID",
+        "annotations" : {
+          "description" : "Customer Account ID"
+        }
+      }, {
+        "name" : "PartyNumber",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "precision" : 30,
+        "title" : "Party Number",
+        "maxLength" : "30",
+        "annotations" : {
+          "description" : "Party Number"
+        }
+      }, {
+        "name" : "SiteName",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "precision" : 150,
+        "title" : "Site Name",
+        "maxLength" : "150",
+        "properties" : {
+          "DISPLAYWIDTH" : "20"
+        },
+        "annotations" : {
+          "description" : "Site Name"
+        }
+      }, {
+        "name" : "PrimarySite",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "precision" : 1,
+        "title" : "Primary Site",
+        "maxLength" : "1",
+        "annotations" : {
+          "description" : "Primary Site"
+        }
+      }, {
+        "name" : "SiteUseId",
+        "type" : "integer",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "precision" : 18,
+        "title" : "Site Use ID",
+        "annotations" : {
+          "description" : "Site Use ID"
+        }
+      }, {
+        "name" : "SetName",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "precision" : 80,
+        "title" : "Set Name",
+        "maxLength" : "80",
+        "annotations" : {
+          "description" : "Set Name"
+        }
+      } ],
+      "collection" : {
+        "rangeSize" : 25,
+        "finders" : [ {
+          "name" : "PrimaryKey",
+          "annotations" : {
+            "description" : "Finds customer account sites using the primary key as the finder criteria."
+          },
+          "attributes" : [ {
+            "name" : "SiteUseId",
+            "type" : "integer",
+            "updatable" : true,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 18,
+            "title" : "Site Use ID",
+            "annotations" : {
+              "description" : "Site Use ID"
+            }
+          } ]
+        }, {
+          "name" : "ReceivablesCustomerAccountFinder",
+          "title" : "ReceivablesCustomerAccountSearchCriteria",
+          "annotations" : {
+            "description" : "Finds customer accounts using the finder attributes specified."
+          },
+          "attributes" : [ {
+            "name" : "AccountDescription",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "SelectivelyRequired",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "AccountNumber",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "SelectivelyRequired",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "CustomerName",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "SelectivelyRequired",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "PrimarySite",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Optional",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "SitePurpose",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Required",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "TaxRegistrationNumber",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Optional",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "TaxpayerIdentificationNumber",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "SelectivelyRequired",
+            "queryable" : false,
+            "allowChanges" : "always"
+          } ]
+        }, {
+          "name" : "ReceivablesCustomerAccountSiteFinder",
+          "title" : "ReceivablesCustomerAccountSiteSearchCriteria",
+          "annotations" : {
+            "description" : "Finds customer account sites using the finder attributes specified."
+          },
+          "attributes" : [ {
+            "name" : "AccountNumber",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Required",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "PrimarySite",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Optional",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "SiteName",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Optional",
+            "queryable" : false,
+            "allowChanges" : "always"
+          }, {
+            "name" : "SitePurpose",
+            "type" : "string",
+            "updatable" : true,
+            "required" : "Required",
+            "queryable" : false,
+            "allowChanges" : "always"
+          } ]
+        } ],
+        "links" : [ {
+          "rel" : "self",
+          "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/customerAccountSitesLOV",
+          "name" : "self",
+          "kind" : "collection"
+        } ],
+        "actions" : [ {
+          "name" : "get",
+          "method" : "GET",
+          "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ],
+          "annotations" : {
+            "title" : "Get all customer account sites details"
+          }
+        } ]
+      },
+      "item" : {
+        "links" : [ {
+          "rel" : "self",
+          "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/customerAccountSitesLOV/{id}",
+          "name" : "self",
+          "kind" : "item"
+        }, {
+          "rel" : "canonical",
+          "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/customerAccountSitesLOV/{id}",
+          "name" : "canonical",
+          "kind" : "item"
+        } ],
+        "actions" : [ {
+          "name" : "get",
+          "method" : "GET",
+          "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ],
+          "annotations" : {
+            "title" : "Get a customer account site details"
+          }
+        } ]
+      },
+      "annotations" : {
+        "description" : "The customer account sites list of values resource is used to view the details of a customer account site."
+      },
+      "links" : [ {
+        "rel" : "self",
+        "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/customerAccountSitesLOV/describe",
+        "name" : "self",
+        "kind" : "describe"
+      }, {
+        "rel" : "canonical",
+        "href" : "https://egxt-dev4.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/customerAccountSitesLOV/describe",
+        "name" : "canonical",
+        "kind" : "describe"
+      } ]
+    }
+  }
+}

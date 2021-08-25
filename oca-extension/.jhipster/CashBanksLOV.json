@@ -1,0 +1,29 @@
+{
+    "name": "CashBanksLOV",
+    "fields": [
+        {
+            "fieldName": "bankName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bankNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bankPartyId",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200513210100",
+    "entityTableName": "cash_banks_lov",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
