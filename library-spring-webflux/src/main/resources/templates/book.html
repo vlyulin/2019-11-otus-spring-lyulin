@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>Spring Boot Reading List</title>
+    <!-- link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/ -->
+    <link data-th-href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" data-th-href="@{/thumbnail-gallery.css}"/>
+</head>
+<body>
+
+<form action="#" method="post" th:action="@{/books/save}"><!-- Navigation -->
+    <div class="container">
+        <div class="navbar-header">
+            <h1>Spring Library on WebFlux + Thymeleaf</h1>
+            <h2>Book:</h2>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container">
+                <table class="table table-hover">
+                    <tbody th:each="book : ${book}">
+                    <tr>
+                        <td class="col-xs-1 text-left">Title:</td>
+                        <td class="text-left"><input class="form-control" id="name" name="name"
+                                                       th:value="${book.name}" type="text"/></td>
+                    </tr>
+                    <tr>
+                        <td class="col-xs-1 text-left">Author:</td>
+                        <td class="text-left"><input class="form-control" id="author" name="author"
+                                                       th:value="${book.author.name}" type="text"/></td>
+                    </tr>
+                    <tr>
+                        <td class="col-xs-1 text-left">Publishing year:</td>
+                        <td class="text-left"><input class="form-control" id="publishingYear" name="publishingYear"
+                                                       th:value="${book.publishingYear}" type="text"/></td>
+                    </tr>
+                    <tr>
+                        <td class="col-xs-1 text-left">Pages:</td>
+                        <td class="text-left"><input class="form-control" id="pages" name="pages"
+                                                       th:value="${book.pages}" type="text"/></td>
+                    </tr>
+                    <tr>
+                        <td class="col-xs-1 text-left">Genre:</td>
+                        <td class="text-left">
+                            <!-- https://www.baeldung.com/thymeleaf-select-option -->
+                            <!-- https://www.baeldung.com/thymeleaf-list -->
+                            <select fclass="form-control" id="genre" name="genre">
+                                <option  th:each="genre : ${genres}"
+                                         th:value="${genre.lookupCode}"
+                                         th:text="${genre.meaning}"
+                                         th:selected="${book.genres[0].lookupCode == genre.lookupCode}"
+                                >
+                                </option>
+                            </select>
+                        </td>>
+                    </tr>
+                    <tr>
+                        <td class="text-left"><input name="bookId" th:value="${book.id}" type="hidden"/>
+                            <div class="btn-group">
+                                <button class="btn btn-warning" name="action" type="submit" value="update">Save</button>
+                                <button class="btn btn-success" name="action" type="submit" value="cancel">Cancel
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
