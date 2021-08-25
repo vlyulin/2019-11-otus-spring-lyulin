@@ -1,0 +1,81 @@
+<!-- https://metanit.com/web/angular2/2.5.php -->
+<div *ngIf="book$ | async as book">
+    <div class="form-group">
+      <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+        <label>
+          <ng-container i18n="@@BTName">Name:</ng-container>
+          <input type="text" formControlName="name" class="form-control"/>
+          <span class="text-danger"
+                *ngIf="(f.name.dirty || f.name.touched) && f.name.invalid && f.name.errors.required" i18n="@@BTNameReq">
+            Name is required.
+          </span>
+        </label>
+        <br/>
+        <label>
+          <ng-container i18n="@@BTPubYear">Publishing year:</ng-container>
+          <input type="text" formControlName="publishingYear" class="form-control">
+          <span class="text-danger"
+                *ngIf="(f.publishingYear.dirty || f.publishingYear.touched) && f.publishingYear.invalid
+                && f.publishingYear.errors.required" i18n="@@BTPubYearReq">
+            Publishing year is required.
+          </span>
+          <span class="text-danger"
+                *ngIf="(f.publishingYear.dirty || f.publishingYear.touched) && f.publishingYear.invalid"
+                i18n="@@BTPubYearOnlyNumbers">
+            Only numbers.
+          </span>
+        </label>
+        <br/>
+        <label>
+          <ng-container i18n="@@BTPages">Pages:</ng-container>
+          <input type="text" formControlName="pages" class="form-control">
+          <span class="text-danger"
+                *ngIf="(f.pages.dirty || f.pages.touched) && f.pages.invalid && f.pages.errors.required" i18n="@@BTPagesReq">
+            Pages is required.
+          </span>
+          <span class="text-danger"
+                *ngIf="(f.pages.dirty || f.pages.touched) && f.pages.invalid" i18n="@@BTPagesOnlyNumbers">
+            Only numbers.
+          </span>
+        </label>
+        <br/>
+        <label i18n="@@BTGenre">Genre:</label>
+        <select formControlName="genre" class="form-control">
+          <option  *ngFor="let genre of genres" [ngValue]="genre">
+            {{genre.meaning}}
+          </option>
+        </select>
+        <span class="text-danger"
+              *ngIf="(f.genre.dirty || f.genre.touched) && f.genre.invalid && f.genre.errors.required" i18n="@@BTGenreReq">
+            Genre is required.
+        </span>
+        <br/>
+        <label i18n="@@BTAuthor">Author:</label>
+        <select formControlName="author" class="form-control">
+          <option  *ngFor="let author of authors" [ngValue]="author">
+            {{author.name}}
+          </option>
+        </select>
+        <span class="text-danger"
+              *ngIf="(f.author.dirty || f.author.touched) && f.author.invalid && f.author.errors.required" i18n="@@BTAuthorReq">
+            Author is required.
+        </span>
+        <br/>
+        <label i18n="@@BTPubHouse">Publishing house:</label>
+        <select formControlName="publishingHouse" class="form-control">
+          <option *ngFor="let publishingHouse of publishingHouses" [ngValue]="publishingHouse">
+            {{publishingHouse.name}}
+          </option>
+        </select>
+        <span class="text-danger"
+              *ngIf="(f.publishingHouse.dirty || f.publishingHouse.touched) && f.publishingHouse.invalid
+              && f.publishingHouse.errors.required" i18n="@@BTPubHouseReq">
+            Publishing house is required.
+        </span>
+        <br/>
+        <button type="submit" [disabled]="!bookForm.valid" class="btn btn-primary mr-2" i18n="@@BTBtnSave">Save</button>
+        <button type="cancel" class="btn btn-primary" i18n="@@BTBtnCancel">Cancel</button>
+      </form>
+    </div>
+</div>
+

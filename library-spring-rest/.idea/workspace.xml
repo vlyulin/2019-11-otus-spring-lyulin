@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b669c8b3-9526-41eb-b63c-3d44f76c2b09" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/directives/alert.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/directives/alert.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/directives/alert.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/directives/alert.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/dummy/dummy.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/dummy/dummy.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/dummy/dummy.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/dummy/dummy.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/helpers/error.interceptor.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/helpers/error.interceptor.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/helpers/jwt.interceptor.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/helpers/jwt.interceptor.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/login/login.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/login/login.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/login/login.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/login/login.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/services/alert.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/services/authentication.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/services/authentication.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularclient/src/app/services/dummy.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/config/SecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/AuthData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/security/AuthenticatedUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/security/JwtAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/security/JwtAuthenticationProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/security/JwtAuthenticationSuccessHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/security/JwtAuthenticationToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/security/JwtUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/security/RestAuthenticationEntryPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/security/exceptions/JwtTokenMalformedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/security/exceptions/JwtTokenMissingException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularclient/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularclient/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularclient/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularclient/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularclient/src/app/app.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularclient/src/app/app.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularclient/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularclient/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularclient/src/app/book-list/book-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularclient/src/app/book-list/book-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularclient/src/app/comment-list/comment-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularclient/src/app/comment-list/comment-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularclient/src/app/models/book.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularclient/src/app/models/book.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularclient/src/app/models/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularclient/src/app/models/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularclient/src/app/services/authguard.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularclient/src/app/services/authguard.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularclient/src/app/services/authguard.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularclient/src/app/services/authguard.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularclient/src/app/services/book-service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularclient/src/app/services/book-service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularclient/src/app/services/lookupvalue.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularclient/src/app/services/lookupvalue.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularclient/src/app/user-list/user-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularclient/src/app/user-list/user-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularclient/src/app/user-list/user-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularclient/src/app/user-list/user-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularclient/src/locale/messages.ru.xlf" beforeDir="false" afterPath="$PROJECT_DIR$/angularclient/src/locale/messages.ru.xlf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularclient/src/polyfills.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularclient/src/polyfills.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-spring-rest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/library-spring-rest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/AppSessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/AuthorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/AuthorsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/BookCommentsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/BookCommentsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/BooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/BooksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/UsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/repositories/BookCommentsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/repositories/BookCommentsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/repositories/BookCommentsRepositoryCustom.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/repositories/BookCommentsRepositoryCustomImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/services/AppSession.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/services/ConsoleIOService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/services/ConsoleMessageService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/services/IOService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/services/Library.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/services/MessageService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/otus/spring/library/rest/repositories/BookCommentsRepositoryJpaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/otus/spring/library/rest/repositories/BookCommentsRepositoryJpaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/otus/spring/library/rest/repositories/BooksRepositoryJpaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/otus/spring/library/rest/repositories/BooksRepositoryJpaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/otus/spring/library/rest/repositories/LookupsRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/otus/spring/library/rest/repositories/LookupsRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1XlWELx0ilH7MePqENP1n8pkXjL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="ru.otus.spring.library.rest.repositories" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ru.otus.spring.library.rest" />
+      <recent name="ru.otus.spring.library.rest.config.security.exceptions" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.LibrarySpringRestApplication3">
+    <configuration name="LibrarySpringRestApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.otus.spring.library.spring.rest.LibrarySpringRestApplication" />
+      <module name="library-spring-rest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.otus.spring.library.spring.rest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LibrarySpringRestApplication3" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="ru.otus.spring.library.rest.LibrarySpringRestApplication" />
+      <module name="library-spring-rest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.otus.spring.library.rest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LookupsRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="library-spring-rest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.otus.spring.library.rest.repositories.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.otus.spring.library.rest.repositories" />
+      <option name="MAIN_CLASS_NAME" value="ru.otus.spring.library.rest.repositories.LookupsRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="library-spring-rest []" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.LibrarySpringRestApplication" />
+      <item itemvalue="Application.LibrarySpringRestApplication3" />
+      <item itemvalue="JUnit.LookupsRepositoryTest" />
+      <item itemvalue="Maven.library-spring-rest []" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.LibrarySpringRestApplication3" />
+        <item itemvalue="JUnit.LookupsRepositoryTest" />
+        <item itemvalue="Application.LibrarySpringRestApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b669c8b3-9526-41eb-b63c-3d44f76c2b09" name="Default Changelist" comment="" />
+      <created>1581621048463</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581621048463</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="222" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583243779690">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="222" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1583243779690" />
+    <state x="573" y="120" key="#com.intellij.ide.util.MemberChooser" timestamp="1587927900664">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="573" y="120" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1587927900664" />
+    <state x="524" y="190" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1587966591928">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="524" y="190" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1587966591928" />
+    <state x="301" y="327" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1587966587010">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="301" y="327" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1587966587010" />
+    <state x="565" y="270" width="513" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587966551865">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="565" y="270" width="513" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1587966551865" />
+    <state x="565" y="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1587966598271">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="565" y="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.824@0.0.1536.824" timestamp="1587966598271" />
+    <state x="498" y="158" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588014615520">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="498" y="158" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588014615520" />
+    <state width="450" height="466" key="DebuggerActiveHint" timestamp="1581661192915">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="450" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1581661192915" />
+    <state x="548" y="167" key="FileChooserDialogImpl" timestamp="1582046994621">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="548" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1582046994621" />
+    <state width="1491" height="267" key="GridCell.Tab.0.bottom" timestamp="1588019894951">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1491" height="267" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588019894951" />
+    <state width="1491" height="267" key="GridCell.Tab.0.center" timestamp="1588019894950">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1491" height="267" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588019894950" />
+    <state width="1491" height="267" key="GridCell.Tab.0.left" timestamp="1588019894950">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1491" height="267" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588019894950" />
+    <state width="1491" height="267" key="GridCell.Tab.0.right" timestamp="1588019894951">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1491" height="267" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588019894951" />
+    <state width="1491" height="267" key="GridCell.Tab.1.bottom" timestamp="1588019894951">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1491" height="267" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588019894951" />
+    <state width="1491" height="267" key="GridCell.Tab.1.center" timestamp="1588019894951">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1491" height="267" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1588019894951" />
+    <state width="1491" height="267" key="GridCell.Tab.1.left" timestamp="1588019894951">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1491" height="267" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1588019894951" />
+    <state width="1491" height="267" key="GridCell.Tab.1.right" timestamp="1588019894951">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1491" height="267" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1588019894951" />
+    <state x="298" y="67" key="Maven.ArtifactSearchDialog" timestamp="1581663676667">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="298" y="67" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1581663676667" />
+    <state x="276" y="54" key="SettingsEditor" timestamp="1582872644848">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="276" y="54" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1582872644848" />
+    <state width="498" height="452" key="SwitcherDM" timestamp="1582616593613">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="498" height="452" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1582616593613" />
+    <state x="157" y="159" key="caller.chooser.dialog" timestamp="1588013808274">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="157" y="159" key="caller.chooser.dialog/0.0.1536.824@0.0.1536.824" timestamp="1588013808274" />
+    <state x="608" y="192" key="chooseDestDirectoryDialog" timestamp="1587966536638">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="608" y="192" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1587966536638" />
+    <state x="463" y="236" width="770" height="461" key="com.intellij.ide.util.TipDialog" timestamp="1588006175063">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="463" y="236" width="770" height="461" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1588006175063" />
+    <state x="577" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587754140990">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="577" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1587754140990" />
+    <state x="527" y="130" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1581660247885">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="527" y="130" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824@0.0.1536.824" timestamp="1581660247885" />
+    <state x="463" y="10" width="611" height="804" key="find.popup" timestamp="1588013985518">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="463" y="10" width="611" height="804" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1588013985518" />
+    <state x="510" y="30" key="refactoring.ChangeSignatureDialog" timestamp="1587891578651">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="510" y="30" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1587891578651" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1583695403021">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1583695403021" />
+    <state x="431" y="145" key="search.everywhere.popup" timestamp="1581837426260">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1581837426260" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/otus/spring/library/rest/repositories/LookupsRepositoryTest.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/UsersController.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/security/RestAuthenticationEntryPoint.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/BookCommentsController.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/otus/spring/library/rest/controllers/BooksController.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

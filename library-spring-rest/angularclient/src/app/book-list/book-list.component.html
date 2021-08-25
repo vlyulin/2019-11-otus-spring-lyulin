@@ -1,0 +1,104 @@
+<!-- Источник для поисковой формы: https://www.javatpoint.com/angular-spring-search-field-example -->
+<div class="row">
+  <div class="col-md-offset-4  col-md-6">
+    <form [formGroup]="form" #searchInfo (ngSubmit)="searchForm(searchInfo)">
+      <table>
+        <tr>
+          <td>
+            <label><ng-container i18n="@@BSBookName">Book name:</ng-container>
+            <input type="text" formControlName="bookName" placeholder="Enter book name" class="form-control">
+            </label>
+          </td>
+          <td>
+            <label><ng-container i18n="@@BSAuthorName">Author name:</ng-container>
+            <input type="text" formControlName="authorName" placeholder="Enter author name" class="form-control">
+            </label>
+          </td>
+          <td>
+            <label><ng-container i18n="@@BSGenreName">Genre name:</ng-container>
+            <input type="text" formControlName="genreMeaning" placeholder="Enter genre" class="form-control">
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label><ng-container i18n="@@BSPagesFrom">Pages from:</ng-container>
+            <input type="number" formControlName="pagesFrom" placeholder="Enter pages from" class="form-control">
+            </label>
+          </td>
+          <td>
+            <label><ng-container i18n="@@BSPagesTo">Pages to:</ng-container>
+            <input type="number" formControlName="pagesTo" placeholder="Enter pages to" class="form-control">
+            </label>
+          </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>
+            <label><ng-container i18n="@@BSPubHouse">Publishing House:</ng-container>
+            <input type="text" formControlName="publishingHouseName" placeholder="Enter publishing house" class="form-control">
+            </label>
+          </td>
+          <td>
+            <label><ng-container i18n="@@BSPubYearFrom">Publishing Year from:</ng-container>
+              <input type="number" formControlName="publishingYearFrom" placeholder="Enter publishing year from" class="form-control">
+            </label>
+          </td>
+          <td>
+            <label><ng-container i18n="@@BSPubYearTo">Publishing Year to:</ng-container>
+              <input type="number" formControlName="publishingYearTo" placeholder="Enter publishing year to" class="form-control">
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button class="btn btn-primary hidden-xs" i18n="@@BSBtnSearch">Search</button>
+          </td>
+          <td></td>
+          <td> </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
+
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" i18n="@@BookTblName">Name</th>
+        <th scope="col" i18n="@@BookTblAuthor">Author</th>
+        <th scope="col" i18n="@@BookTblPages">Pages</th>
+        <th scope="col" i18n="@@BookTblGenre">Genre</th>
+        <th scope="col" i18n="@@BookTblPubHouse">Publishing house</th>
+        <th scope="col" i18n="@@BookTblPubYear">Publishing year</th>
+        <th scope="col" i18n="@@BookTblOpers">Operations</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let book of books">
+        <td>
+          <a [routerLink]="['/book', book.id]">
+            <span class="badge">{{ book.id }}</span>
+          </a>
+        </td>
+        <td class="field">{{ book.name }}</td>
+        <td class="field">{{ book.author.name }}</td>
+        <td class="field">{{ book.pages }}</td>
+        <td class="field">{{ book.genre.meaning }}</td>
+        <td class="field">{{ book.publishingHouse.name }}</td>
+        <td class="field">{{ book.publishingYear }}</td>
+        <!-- https://www.quora.com/How-do-I-redirect-one-HTML-page-to-another-using-a-button-click-event-in-Angular-7 -->
+        <td class="field">
+          <button [routerLink]="['/bookComments',book.id]"  i18n="@@BookTblBtnComments">Comments</button>
+          <button [routerLink]="['/book', book.id]" i18n="@@BookTblBtnEdit">Edit</button>
+          <button (click)="deleteBook(book.id)" i18n="@@BookTblDel">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary mr-2" [routerLink]="['/book', -1]"  i18n="@@BookBtnNewBook">New book</button>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" i18n="@@CmntTblComment">Comment</th>
+        <th scope="col" i18n="@@CmntTblCreatedBy">Created by</th>
+        <th scope="col" i18n="@@CmntTblCreationDate">Creation date</th>
+        <th scope="col" i18n="@@CmntTblUpdatedBy">Updated by</th>
+        <th scope="col" i18n="@@CmntTblLastUpdDate">Last update date</th>
+        <th scope="col" i18n="@@CmntTblOpers">Operations</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let comment of comments">
+        <td>{{ comment.commentId }}</td>
+        <!-- по аналогии https://stackblitz.com/angular/oyybmeleexvo?file=src%2Fapp%2Fcrisis-center%2Fcrisis-list%2Fcrisis-list.component.html -->
+        <!-- Difference between [routerLink] and routerLink -->
+        <!-- https://stackoverflow.com/questions/41370760/difference-between-routerlink-and-routerlink -->
+        <td><a [routerLink]="[commentPath, comment.commentId]">{{ comment.comment }}</a></td>
+        <td>{{ comment.createdBy.name }}</td>
+        <td>{{ comment.creationDate }}</td>
+        <td>{{ comment.lastUpdatedBy.name }}</td>
+        <td>{{ comment.lastUpdateDate }}</td>
+        <td>
+          <button [routerLink]="['comment', comment.commentId]" class="mr-2" i18n="@@CmntBtnEdit">Edit</button>
+          <button (click)="deleteComment(comment.commentId)" i18n="@@CmntBtnDel">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary mr-2" [routerLink]="['comment', -1]" i18n="@@CmntBtnComment">Comment</button>
+    <button class="btn btn-primary" (click)="goBack()" i18n="@@CmntBtnBack">Back</button>
+  </div>
+</div>
+
+<!-- это были жалкие попытки сделать редактирование на том же самом листе -->
+<!-- ul class="comment">
+  <li *ngFor="let cmt of comments"
+      [class.selected]="cmt.id === selectedId">
+    <a [routerLink]="[cmt.id]">
+      <span class="badge">{{ cmt.id }}</span>{{ cmt.comment }}
+    </a>
+  </li>
+</ul -->
+<!-- app-comment-detail></app-comment-detail -->
