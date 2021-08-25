@@ -1,0 +1,69 @@
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+    endpoint:
+        health:
+            show-details: always
+        logfile:
+            external_file: ./target/logs/library.log
+    health:
+        defaults:
+            enabled: true
+
+
+localization:
+    language: ru
+    country: RU
+
+appsession:
+    user: User01
+
+logging:
+    file: ./target/logs/library.log
+    level:
+        org:
+            hibernate:
+                stat: debug
+
+spring:
+    data:
+        rest:
+            basePath: /datarest
+
+    main:
+        allow-bean-definition-overriding: true
+
+    h2:
+        console:
+            enabled: true
+            path: /h2
+
+    datasource:
+        url: jdbc:h2:mem:testdb
+        schema:
+            classpath: schema.sql
+        data:
+            classpath: data.sql
+        initialization-mode: always
+
+    jpa:
+        generate-ddl: false
+        show-sql: true
+        hibernate:
+            ddl-auto: none
+        properties:
+            hibernate:
+                format_sql: true
+                generate_statistics: false
+
+    batch:
+        initialize-schema: always
+
+    messages:
+        basename: bundle
+        encoding: UTF-8
+
+    jmx:
+        enabled: true
