@@ -79,6 +79,10 @@
 ##Папка library-spring-hystrix
 Домашнее задание по теме "Spring Cloud Service Discovery, Zuul, Hystrix, Sleuth, Zipkin"
 
-##Папка oca-extension]
+##Папка oca-extension
 Проектная работа.
 Тема проектной работы: Create an Oracle Cloud Application extension with Spring Framework.
+=======
+Переписать приложение с использованием AJAX и REST-контроллеров
+Цель: Цель: использовать Spring MVC для разработки современных AJAX/SPA приложений 
+c помощью Spring MVC Результат: современное приложение на стеке Spring
